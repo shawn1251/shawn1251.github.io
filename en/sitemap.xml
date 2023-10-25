@@ -15,6 +15,32 @@
                 href="http://shawn1251.github.io/"
                 />
   </url><url>
+    <loc>http://shawn1251.github.io/post/</loc>
+    <lastmod>2023-10-21T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/setting-your-first-githubpage/</loc>
+    <lastmod>2023-10-21T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/setting-your-first-githubpage/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/setting-your-first-githubpage/"
+                />
+  </url><url>
     <loc>http://shawn1251.github.io/categories/</loc>
     <lastmod>2023-10-20T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -65,19 +91,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/post/first-post/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/post/</loc>
-    <lastmod>2023-10-20T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/page/about/</loc>
