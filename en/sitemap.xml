@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/</loc>
-    <lastmod>2023-10-22T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -15,8 +15,47 @@
                 href="http://shawn1251.github.io/"
                 />
   </url><url>
+    <loc>http://shawn1251.github.io/categories/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/install-chocolatey/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/install-chocolatey/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/install-chocolatey/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/categories/other/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/other/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/other/"
+                />
+  </url><url>
     <loc>http://shawn1251.github.io/post/</loc>
-    <lastmod>2023-10-21T06:42:46+08:00</lastmod>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -26,6 +65,58 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/tool/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/tool/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/tool/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/windows/</loc>
+    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/windows/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/windows/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/hugo/</loc>
+    <lastmod>2023-10-21T06:42:46+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/hugo/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/hugo/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/post/setting-your-first-githubpage/</loc>
@@ -39,45 +130,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/post/setting-your-first-githubpage/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/categories/</loc>
-    <lastmod>2023-10-20T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/categories/</loc>
-    <lastmod>2023-10-20T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/categories/essay/</loc>
-    <lastmod>2023-10-20T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/essay/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/essay/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/post/first-post/</loc>
@@ -166,18 +218,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/page/search/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/tags/"
                 />
   </url>
 </urlset>

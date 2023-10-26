@@ -22,7 +22,7 @@ installation 我們這邊參照官方的教學 https://gohugo.io/getting-started
 1 hugo --version 嘗試建立第一個專案 1 2 3 4 5 6 7 8 9 10 # 建立專案 hugo new site quickstart cd quickstart git init # 加入theme ananke 作為git的submodule，方便與原專案分離更新 git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke # 對當前專案指定使用ananke作為theme echo &amp;#34;theme = &amp;#39;ananke&amp;#39;&amp;#34; &amp;gt;&amp;gt; hugo.'>
 <meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/first-post/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-10-20T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-20T00:00:00&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hugo' /><meta property='article:published_time' content='2023-10-20T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-20T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="First Post with Hugo">
 <meta name="twitter:description" content="這次心血來潮決定將一些過往的筆記進行整理，在尋找平台的時候參考了友人的建議選擇了Hugo搭配github page。以下就來記錄一下過程。
 Hugo 簡單介紹一下Hugo， Hugo 是用Golang開發的靜態網站產生工具。靜態網站不依賴後端，速度快又不必架設資料庫，特別適合開發展示用的網站。以前很流行使用wordpress架設個人網站， 相較於這種功能豐富的CMS，若需求單純，其實更加推薦使用靜態網站，同樣類型的工具還有 Hexo 與 Jekyll。
@@ -306,8 +306,8 @@ installation 我們這邊參照官方的教學 https://gohugo.io/getting-started
     
     <header class="article-category">
         
-            <a href="/zh-tw/categories/essay/" >
-                essay
+            <a href="/zh-tw/categories/other/" style="background-color: #2a9d8f; color: #fff;">
+                Other
             </a>
         
     </header>
@@ -534,6 +534,12 @@ installation 我們這邊參照官方的教學 https://gohugo.io/getting-started
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/zh-tw/tags/hugo/">hugo</a>
+        
+    </section>
+
 
     </footer>
 
@@ -568,6 +574,41 @@ installation 我們這邊參照官方的教學 https://gohugo.io/getting-started
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/zh-tw/post/setting-your-first-githubpage/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">設定github page</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/zh-tw/post/install-chocolatey/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">安裝chocolatey</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
