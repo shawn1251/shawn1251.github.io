@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>vagrant on Shawn&#39;s Note</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/vagrant/</link>
+        <description>Recent content in vagrant on Shawn&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/vagrant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>vagrant 筆記</title>
+        <link>http://shawn1251.github.io/zh-tw/post/vagrant-intro/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/vagrant-intro/</guid>
+        <description>&lt;p&gt;一個command line tool方便自動化啟動VM。vagrant本身不是hypervisor，而是基於hypervisor上的一層應用，令使用者可以利用他快速架設VM於hypervisor上。本身也不需要OS image，設定檔Vagrantfile中指定的image(box)會從vagrant cloud取用。在Vagrantfile中定義所需要的參數，即可使用&lt;code&gt;vagrant up&lt;/code&gt;啟動&lt;/p&gt;
+&lt;h2 id=&#34;常用指令&#34;&gt;常用指令&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;vagrant init {box name}&lt;/li&gt;
+&lt;li&gt;vagrant up&lt;/li&gt;
+&lt;li&gt;vagrant ssh&lt;/li&gt;
+&lt;li&gt;vagrant halt&lt;/li&gt;
+&lt;li&gt;vagrant destroy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;流程&#34;&gt;流程&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;create folder&lt;/li&gt;
+&lt;li&gt;create Vagrantfile&lt;/li&gt;
+&lt;li&gt;vagrant up&lt;/li&gt;
+&lt;li&gt;vagrant ssh&lt;/li&gt;
+&lt;li&gt;vagrant halt/destroy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;啟動範例&#34;&gt;啟動範例&lt;/h2&gt;
+&lt;p&gt;請在這邊找尋自己想要啟動的 box &lt;a class=&#34;link&#34; href=&#34;https://app.vagrantup.com/boxes/search&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://app.vagrantup.com/boxes/search&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vagrant init {box name}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vagrant up
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;vagrant global-status
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;vagrantfile-的-provision&#34;&gt;Vagrantfile 的 provision&lt;/h2&gt;
+&lt;p&gt;Vagrantfile 中有一段 provision，可以用於設定vm第一次啟動前要執行的指令，好比安裝指定的軟體。可以參考官方對Vagrantfile的說明&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 這邊以在provision階段安裝apache2 server為例
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   config.vm.provision &amp;#34;shell&amp;#34;, inline: &amp;lt;&amp;lt;-SHELL
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;     apt-get install -y apache2
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   SHELL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        
+    </channel>
+</rss>

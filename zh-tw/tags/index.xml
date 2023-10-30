@@ -6,7 +6,23 @@
         <description>Recent content in Tags on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Tue, 24 Oct 2023 06:42:46 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>vagrant</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/vagrant/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/vagrant/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>vm</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/vm/</link>
+        <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/vm/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>tool</title>
         <link>http://shawn1251.github.io/zh-tw/tags/tool/</link>
         <pubDate>Tue, 24 Oct 2023 06:42:46 +0800</pubDate>

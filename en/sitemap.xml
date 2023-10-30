@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/</loc>
-    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>http://shawn1251.github.io/categories/</loc>
-    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -26,6 +26,84 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/categories/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/categories/other/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/other/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/other/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/vagrant/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/vagrant/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/vagrant/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/vagrant-intro/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/vagrant-intro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/vagrant-intro/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/tags/vm/</loc>
+    <lastmod>2023-10-28T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/vm/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/vm/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/post/install-chocolatey/</loc>
@@ -39,45 +117,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/post/install-chocolatey/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/categories/other/</loc>
-    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/other/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/other/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/post/</loc>
-    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/tags/</loc>
-    <lastmod>2023-10-24T06:42:46+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/tags/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/tags/tool/</loc>
