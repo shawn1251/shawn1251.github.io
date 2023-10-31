@@ -16,7 +16,7 @@
 1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &amp;#34;shell&amp;#34;, inline: &amp;lt;&amp;lt;-SHELL apt-get update apt-get install -y apache2 SHELL '>
 <meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/vagrant-intro/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vm' /><meta property='article:tag' content='vagrant' /><meta property='article:published_time' content='2023-10-28T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-28T00:00:00&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vm' /><meta property='article:tag' content='vagrant' /><meta property='article:tag' content='devops' /><meta property='article:published_time' content='2023-10-28T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-28T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="vagrant 筆記">
 <meta name="twitter:description" content="一個command line tool方便自動化啟動VM。vagrant本身不是hypervisor，而是基於hypervisor上的一層應用，令使用者可以利用他快速架設VM於hypervisor上。本身也不需要OS image，設定檔Vagrantfile中指定的image(box)會從vagrant cloud取用。在Vagrantfile中定義所需要的參數，即可使用vagrant up啟動
 常用指令 vagrant init {box name} vagrant up vagrant ssh vagrant halt vagrant destroy 流程 create folder create Vagrantfile vagrant up vagrant ssh vagrant halt/destroy 啟動範例 請在這邊找尋自己想要啟動的 box https://app.vagrantup.com/boxes/search
@@ -287,8 +287,8 @@
     
     <header class="article-category">
         
-            <a href="/zh-tw/categories/other/" style="background-color: #2a9d8f; color: #fff;">
-                Other
+            <a href="/zh-tw/categories/devops/" style="background-color: #3366ff; color: #fff;">
+                DevOps
             </a>
         
     </header>
@@ -431,6 +431,8 @@
         
             <a href="/zh-tw/tags/vagrant/">vagrant</a>
         
+            <a href="/zh-tw/tags/devops/">devops</a>
+        
     </section>
 
 
@@ -475,38 +477,12 @@
             
                 
 <article class="">
-    <a href="/zh-tw/post/install-chocolatey/">
+    <a href="/zh-tw/post/shell-cmd-filter/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">安裝chocolatey</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/zh-tw/post/setting-your-first-githubpage/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">設定github page</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/zh-tw/post/first-post/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">First Post with Hugo</h2>
+            <h2 class="article-title">常用於filter的shell command </h2>
         </div>
     </a>
 </article>

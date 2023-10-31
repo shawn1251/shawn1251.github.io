@@ -6,10 +6,18 @@
         <description>Recent content in Categories on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sat, 28 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevOps</title>
+        <link>http://shawn1251.github.io/categories/devops/</link>
+        <pubDate>Mon, 30 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/categories/devops/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Other</title>
         <link>http://shawn1251.github.io/categories/other/</link>
-        <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
+        <pubDate>Tue, 24 Oct 2023 06:42:46 +0800</pubDate>
         
         <guid>http://shawn1251.github.io/categories/other/</guid>
         <description></description>
