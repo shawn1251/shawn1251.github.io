@@ -6,7 +6,141 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 31 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Note</title>
+        <link>http://shawn1251.github.io/post/aws-note/</link>
+        <pubDate>Tue, 31 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/post/aws-note/</guid>
+        <description>&lt;p&gt;I&amp;rsquo;m currently studying &lt;a class=&#34;link&#34; href=&#34;https://www.udemy.com/course/decodingdevops/#reviews&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DevOps Beginners to Advanced with Projects&lt;/a&gt; on Udemy. Here are some notes on using AWS:&lt;/p&gt;
+&lt;h2 id=&#34;creating-an-ec2-instance&#34;&gt;Creating an EC2 Instance&lt;/h2&gt;
+&lt;p&gt;The most basic computing unit:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name and Tag
+&lt;ul&gt;
+&lt;li&gt;Here, you can choose to &amp;ldquo;add additional tags&amp;rdquo; to provide extra labels for easy identification on the AWS console.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AMI (Amazon Machine Image)
+&lt;ul&gt;
+&lt;li&gt;An AMI is like an image, similar to running a Docker image to create a container, but here, you create an EC2 instance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Instance Type
+&lt;ul&gt;
+&lt;li&gt;For the free tier, I&amp;rsquo;ve only used t2.micro. In real scenarios, you can choose different resource levels based on your requirements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Key Pair
+&lt;ul&gt;
+&lt;li&gt;AWS uses SSH keys for remote access. Choose the key pair for this instance. You can reuse a key pair across different instances for better key pair management.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Network Settings
+&lt;ul&gt;
+&lt;li&gt;Configure inbound and outbound rules. Typically, you&amp;rsquo;d open inbound for SSH and add &amp;ldquo;my IP&amp;rdquo; as the source. For web services, you&amp;rsquo;d add HTTP with a source of &amp;ldquo;anywhere.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Configure Storage
+&lt;ul&gt;
+&lt;li&gt;AWS offers various storage types, such as SSD, HDD, and specialized types based on I/O.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Advanced
+&lt;ul&gt;
+&lt;li&gt;Here, I used the &amp;ldquo;User Data&amp;rdquo; field. You can write shell scripts in this field to install software or complete specific configurations during instance launch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;elastic-block-store-ebs&#34;&gt;Elastic Block Store (EBS)&lt;/h2&gt;
+&lt;p&gt;Storage options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Volume Type
+&lt;ul&gt;
+&lt;li&gt;You can choose storage types like SSD, HDD, or specialized types based on I/O.&lt;/li&gt;
+&lt;li&gt;You can also select the region for volume creation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AWS allows dynamic attachment of volumes to instances.
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;fdisk -l&lt;/code&gt; to check the volume&amp;rsquo;s name.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;fdisk /dev/xvdf&lt;/code&gt; to create partitions. The path might vary based on the previous command&amp;rsquo;s output.
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;m&lt;/code&gt; for help&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; new partition&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p&lt;/code&gt; primary&lt;/li&gt;
+&lt;li&gt;partition number: default&lt;/li&gt;
+&lt;li&gt;First sector: default&lt;/li&gt;
+&lt;li&gt;Last sector: default&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w&lt;/code&gt; write table to disk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Create partitions, format them using &lt;code&gt;mkfs.ext4&lt;/code&gt;, and check with &lt;code&gt;lsblk&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Mount the partition using &lt;code&gt;mount /dev/xvdf1 {target path}&lt;/code&gt;. To make it auto-mount, modify &lt;code&gt;/etc/fstab&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Snapshot
+&lt;ul&gt;
+&lt;li&gt;Important data, like a database, is often stored on a separate volume.&lt;/li&gt;
+&lt;li&gt;You can use EBS snapshots to back up a volume and later restore it by creating a new volume from the snapshot.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;load-balancing&#34;&gt;Load Balancing&lt;/h2&gt;
+&lt;p&gt;An example with two instances running the same HTTP server:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a Target Group
+&lt;ul&gt;
+&lt;li&gt;Configure health checks to ensure instance health. For a web server, set up periodic HTTP requests to a specific path.&lt;/li&gt;
+&lt;li&gt;Add instances to the target group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Create a Load Balancer
+&lt;ul&gt;
+&lt;li&gt;For example, use an Application Load Balancer.&lt;/li&gt;
+&lt;li&gt;Configure security groups for inbound HTTP traffic.&lt;/li&gt;
+&lt;li&gt;Set up listeners &amp;amp; routing to forward traffic to the target group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Adjust the security group of the target group to allow access from the load balancer&amp;rsquo;s security group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h2&gt;
+&lt;p&gt;Create alarms, such as monitoring CPU resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to &amp;ldquo;All Alarms&amp;rdquo; and create a new alarm.&lt;/li&gt;
+&lt;li&gt;Select metrics, e.g., EC2, per-instance metrics.&lt;/li&gt;
+&lt;li&gt;Choose the instance ID and select CPUUtilization.&lt;/li&gt;
+&lt;li&gt;Set the threshold (e.g., 60%) and configure notification details for email or groups.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;amazon-elastic-file-system-efs&#34;&gt;Amazon Elastic File System (EFS)&lt;/h2&gt;
+&lt;p&gt;Similar to NFS on Linux, suitable for shared storage among multiple instances:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a security group for EFS.
+&lt;ul&gt;
+&lt;li&gt;Create an EFS file system with default performance settings or adjust as needed.&lt;/li&gt;
+&lt;li&gt;Configure network settings with the security group for all availability zones.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Create an access point.
+&lt;ul&gt;
+&lt;li&gt;Mount EFS from an EC2 instance using the amazon-efs-utils. &lt;code&gt;sudo yum install -y amazon-efs-utils&lt;/code&gt;. &lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/efs/latest/ug/installing-amazon-efs-utils.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;official doc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Update &lt;code&gt;/etc/fstab&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;Add &lt;code&gt;{file-system-id}:/ {efs-mount-point} efs _netdev,noresvport,tls,accesspoint={access-point-id} 0 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/efs/latest/ug/automount-with-efs-mount-helper.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;official doc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;execute&lt;code&gt; mount -fav&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;If you see {mount-point}: successfully mounted, you&amp;rsquo;re done.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Commonly Used Shell Commands for Filtering</title>
         <link>http://shawn1251.github.io/post/shell-cmd-filter/</link>
         <pubDate>Mon, 30 Oct 2023 00:00:00 +0800</pubDate>

@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="zh-tw" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.'>
-<title>Commonly Used Shell Commands for Filtering</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記
+建立EC2 最基本的執行單位
+Name and Tag 這邊可以選用 add additional tag，多補充標籤，方便在aws console上可以快速搜尋指定的instance AMI AMI 是image，有點類似docker上取用image後run成container，但在此是run 成 instance instance type 由於目前是 free tier，只使用過 t2.micro。實際使用情境可以根據需求選擇不同等級的資源 key pair 由於aws在遠端登入時都是採用ssh key，因次在這個階段要選用此instance的key pair。 方便的是一組key pair可以被重複使用在不同instance上。可因應實際使用作key pair管理 network setting 主要在建立進出規則 通常會打開的in bound是ssh，source的部分可以加入my ip 如果是網頁服務用instance，一般會加入HTTP，並且source為anywhere configure storage storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 advanced 此處我使用到的是 User data 這一個欄位。這部分可以直接寫上shell，方便在啟動的時候就預先裝載軟體或完成相關設定 Elastic Block Store 儲存體
+volume type storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 還可以選擇建立地區 aws 裡volume可以動態attach attach 在指定的instance fdisk -l 可以檢查該volume的名稱 fdisk /dev/xvdf 這個路徑可能有所不同，根據前一個指令取得的dev更換 m 可以檢視可用指令 n new partition p primary partition number: default 1 First sector: default 2048 Last sector: default w write table to disk mkfs.'>
+<title>AWS 筆記</title>
 
-<link rel='canonical' href='http://shawn1251.github.io/post/shell-cmd-filter/'>
+<link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/aws-note/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Commonly Used Shell Commands for Filtering'>
-<meta property='og:description' content='For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.'>
-<meta property='og:url' content='http://shawn1251.github.io/post/shell-cmd-filter/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='AWS 筆記'>
+<meta property='og:description' content='最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記
+建立EC2 最基本的執行單位
+Name and Tag 這邊可以選用 add additional tag，多補充標籤，方便在aws console上可以快速搜尋指定的instance AMI AMI 是image，有點類似docker上取用image後run成container，但在此是run 成 instance instance type 由於目前是 free tier，只使用過 t2.micro。實際使用情境可以根據需求選擇不同等級的資源 key pair 由於aws在遠端登入時都是採用ssh key，因次在這個階段要選用此instance的key pair。 方便的是一組key pair可以被重複使用在不同instance上。可因應實際使用作key pair管理 network setting 主要在建立進出規則 通常會打開的in bound是ssh，source的部分可以加入my ip 如果是網頁服務用instance，一般會加入HTTP，並且source為anywhere configure storage storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 advanced 此處我使用到的是 User data 這一個欄位。這部分可以直接寫上shell，方便在啟動的時候就預先裝載軟體或完成相關設定 Elastic Block Store 儲存體
+volume type storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 還可以選擇建立地區 aws 裡volume可以動態attach attach 在指定的instance fdisk -l 可以檢查該volume的名稱 fdisk /dev/xvdf 這個路徑可能有所不同，根據前一個指令取得的dev更換 m 可以檢視可用指令 n new partition p primary partition number: default 1 First sector: default 2048 Last sector: default w write table to disk mkfs.'>
+<meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/aws-note/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='linux' /><meta property='article:tag' content='shell' /><meta property='article:tag' content='devops' /><meta property='article:published_time' content='2023-10-30T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-30T00:00:00&#43;08:00'/>
-<meta name="twitter:title" content="Commonly Used Shell Commands for Filtering">
-<meta name="twitter:description" content="For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='devops' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2023-10-31T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-31T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="AWS 筆記">
+<meta name="twitter:description" content="最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記
+建立EC2 最基本的執行單位
+Name and Tag 這邊可以選用 add additional tag，多補充標籤，方便在aws console上可以快速搜尋指定的instance AMI AMI 是image，有點類似docker上取用image後run成container，但在此是run 成 instance instance type 由於目前是 free tier，只使用過 t2.micro。實際使用情境可以根據需求選擇不同等級的資源 key pair 由於aws在遠端登入時都是採用ssh key，因次在這個階段要選用此instance的key pair。 方便的是一組key pair可以被重複使用在不同instance上。可因應實際使用作key pair管理 network setting 主要在建立進出規則 通常會打開的in bound是ssh，source的部分可以加入my ip 如果是網頁服務用instance，一般會加入HTTP，並且source為anywhere configure storage storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 advanced 此處我使用到的是 User data 這一個欄位。這部分可以直接寫上shell，方便在啟動的時候就預先裝載軟體或完成相關設定 Elastic Block Store 儲存體
+volume type storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型 還可以選擇建立地區 aws 裡volume可以動態attach attach 在指定的instance fdisk -l 可以檢查該volume的名稱 fdisk /dev/xvdf 這個路徑可能有所不同，根據前一個指令取得的dev更換 m 可以檢視可用指令 n new partition p primary partition number: default 1 First sector: default 2048 Last sector: default w write table to disk mkfs.">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -48,7 +51,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -58,7 +61,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
             
             <figure class="site-avatar">
-                <a href="/">
+                <a href="/zh-tw">
                 
                     
                     
@@ -77,7 +80,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Shawn&#39;s Note</a></h1>
+            <h1 class="site-name"><a href="/zh-tw">Shawn&#39;s Note</a></h1>
             <h2 class="site-description">Life Record &amp; Learning Note</h2>
         </div>
     </header><ol class="social-menu">
@@ -115,7 +118,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
         
         <li >
-            <a href='/' >
+            <a href='/zh-tw/' >
                 
                 
                 
@@ -135,7 +138,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
         
         <li >
-            <a href='/page/about/' >
+            <a href='/zh-tw/page/about/' >
                 
                 
                 
@@ -154,7 +157,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
         
         <li >
-            <a href='/page/archives/' >
+            <a href='/zh-tw/page/archives/' >
                 
                 
                 
@@ -174,7 +177,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         
         
         <li >
-            <a href='/page/search/' >
+            <a href='/zh-tw/page/search/' >
                 
                 
                 
@@ -207,9 +210,9 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="http://shawn1251.github.io/" selected>English</option>
+                            <option value="http://shawn1251.github.io/" >English</option>
                         
-                            <option value="http://shawn1251.github.io/zh-tw/" >繁體中文</option>
+                            <option value="http://shawn1251.github.io/zh-tw/" selected>繁體中文</option>
                         
                     </select>
                 </li>
@@ -233,7 +236,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
 
 
-                    <span>Dark Mode</span>
+                    <span>夜晚模式</span>
                 </li>
             
         </div>
@@ -257,18 +260,16 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
 
         </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
+        <h2 class="widget-title section-title">目錄</h2>
         
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#cat">cat</a></li>
-    <li><a href="#grep">grep</a></li>
-    <li><a href="#cut">cut</a></li>
-    <li><a href="#awk">awk</a></li>
-    <li><a href="#sed">sed</a></li>
-    <li><a href="#redirection">Redirection</a></li>
-    <li><a href="#pipe">Pipe</a></li>
+    <li><a href="#建立ec2">建立EC2</a></li>
+    <li><a href="#elastic-block-store">Elastic Block Store</a></li>
+    <li><a href="#load-balancing">Load Balancing</a></li>
+    <li><a href="#cloud-watch">Cloud Watch</a></li>
+    <li><a href="#efs">EFS</a></li>
   </ol>
 </nav>
         </div>
@@ -287,7 +288,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     
     <header class="article-category">
         
-            <a href="/categories/devops/" style="background-color: #3366ff; color: #fff;">
+            <a href="/zh-tw/categories/devops/" style="background-color: #3366ff; color: #fff;">
                 DevOps
             </a>
         
@@ -296,7 +297,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/shell-cmd-filter/">Commonly Used Shell Commands for Filtering</a>
+            <a href="/zh-tw/post/aws-note/">AWS 筆記</a>
         </h2>
     
         
@@ -318,7 +319,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Oct 30, 2023</time>
+                <time class="article-time--published">Oct 31, 2023</time>
             </div>
         
 
@@ -333,7 +334,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
 
                 <time class="article-time--reading">
-                    3 minute read
+                    閱讀時間: 2 分鐘
                 </time>
             </div>
         
@@ -355,7 +356,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
             <div>
                 
-                    <a href="http://shawn1251.github.io/zh-tw/post/shell-cmd-filter/" class="link">繁體中文</a>
+                    <a href="http://shawn1251.github.io/post/aws-note/" class="link">English</a>
                 
             </div>
         </footer>
@@ -367,192 +368,158 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     <section class="article-content">
     
     
-    <p>For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:</p>
-<h2 id="cat">cat</h2>
-<p>Most often, cat is used to display file contents, such as <code>cat {your file}</code>. However, it can also be used to concatenate two files and create a new file.</p>
+    <p>最近在 Udemy 上學習 <a class="link" href="https://www.udemy.com/course/decodingdevops/#reviews"  target="_blank" rel="noopener"
+    >DevOps Beginners to Advanced with Projects</a>。在此做一些關於 AWS 使用上的筆記</p>
+<h2 id="建立ec2">建立EC2</h2>
+<p>最基本的執行單位</p>
 <ul>
-<li>To concatenate two files:
+<li>Name and Tag
 <ul>
-<li><code>cat {file1} {file2} &gt; {merged file}</code></li>
+<li>這邊可以選用 <code>add additional tag</code>，多補充標籤，方便在aws console上可以快速搜尋指定的instance</li>
 </ul>
 </li>
-<li>To create a new file and write to it:
+<li>AMI
 <ul>
-<li><code>cat &gt; {your file}</code></li>
-<li>It will accept your input and write it to the file.</li>
-<li>Some automation scripts use this command to create files, like:
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat &gt; testFile <span class="s">&lt;&lt; EOF
-</span></span></span><span class="line"><span class="cl"><span class="s">{your content}
-</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
+<li>AMI 是image，有點類似docker上取用image後run成container，但在此是run 成 instance</li>
+</ul>
+</li>
+<li>instance type
+<ul>
+<li>由於目前是 free tier，只使用過 t2.micro。實際使用情境可以根據需求選擇不同等級的資源</li>
+</ul>
+</li>
+<li>key pair
+<ul>
+<li>由於aws在遠端登入時都是採用ssh key，因次在這個階段要選用此instance的key pair。</li>
+<li>方便的是一組key pair可以被重複使用在不同instance上。可因應實際使用作key pair管理</li>
+</ul>
+</li>
+<li>network setting
+<ul>
+<li>主要在建立進出規則</li>
+<li>通常會打開的in bound是ssh，source的部分可以加入my ip</li>
+<li>如果是網頁服務用instance，一般會加入HTTP，並且source為anywhere</li>
+</ul>
+</li>
+<li>configure storage
+<ul>
+<li>storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型</li>
+</ul>
+</li>
+<li>advanced
+<ul>
+<li>此處我使用到的是 <code>User data</code> 這一個欄位。這部分可以直接寫上shell，方便在啟動的時候就預先裝載軟體或完成相關設定</li>
 </ul>
 </li>
 </ul>
-<h2 id="grep">grep</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -R SELINUX /etc/*
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-i: Ignore case.</li>
-<li>-R: Recursively search in subdirectories.</li>
-<li>-v: Invert match, output lines that don&rsquo;t contain the keyword.</li>
-</ul>
-<h2 id="cut">cut</h2>
-<p>This command is useful for quickly extracting specific content from files with a fixed format, such as /etc/passwd. In this file, each line is separated by colons (&quot;:&quot;).</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root:x:0:0:root:/root:/bin/bash
-</span></span><span class="line"><span class="cl">vagrant:x:1000:1000::/home/vagrant:/bin/bash
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Using cut on this file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cut -d: -f1 /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-d specifies the delimiter, and we use &ldquo;:&rdquo; to indicate that the delimiter is a colon.</li>
-<li>-f1 indicates that we want to extract the first field after splitting, which is the username.</li>
-</ul>
-<p>The output will be:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root
-</span></span><span class="line"><span class="cl">vagrant
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="awk">awk</h2>
-<p>When the separator is more complex or variable, you can use awk. For the example mentioned above, you can use awk to achieve the same result:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">awk -F<span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{print $1}&#39;</span> /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-F specifies the field separator.
-{print $1} specifies to print the first field after splitting.</li>
-</ul>
-<h2 id="sed">sed</h2>
-<p>sed is used for text substitution. It operates on streams and doesn&rsquo;t overwrite the original file. For example:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;this is a book.&#34;</span> &gt; <span class="nb">test</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Create a sample text</span>
-</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/book/dog/g&#39;</span> <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span><span class="line"><span class="cl"><span class="c1"># It replaces &#34;book&#34; with &#34;dog&#34; in the text.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;s&#39; stands for search.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;g&#39; stands for global.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># You can replace &#39;test&#39; with &#39;*&#39; to change multiple files.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">cat <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a book.
-</span></span><span class="line"><span class="cl"><span class="c1"># The original file remains unchanged.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># To overwrite, you can add -i</span>
-</span></span><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/book/dog/g&#39;</span> <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">cat <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="redirection">Redirection</h2>
-<p>By default, the output of Linux commands is displayed on the screen, but you can redirect the output to a file. Here are some key points:</p>
+<h2 id="elastic-block-store">Elastic Block Store</h2>
+<p>儲存體</p>
 <ul>
-<li><code>&gt;</code> will overwrite the target, while <code>&gt;&gt;</code> appends.</li>
-<li><code>1</code> is stdout, and <code>2</code> is stderr.</li>
-<li>You can use <code>&amp;</code> to redirect all output.</li>
+<li>volume type
+<ul>
+<li>storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型</li>
+<li>還可以選擇建立地區</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># When the target is stdout, you don&#39;t need to specify 1.</span>
-</span></span><span class="line"><span class="cl">ls &gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;lss&#39; is a non-existent command that will produce an error. You can redirect its stderr output.</span>
-</span></span><span class="line"><span class="cl">lss 2&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># The &#39;&amp;&#39; symbol redirects both stdout and stderr.</span>
-</span></span><span class="line"><span class="cl">ls <span class="p">&amp;</span>&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">lss <span class="p">&amp;</span>&gt;&gt; tmpfile
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="pipe">Pipe</h2>
-<p>Use the pipe <code>|</code> to pass the output of one command as input to another.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Count the lines by passing the output of &#39;ls&#39; to &#39;wc&#39;.</span>
-</span></span><span class="line"><span class="cl">ls <span class="p">|</span> wc -l
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Extract the &#39;Mem&#39; column from the output of &#39;free&#39;.</span>
-</span></span><span class="line"><span class="cl">free <span class="p">|</span> grep -i Mem
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+</li>
+<li>aws 裡volume可以動態attach
+<ul>
+<li>attach 在指定的instance</li>
+<li><code>fdisk -l</code> 可以檢查該volume的名稱</li>
+<li><code>fdisk /dev/xvdf</code> 這個路徑可能有所不同，根據前一個指令取得的dev更換
+<ul>
+<li><code>m</code> 可以檢視可用指令</li>
+<li><code>n</code> new partition</li>
+<li><code>p</code> primary</li>
+<li>partition number: default 1</li>
+<li>First sector: default 2048</li>
+<li>Last sector: default</li>
+<li><code>w</code> write table to disk</li>
+</ul>
+</li>
+<li><code>mkfs.ext4 /dev/xvdf1</code>: 這個指令可以根據要使用的format做更換，本處使用ext4</li>
+<li>使用 <code>lsblk</code> 檢查是否出現</li>
+<li><code>mount /dev/xvdf1 {target path}</code> 就能進行掛載
+<ul>
+<li>如果要讓其自動掛載，請修改<code>/etc/fstab</code>。往後就能開機自動掛載也可使用<code>mount -a</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>snapshot
+<ul>
+<li>通常主要的資料都會使用另外的volume，好比database的data</li>
+<li>我們可以使用 EBS 中的 snapshot 功能，為當前的volume進行備份</li>
+<li>之後一旦有需要進行還原，就可以對指定的snapshot執行create volume from snapshot，就可以將當時的內容重新掛載到instance上</li>
+</ul>
+</li>
+</ul>
+<h2 id="load-balancing">Load Balancing</h2>
+<p>以兩個執行同樣http server的instances做example</p>
+<ul>
+<li>建立target group
+<ul>
+<li>target group 的health check用來確認instance是否正常，如果是網頁伺服器，可以設定http路徑定時對指定頁面進行請求</li>
+<li>將目標的instances拉入target group</li>
+</ul>
+</li>
+<li>建立load balancer
+<ul>
+<li>先以 Application Load Balance 為 example</li>
+<li>security group 由於是web server，要設定inbound 為 HTTP ipv4/v6 anywhere</li>
+<li>listener &amp; routing 設定為轉發到剛才創建的target group</li>
+</ul>
+</li>
+<li>回頭設定target group的security group
+<ul>
+<li>因為剛剛並沒有設定load balancer所在的security group可以access到target group。因此要將load balancer所在的security group加入target group 的security 中。 inbound HTTP custom {sg id}</li>
+</ul>
+</li>
+</ul>
+<h2 id="cloud-watch">Cloud Watch</h2>
+<p>可以用來建立警告，此處以cpu資源作作為example</p>
+<ul>
+<li>all alarm -&gt; create alarm</li>
+<li>select metric -&gt; ec2 -&gt; pre instance metric</li>
+<li>尋找目標的instance id，並選取CPUUtilization</li>
+<li>在greater than..的部分設定想要的百分比，好比60</li>
+<li>最後，設定通知的內容還有對象email或群組</li>
+</ul>
+<h2 id="efs">EFS</h2>
+<p>這有點類似我們linux上在用的NFS，適合作為多個instance共同的儲存空間</p>
+<ul>
+<li>建立security group
+<ul>
+<li>由於EFS是基於網路的連線，所以必須先設定security group</li>
+<li>將inbound 加入 NFS，source 為目標instance的security group</li>
+</ul>
+</li>
+<li>EFS -&gt; create file system
+<ul>
+<li>這邊練習用的performance setting使用預設的enhanced, elastic即可。實際使用根據需求調整</li>
+<li>Network setting這邊所有availability zone的security group 都選擇剛剛新建立給EFS用的security group。</li>
+</ul>
+</li>
+<li>建立access point
+<ul>
+<li>file system 選擇剛建立的file system id</li>
+</ul>
+</li>
+<li>從EC2進行mount
+<ul>
+<li>連線EFS要一些工具，執行<code>sudo yum install -y amazon-efs-utils</code>安裝。這部分可以參考<a class="link" href="https://docs.aws.amazon.com/efs/latest/ug/installing-amazon-efs-utils.html"  target="_blank" rel="noopener"
+    >官方文件</a></li>
+<li>接下來設定/etc/fstab
+<ul>
+<li>加入這一行 <code>{file-system-id}:/ {efs-mount-point} efs _netdev,noresvport,tls,accesspoint={access-point-id} 0 0</code></li>
+<li>可參考<a class="link" href="https://docs.aws.amazon.com/efs/latest/ug/automount-with-efs-mount-helper.html"  target="_blank" rel="noopener"
+    >官方文件</a></li>
+</ul>
+</li>
+<li>執行<code>mount -fav</code>。若出現 {mount-point} : successfully mounted，就完成了</li>
+</ul>
+</li>
+</ul>
+
 </section>
 
 
@@ -560,11 +527,9 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     
     <section class="article-tags">
         
-            <a href="/tags/linux/">linux</a>
+            <a href="/zh-tw/tags/devops/">devops</a>
         
-            <a href="/tags/shell/">shell</a>
-        
-            <a href="/tags/devops/">devops</a>
+            <a href="/zh-tw/tags/aws/">aws</a>
         
     </section>
 
@@ -604,18 +569,18 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     
 
 <aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
+    <h2 class="section-title">相關文章</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
             
                 
 <article class="">
-    <a href="/post/aws-note/">
+    <a href="/zh-tw/post/shell-cmd-filter/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">AWS Note</h2>
+            <h2 class="article-title">常用於filter的shell command </h2>
         </div>
     </a>
 </article>
@@ -623,12 +588,12 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
             
                 
 <article class="">
-    <a href="/post/vagrant-intro/">
+    <a href="/zh-tw/post/vagrant-intro/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">vagrant note</h2>
+            <h2 class="article-title">vagrant 筆記</h2>
         </div>
     </a>
 </article>
@@ -651,8 +616,8 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     </section>
     
     <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
     </section>
 </footer>
 

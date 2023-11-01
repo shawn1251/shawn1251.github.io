@@ -6,7 +6,166 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 31 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS 筆記</title>
+        <link>http://shawn1251.github.io/zh-tw/post/aws-note/</link>
+        <pubDate>Tue, 31 Oct 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/aws-note/</guid>
+        <description>&lt;p&gt;最近在 Udemy 上學習 &lt;a class=&#34;link&#34; href=&#34;https://www.udemy.com/course/decodingdevops/#reviews&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DevOps Beginners to Advanced with Projects&lt;/a&gt;。在此做一些關於 AWS 使用上的筆記&lt;/p&gt;
+&lt;h2 id=&#34;建立ec2&#34;&gt;建立EC2&lt;/h2&gt;
+&lt;p&gt;最基本的執行單位&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name and Tag
+&lt;ul&gt;
+&lt;li&gt;這邊可以選用 &lt;code&gt;add additional tag&lt;/code&gt;，多補充標籤，方便在aws console上可以快速搜尋指定的instance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AMI
+&lt;ul&gt;
+&lt;li&gt;AMI 是image，有點類似docker上取用image後run成container，但在此是run 成 instance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;instance type
+&lt;ul&gt;
+&lt;li&gt;由於目前是 free tier，只使用過 t2.micro。實際使用情境可以根據需求選擇不同等級的資源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;key pair
+&lt;ul&gt;
+&lt;li&gt;由於aws在遠端登入時都是採用ssh key，因次在這個階段要選用此instance的key pair。&lt;/li&gt;
+&lt;li&gt;方便的是一組key pair可以被重複使用在不同instance上。可因應實際使用作key pair管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;network setting
+&lt;ul&gt;
+&lt;li&gt;主要在建立進出規則&lt;/li&gt;
+&lt;li&gt;通常會打開的in bound是ssh，source的部分可以加入my ip&lt;/li&gt;
+&lt;li&gt;如果是網頁服務用instance，一般會加入HTTP，並且source為anywhere&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;configure storage
+&lt;ul&gt;
+&lt;li&gt;storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;advanced
+&lt;ul&gt;
+&lt;li&gt;此處我使用到的是 &lt;code&gt;User data&lt;/code&gt; 這一個欄位。這部分可以直接寫上shell，方便在啟動的時候就預先裝載軟體或完成相關設定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;elastic-block-store&#34;&gt;Elastic Block Store&lt;/h2&gt;
+&lt;p&gt;儲存體&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;volume type
+&lt;ul&gt;
+&lt;li&gt;storage分成很多類型。好比SSD，HDD，磁帶，也有根據IO做的特化型&lt;/li&gt;
+&lt;li&gt;還可以選擇建立地區&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;aws 裡volume可以動態attach
+&lt;ul&gt;
+&lt;li&gt;attach 在指定的instance&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fdisk -l&lt;/code&gt; 可以檢查該volume的名稱&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fdisk /dev/xvdf&lt;/code&gt; 這個路徑可能有所不同，根據前一個指令取得的dev更換
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;m&lt;/code&gt; 可以檢視可用指令&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; new partition&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p&lt;/code&gt; primary&lt;/li&gt;
+&lt;li&gt;partition number: default 1&lt;/li&gt;
+&lt;li&gt;First sector: default 2048&lt;/li&gt;
+&lt;li&gt;Last sector: default&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w&lt;/code&gt; write table to disk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mkfs.ext4 /dev/xvdf1&lt;/code&gt;: 這個指令可以根據要使用的format做更換，本處使用ext4&lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;lsblk&lt;/code&gt; 檢查是否出現&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mount /dev/xvdf1 {target path}&lt;/code&gt; 就能進行掛載
+&lt;ul&gt;
+&lt;li&gt;如果要讓其自動掛載，請修改&lt;code&gt;/etc/fstab&lt;/code&gt;。往後就能開機自動掛載也可使用&lt;code&gt;mount -a&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;snapshot
+&lt;ul&gt;
+&lt;li&gt;通常主要的資料都會使用另外的volume，好比database的data&lt;/li&gt;
+&lt;li&gt;我們可以使用 EBS 中的 snapshot 功能，為當前的volume進行備份&lt;/li&gt;
+&lt;li&gt;之後一旦有需要進行還原，就可以對指定的snapshot執行create volume from snapshot，就可以將當時的內容重新掛載到instance上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;load-balancing&#34;&gt;Load Balancing&lt;/h2&gt;
+&lt;p&gt;以兩個執行同樣http server的instances做example&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立target group
+&lt;ul&gt;
+&lt;li&gt;target group 的health check用來確認instance是否正常，如果是網頁伺服器，可以設定http路徑定時對指定頁面進行請求&lt;/li&gt;
+&lt;li&gt;將目標的instances拉入target group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;建立load balancer
+&lt;ul&gt;
+&lt;li&gt;先以 Application Load Balance 為 example&lt;/li&gt;
+&lt;li&gt;security group 由於是web server，要設定inbound 為 HTTP ipv4/v6 anywhere&lt;/li&gt;
+&lt;li&gt;listener &amp;amp; routing 設定為轉發到剛才創建的target group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;回頭設定target group的security group
+&lt;ul&gt;
+&lt;li&gt;因為剛剛並沒有設定load balancer所在的security group可以access到target group。因此要將load balancer所在的security group加入target group 的security 中。 inbound HTTP custom {sg id}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cloud-watch&#34;&gt;Cloud Watch&lt;/h2&gt;
+&lt;p&gt;可以用來建立警告，此處以cpu資源作作為example&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;all alarm -&amp;gt; create alarm&lt;/li&gt;
+&lt;li&gt;select metric -&amp;gt; ec2 -&amp;gt; pre instance metric&lt;/li&gt;
+&lt;li&gt;尋找目標的instance id，並選取CPUUtilization&lt;/li&gt;
+&lt;li&gt;在greater than..的部分設定想要的百分比，好比60&lt;/li&gt;
+&lt;li&gt;最後，設定通知的內容還有對象email或群組&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;efs&#34;&gt;EFS&lt;/h2&gt;
+&lt;p&gt;這有點類似我們linux上在用的NFS，適合作為多個instance共同的儲存空間&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立security group
+&lt;ul&gt;
+&lt;li&gt;由於EFS是基於網路的連線，所以必須先設定security group&lt;/li&gt;
+&lt;li&gt;將inbound 加入 NFS，source 為目標instance的security group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;EFS -&amp;gt; create file system
+&lt;ul&gt;
+&lt;li&gt;這邊練習用的performance setting使用預設的enhanced, elastic即可。實際使用根據需求調整&lt;/li&gt;
+&lt;li&gt;Network setting這邊所有availability zone的security group 都選擇剛剛新建立給EFS用的security group。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;建立access point
+&lt;ul&gt;
+&lt;li&gt;file system 選擇剛建立的file system id&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;從EC2進行mount
+&lt;ul&gt;
+&lt;li&gt;連線EFS要一些工具，執行&lt;code&gt;sudo yum install -y amazon-efs-utils&lt;/code&gt;安裝。這部分可以參考&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/efs/latest/ug/installing-amazon-efs-utils.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;接下來設定/etc/fstab
+&lt;ul&gt;
+&lt;li&gt;加入這一行 &lt;code&gt;{file-system-id}:/ {efs-mount-point} efs _netdev,noresvport,tls,accesspoint={access-point-id} 0 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;可參考&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/efs/latest/ug/automount-with-efs-mount-helper.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;官方文件&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;執行&lt;code&gt;mount -fav&lt;/code&gt;。若出現 {mount-point} : successfully mounted，就完成了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>常用於filter的shell command </title>
         <link>http://shawn1251.github.io/zh-tw/post/shell-cmd-filter/</link>
         <pubDate>Mon, 30 Oct 2023 00:00:00 +0800</pubDate>

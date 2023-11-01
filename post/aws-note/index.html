@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.'>
-<title>Commonly Used Shell Commands for Filtering</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='I&amp;rsquo;m currently studying DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS:
+Creating an EC2 Instance The most basic computing unit:
+Name and Tag Here, you can choose to &amp;ldquo;add additional tags&amp;rdquo; to provide extra labels for easy identification on the AWS console. AMI (Amazon Machine Image) An AMI is like an image, similar to running a Docker image to create a container, but here, you create an EC2 instance.'>
+<title>AWS Note</title>
 
-<link rel='canonical' href='http://shawn1251.github.io/post/shell-cmd-filter/'>
+<link rel='canonical' href='http://shawn1251.github.io/post/aws-note/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Commonly Used Shell Commands for Filtering'>
-<meta property='og:description' content='For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.'>
-<meta property='og:url' content='http://shawn1251.github.io/post/shell-cmd-filter/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='AWS Note'>
+<meta property='og:description' content='I&amp;rsquo;m currently studying DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS:
+Creating an EC2 Instance The most basic computing unit:
+Name and Tag Here, you can choose to &amp;ldquo;add additional tags&amp;rdquo; to provide extra labels for easy identification on the AWS console. AMI (Amazon Machine Image) An AMI is like an image, similar to running a Docker image to create a container, but here, you create an EC2 instance.'>
+<meta property='og:url' content='http://shawn1251.github.io/post/aws-note/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='linux' /><meta property='article:tag' content='shell' /><meta property='article:tag' content='devops' /><meta property='article:published_time' content='2023-10-30T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-30T00:00:00&#43;08:00'/>
-<meta name="twitter:title" content="Commonly Used Shell Commands for Filtering">
-<meta name="twitter:description" content="For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:
-cat Most often, cat is used to display file contents, such as cat {your file}. However, it can also be used to concatenate two files and create a new file.
-To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a new file and write to it: cat &amp;gt; {your file} It will accept your input and write it to the file.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='devops' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2023-10-31T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-31T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="AWS Note">
+<meta name="twitter:description" content="I&amp;rsquo;m currently studying DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS:
+Creating an EC2 Instance The most basic computing unit:
+Name and Tag Here, you can choose to &amp;ldquo;add additional tags&amp;rdquo; to provide extra labels for easy identification on the AWS console. AMI (Amazon Machine Image) An AMI is like an image, similar to running a Docker image to create a container, but here, you create an EC2 instance.">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -262,13 +262,11 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#cat">cat</a></li>
-    <li><a href="#grep">grep</a></li>
-    <li><a href="#cut">cut</a></li>
-    <li><a href="#awk">awk</a></li>
-    <li><a href="#sed">sed</a></li>
-    <li><a href="#redirection">Redirection</a></li>
-    <li><a href="#pipe">Pipe</a></li>
+    <li><a href="#creating-an-ec2-instance">Creating an EC2 Instance</a></li>
+    <li><a href="#elastic-block-store-ebs">Elastic Block Store (EBS)</a></li>
+    <li><a href="#load-balancing">Load Balancing</a></li>
+    <li><a href="#cloudwatch">CloudWatch</a></li>
+    <li><a href="#amazon-elastic-file-system-efs">Amazon Elastic File System (EFS)</a></li>
   </ol>
 </nav>
         </div>
@@ -296,7 +294,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/shell-cmd-filter/">Commonly Used Shell Commands for Filtering</a>
+            <a href="/post/aws-note/">AWS Note</a>
         </h2>
     
         
@@ -318,7 +316,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Oct 30, 2023</time>
+                <time class="article-time--published">Oct 31, 2023</time>
             </div>
         
 
@@ -355,7 +353,7 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
 
             <div>
                 
-                    <a href="http://shawn1251.github.io/zh-tw/post/shell-cmd-filter/" class="link">繁體中文</a>
+                    <a href="http://shawn1251.github.io/zh-tw/post/aws-note/" class="link">繁體中文</a>
                 
             </div>
         </footer>
@@ -367,192 +365,133 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     <section class="article-content">
     
     
-    <p>For Linux users who are familiar with commands like cp, mv, and ls, here are some commands I found useful but took some time to master:</p>
-<h2 id="cat">cat</h2>
-<p>Most often, cat is used to display file contents, such as <code>cat {your file}</code>. However, it can also be used to concatenate two files and create a new file.</p>
+    <p>I&rsquo;m currently studying <a class="link" href="https://www.udemy.com/course/decodingdevops/#reviews"  target="_blank" rel="noopener"
+    >DevOps Beginners to Advanced with Projects</a> on Udemy. Here are some notes on using AWS:</p>
+<h2 id="creating-an-ec2-instance">Creating an EC2 Instance</h2>
+<p>The most basic computing unit:</p>
 <ul>
-<li>To concatenate two files:
+<li>Name and Tag
 <ul>
-<li><code>cat {file1} {file2} &gt; {merged file}</code></li>
+<li>Here, you can choose to &ldquo;add additional tags&rdquo; to provide extra labels for easy identification on the AWS console.</li>
 </ul>
 </li>
-<li>To create a new file and write to it:
+<li>AMI (Amazon Machine Image)
 <ul>
-<li><code>cat &gt; {your file}</code></li>
-<li>It will accept your input and write it to the file.</li>
-<li>Some automation scripts use this command to create files, like:
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat &gt; testFile <span class="s">&lt;&lt; EOF
-</span></span></span><span class="line"><span class="cl"><span class="s">{your content}
-</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
+<li>An AMI is like an image, similar to running a Docker image to create a container, but here, you create an EC2 instance.</li>
+</ul>
+</li>
+<li>Instance Type
+<ul>
+<li>For the free tier, I&rsquo;ve only used t2.micro. In real scenarios, you can choose different resource levels based on your requirements.</li>
+</ul>
+</li>
+<li>Key Pair
+<ul>
+<li>AWS uses SSH keys for remote access. Choose the key pair for this instance. You can reuse a key pair across different instances for better key pair management.</li>
+</ul>
+</li>
+<li>Network Settings
+<ul>
+<li>Configure inbound and outbound rules. Typically, you&rsquo;d open inbound for SSH and add &ldquo;my IP&rdquo; as the source. For web services, you&rsquo;d add HTTP with a source of &ldquo;anywhere.&rdquo;</li>
+</ul>
+</li>
+<li>Configure Storage
+<ul>
+<li>AWS offers various storage types, such as SSD, HDD, and specialized types based on I/O.</li>
+</ul>
+</li>
+<li>Advanced
+<ul>
+<li>Here, I used the &ldquo;User Data&rdquo; field. You can write shell scripts in this field to install software or complete specific configurations during instance launch.</li>
 </ul>
 </li>
 </ul>
-<h2 id="grep">grep</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -R SELINUX /etc/*
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-i: Ignore case.</li>
-<li>-R: Recursively search in subdirectories.</li>
-<li>-v: Invert match, output lines that don&rsquo;t contain the keyword.</li>
-</ul>
-<h2 id="cut">cut</h2>
-<p>This command is useful for quickly extracting specific content from files with a fixed format, such as /etc/passwd. In this file, each line is separated by colons (&quot;:&quot;).</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root:x:0:0:root:/root:/bin/bash
-</span></span><span class="line"><span class="cl">vagrant:x:1000:1000::/home/vagrant:/bin/bash
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Using cut on this file:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cut -d: -f1 /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-d specifies the delimiter, and we use &ldquo;:&rdquo; to indicate that the delimiter is a colon.</li>
-<li>-f1 indicates that we want to extract the first field after splitting, which is the username.</li>
-</ul>
-<p>The output will be:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root
-</span></span><span class="line"><span class="cl">vagrant
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="awk">awk</h2>
-<p>When the separator is more complex or variable, you can use awk. For the example mentioned above, you can use awk to achieve the same result:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">awk -F<span class="s1">&#39;:&#39;</span> <span class="s1">&#39;{print $1}&#39;</span> /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-F specifies the field separator.
-{print $1} specifies to print the first field after splitting.</li>
-</ul>
-<h2 id="sed">sed</h2>
-<p>sed is used for text substitution. It operates on streams and doesn&rsquo;t overwrite the original file. For example:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;this is a book.&#34;</span> &gt; <span class="nb">test</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Create a sample text</span>
-</span></span><span class="line"><span class="cl">sed <span class="s1">&#39;s/book/dog/g&#39;</span> <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span><span class="line"><span class="cl"><span class="c1"># It replaces &#34;book&#34; with &#34;dog&#34; in the text.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;s&#39; stands for search.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;g&#39; stands for global.</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># You can replace &#39;test&#39; with &#39;*&#39; to change multiple files.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">cat <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a book.
-</span></span><span class="line"><span class="cl"><span class="c1"># The original file remains unchanged.</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># To overwrite, you can add -i</span>
-</span></span><span class="line"><span class="cl">sed -i <span class="s1">&#39;s/book/dog/g&#39;</span> <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">cat <span class="nb">test</span>
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="redirection">Redirection</h2>
-<p>By default, the output of Linux commands is displayed on the screen, but you can redirect the output to a file. Here are some key points:</p>
+<h2 id="elastic-block-store-ebs">Elastic Block Store (EBS)</h2>
+<p>Storage options:</p>
 <ul>
-<li><code>&gt;</code> will overwrite the target, while <code>&gt;&gt;</code> appends.</li>
-<li><code>1</code> is stdout, and <code>2</code> is stderr.</li>
-<li>You can use <code>&amp;</code> to redirect all output.</li>
+<li>Volume Type
+<ul>
+<li>You can choose storage types like SSD, HDD, or specialized types based on I/O.</li>
+<li>You can also select the region for volume creation.</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># When the target is stdout, you don&#39;t need to specify 1.</span>
-</span></span><span class="line"><span class="cl">ls &gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># &#39;lss&#39; is a non-existent command that will produce an error. You can redirect its stderr output.</span>
-</span></span><span class="line"><span class="cl">lss 2&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># The &#39;&amp;&#39; symbol redirects both stdout and stderr.</span>
-</span></span><span class="line"><span class="cl">ls <span class="p">&amp;</span>&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">lss <span class="p">&amp;</span>&gt;&gt; tmpfile
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="pipe">Pipe</h2>
-<p>Use the pipe <code>|</code> to pass the output of one command as input to another.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Count the lines by passing the output of &#39;ls&#39; to &#39;wc&#39;.</span>
-</span></span><span class="line"><span class="cl">ls <span class="p">|</span> wc -l
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Extract the &#39;Mem&#39; column from the output of &#39;free&#39;.</span>
-</span></span><span class="line"><span class="cl">free <span class="p">|</span> grep -i Mem
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+</li>
+<li>AWS allows dynamic attachment of volumes to instances.
+<ul>
+<li>Use <code>fdisk -l</code> to check the volume&rsquo;s name.</li>
+<li>Use <code>fdisk /dev/xvdf</code> to create partitions. The path might vary based on the previous command&rsquo;s output.
+<ul>
+<li><code>m</code> for help</li>
+<li><code>n</code> new partition</li>
+<li><code>p</code> primary</li>
+<li>partition number: default</li>
+<li>First sector: default</li>
+<li>Last sector: default</li>
+<li><code>w</code> write table to disk</li>
+</ul>
+</li>
+<li>Create partitions, format them using <code>mkfs.ext4</code>, and check with <code>lsblk</code>.</li>
+<li>Mount the partition using <code>mount /dev/xvdf1 {target path}</code>. To make it auto-mount, modify <code>/etc/fstab</code>.</li>
+</ul>
+</li>
+<li>Snapshot
+<ul>
+<li>Important data, like a database, is often stored on a separate volume.</li>
+<li>You can use EBS snapshots to back up a volume and later restore it by creating a new volume from the snapshot.</li>
+</ul>
+</li>
+</ul>
+<h2 id="load-balancing">Load Balancing</h2>
+<p>An example with two instances running the same HTTP server:</p>
+<ul>
+<li>Create a Target Group
+<ul>
+<li>Configure health checks to ensure instance health. For a web server, set up periodic HTTP requests to a specific path.</li>
+<li>Add instances to the target group.</li>
+</ul>
+</li>
+<li>Create a Load Balancer
+<ul>
+<li>For example, use an Application Load Balancer.</li>
+<li>Configure security groups for inbound HTTP traffic.</li>
+<li>Set up listeners &amp; routing to forward traffic to the target group.</li>
+</ul>
+</li>
+<li>Adjust the security group of the target group to allow access from the load balancer&rsquo;s security group.</li>
+</ul>
+<h2 id="cloudwatch">CloudWatch</h2>
+<p>Create alarms, such as monitoring CPU resources:</p>
+<ul>
+<li>Go to &ldquo;All Alarms&rdquo; and create a new alarm.</li>
+<li>Select metrics, e.g., EC2, per-instance metrics.</li>
+<li>Choose the instance ID and select CPUUtilization.</li>
+<li>Set the threshold (e.g., 60%) and configure notification details for email or groups.</li>
+</ul>
+<h2 id="amazon-elastic-file-system-efs">Amazon Elastic File System (EFS)</h2>
+<p>Similar to NFS on Linux, suitable for shared storage among multiple instances:</p>
+<ul>
+<li>Create a security group for EFS.
+<ul>
+<li>Create an EFS file system with default performance settings or adjust as needed.</li>
+<li>Configure network settings with the security group for all availability zones.</li>
+</ul>
+</li>
+<li>Create an access point.
+<ul>
+<li>Mount EFS from an EC2 instance using the amazon-efs-utils. <code>sudo yum install -y amazon-efs-utils</code>. <a class="link" href="https://docs.aws.amazon.com/efs/latest/ug/installing-amazon-efs-utils.html"  target="_blank" rel="noopener"
+    >official doc</a></li>
+<li>Update <code>/etc/fstab</code>
+<ul>
+<li>Add <code>{file-system-id}:/ {efs-mount-point} efs _netdev,noresvport,tls,accesspoint={access-point-id} 0 0</code></li>
+<li><a class="link" href="https://docs.aws.amazon.com/efs/latest/ug/automount-with-efs-mount-helper.html"  target="_blank" rel="noopener"
+    >official doc</a></li>
+</ul>
+</li>
+<li>execute<code> mount -fav</code>.</li>
+<li>If you see {mount-point}: successfully mounted, you&rsquo;re done.</li>
+</ul>
+</li>
+</ul>
+
 </section>
 
 
@@ -560,11 +499,9 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
     
     <section class="article-tags">
         
-            <a href="/tags/linux/">linux</a>
-        
-            <a href="/tags/shell/">shell</a>
-        
             <a href="/tags/devops/">devops</a>
+        
+            <a href="/tags/aws/">aws</a>
         
     </section>
 
@@ -610,12 +547,12 @@ To concatenate two files: cat {file1} {file2} &amp;gt; {merged file} To create a
             
                 
 <article class="">
-    <a href="/post/aws-note/">
+    <a href="/post/shell-cmd-filter/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">AWS Note</h2>
+            <h2 class="article-title">Commonly Used Shell Commands for Filtering</h2>
         </div>
     </a>
 </article>
