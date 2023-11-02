@@ -6,7 +6,164 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Tue, 31 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 02 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS 筆記-專案轉移至雲端</title>
+        <link>http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/</link>
+        <pubDate>Thu, 02 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/</guid>
+        <description>&lt;p&gt;最近在 Udemy 上學習 &lt;a class=&#34;link&#34; href=&#34;https://www.udemy.com/course/decodingdevops/#reviews&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DevOps Beginners to Advanced with Projects&lt;/a&gt;。在此做一些關於 AWS 使用上的筆記。&lt;/p&gt;
+&lt;h2 id=&#34;original-application-stack&#34;&gt;Original Application Stack&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hkhcoder/vprofile-project/tree/aws-LiftAndShift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;專案github&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nginx&lt;/li&gt;
+&lt;li&gt;Apache&lt;/li&gt;
+&lt;li&gt;Tomcat&lt;/li&gt;
+&lt;li&gt;RabbitMQ&lt;/li&gt;
+&lt;li&gt;Memcache&lt;/li&gt;
+&lt;li&gt;Mysql
+&lt;figure&gt;&lt;img src=&#34;images/origin-arch.drawio.png&#34; width=&#34;30%&#34;/&gt;
+&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;移轉目標&#34;&gt;移轉目標&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;EC2
+&lt;ul&gt;
+&lt;li&gt;vm for tomcat, rabbitmq,memcache, mysql&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ELB
+&lt;ul&gt;
+&lt;li&gt;nginx load balancer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Autoscaling
+&lt;ul&gt;
+&lt;li&gt;automation for vm scaling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;S3/EFS
+&lt;ul&gt;
+&lt;li&gt;shared storage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;route53
+&lt;ul&gt;
+&lt;li&gt;private dns service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;目標架構圖&#34;&gt;目標架構圖&lt;/h3&gt;
+&lt;figure&gt;&lt;img src=&#34;images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;flow-of-execution&#34;&gt;flow of execution&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create key pairs&lt;/li&gt;
+&lt;li&gt;Create security groups
+&lt;ul&gt;
+&lt;li&gt;此處切為三組:
+&lt;ul&gt;
+&lt;li&gt;LB(取代nginx)&lt;/li&gt;
+&lt;li&gt;APP(tomcat)&lt;/li&gt;
+&lt;li&gt;Backend(包含rabbitmq, memcache, mysql)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Launch instance with user data
+&lt;ul&gt;
+&lt;li&gt;目前還是半自動化的流程&lt;/li&gt;
+&lt;li&gt;手動建立intance並且於userdata中貼上環境安裝設定的shell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Update ip to name mapping in route53
+&lt;ul&gt;
+&lt;li&gt;這邊設定一個內部DNS，讓instance之間的溝通可以用hostname&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Build application from source code
+&lt;ul&gt;
+&lt;li&gt;這邊仍是半自動化的部分，我們在local端將java的專案build完畢&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Upload to S3 bucket
+&lt;ul&gt;
+&lt;li&gt;使用aws cli上傳build的java war至APP instance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Download artifact to Tomcat EC2 instance
+&lt;ul&gt;
+&lt;li&gt;之前在local端是使用key的方式來連接s3&lt;/li&gt;
+&lt;li&gt;此處instance連接S3練習使用IAM role
+&lt;ul&gt;
+&lt;li&gt;於IAM建立新的S3 access role&lt;/li&gt;
+&lt;li&gt;於APP instance中加入建立的role&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;aws s3 ls&lt;/code&gt;即可確認是否通過&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Setup ELB with https(cert from amazon certificate manager)
+&lt;ul&gt;
+&lt;li&gt;建立target group
+&lt;ul&gt;
+&lt;li&gt;須注意這邊是要通向app的8080port&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;建立LB
+&lt;ul&gt;
+&lt;li&gt;設定listen HTTP/HTTPS routing 至 target group&lt;/li&gt;
+&lt;li&gt;購買網域後於aws的certificate manager申請ssl cert&lt;/li&gt;
+&lt;li&gt;secure listener 選用from ACM，使用剛剛的ssl cert&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Map ELB endpoint to website name in DNS
+&lt;ul&gt;
+&lt;li&gt;於DNS提供商(此處是用godaddy)，建立CNAME，並轉向AWS LB的domain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Verify
+&lt;ul&gt;
+&lt;li&gt;DNS的設定通常會需要一點時間&lt;/li&gt;
+&lt;li&gt;可以直接先access LB的domain檢查80有沒有APP出現&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Build autoscaling group for tomcat instance
+&lt;ul&gt;
+&lt;li&gt;autoscaling三個步驟
+&lt;ul&gt;
+&lt;li&gt;AMI
+&lt;ul&gt;
+&lt;li&gt;此處我們以app作為目標，將當前的app instance create image&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;launch template
+&lt;ul&gt;
+&lt;li&gt;使用剛建立的AMI，security group 與原本的APP相同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;autoscaling group
+&lt;ul&gt;
+&lt;li&gt;attach to existing load balancer&lt;/li&gt;
+&lt;li&gt;選擇load balancer使用的target group&lt;/li&gt;
+&lt;li&gt;設定scaling policy，可以使用CPU用量或是network in/out&lt;/li&gt;
+&lt;li&gt;設定notification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>AWS 筆記</title>
         <link>http://shawn1251.github.io/zh-tw/post/aws-note/</link>
         <pubDate>Tue, 31 Oct 2023 00:00:00 +0800</pubDate>

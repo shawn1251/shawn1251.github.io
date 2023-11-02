@@ -6,7 +6,156 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 31 Oct 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 02 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Note - Project Lifting and Shifting</title>
+        <link>http://shawn1251.github.io/post/aws-note-shift-to-cloud/</link>
+        <pubDate>Thu, 02 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/post/aws-note-shift-to-cloud/</guid>
+        <description>&lt;p&gt;I&amp;rsquo;m currently learning &lt;a class=&#34;link&#34; href=&#34;https://www.udemy.com/course/decodingdevops/#reviews&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;DevOps Beginners to Advanced with Projects&lt;/a&gt; on Udemy. Here are some notes on using AWS.&lt;/p&gt;
+&lt;h2 id=&#34;original-application-stack&#34;&gt;Original Application Stack&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hkhcoder/vprofile-project/tree/aws-LiftAndShift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Project GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Nginx&lt;/li&gt;
+&lt;li&gt;Apache&lt;/li&gt;
+&lt;li&gt;Tomcat&lt;/li&gt;
+&lt;li&gt;RabbitMQ&lt;/li&gt;
+&lt;li&gt;Memcache&lt;/li&gt;
+&lt;li&gt;Mysql
+&lt;figure&gt;&lt;img src=&#34;images/origin-arch.drawio.png&#34; width=&#34;30%&#34;/&gt;
+&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;migration-goals&#34;&gt;Migration Goals&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;EC2
+&lt;ul&gt;
+&lt;li&gt;VMs for tomcat, rabbitmq, memcache, mysql&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ELB (Elastic Load Balancer)
+&lt;ul&gt;
+&lt;li&gt;Replaces nginx for load balancing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Autoscaling
+&lt;ul&gt;
+&lt;li&gt;Automation for VM scaling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;S3/EFS
+&lt;ul&gt;
+&lt;li&gt;Shared storage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Route 53
+&lt;ul&gt;
+&lt;li&gt;Private DNS service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;target-architecture&#34;&gt;Target Architecture&lt;/h3&gt;
+&lt;figure&gt;&lt;img src=&#34;images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;flow-of-execution&#34;&gt;Flow of Execution&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Create key pairs&lt;/li&gt;
+&lt;li&gt;Create security groups
+&lt;ul&gt;
+&lt;li&gt;Split into three groups:
+&lt;ul&gt;
+&lt;li&gt;LB (replaces nginx)&lt;/li&gt;
+&lt;li&gt;APP (for tomcat)&lt;/li&gt;
+&lt;li&gt;Backend (including rabbitmq, memcache, mysql)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Launch instances with user data&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Currently a semi-automated process&lt;/li&gt;
+&lt;li&gt;Manually create instances and paste shell scripts for environment setup into userdata&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Update IP to name mapping in Route 53
+&lt;ul&gt;
+&lt;li&gt;Set up an internal DNS for communication between instances using hostnames&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Build the application from source code
+&lt;ul&gt;
+&lt;li&gt;This part is still semi-automated. Build the Java project on the local machine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Upload to S3 bucket
+&lt;ul&gt;
+&lt;li&gt;Use AWS CLI to upload the built Java WAR file to the APP instance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Download artifact to Tomcat EC2 instance
+&lt;ul&gt;
+&lt;li&gt;Previously, we used keys for S3 access. Here, instances connect to S3 using IAM roles.
+&lt;ul&gt;
+&lt;li&gt;Create a new S3 access role in IAM.&lt;/li&gt;
+&lt;li&gt;Attach the created role to the APP instance.&lt;/li&gt;
+&lt;li&gt;Use aws s3 ls to confirm successful access.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Set up ELB with HTTPS (certificate from Amazon Certificate Manager)
+&lt;ul&gt;
+&lt;li&gt;Create a target group, ensuring it points to port 8080 on the app.&lt;/li&gt;
+&lt;li&gt;Create an ELB with HTTP/HTTPS routing to the target group.&lt;/li&gt;
+&lt;li&gt;Purchase a domain and apply for an SSL certificate from AWS Certificate Manager.&lt;/li&gt;
+&lt;li&gt;In the secure listener, select the SSL certificate from ACM.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Map ELB endpoint to website name in DNS
+&lt;ul&gt;
+&lt;li&gt;At the DNS provider (in this case, GoDaddy), create a CNAME record that redirects to the AWS LB domain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Verify
+&lt;ul&gt;
+&lt;li&gt;DNS settings may take some time to propagate.&lt;/li&gt;
+&lt;li&gt;You can directly access the LB&amp;rsquo;s domain to check if the APP is running on port 80.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Build an autoscaling group for the tomcat instance
+&lt;ul&gt;
+&lt;li&gt;Autoscaling involves three steps:
+&lt;ul&gt;
+&lt;li&gt;AMI (Amazon Machine Image)
+&lt;ul&gt;
+&lt;li&gt;Create an image from the current APP instance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Launch template
+&lt;ul&gt;
+&lt;li&gt;Use the created AMI, and keep the security group the same as the original APP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Autoscaling group
+&lt;ul&gt;
+&lt;li&gt;Attach it to the existing load balancer.&lt;/li&gt;
+&lt;li&gt;Choose the load balancer&amp;rsquo;s target group.&lt;/li&gt;
+&lt;li&gt;Set scaling policies based on CPU usage or network in/out.&lt;/li&gt;
+&lt;li&gt;Configure notifications.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
         <title>AWS Note</title>
         <link>http://shawn1251.github.io/post/aws-note/</link>
         <pubDate>Tue, 31 Oct 2023 00:00:00 +0800</pubDate>

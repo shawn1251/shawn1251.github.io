@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='對於有在使用linux的初階使用者，cp mv ls 等的指令應該都用的很熟練了。這邊要筆記的是我一些常用但也花了一段時間才熟練的指令
-cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但其實他還有連結兩個檔案，與創建檔案寫入的功能
-連接兩檔案 cat {file1} {file2} &amp;gt; {merged file} 創建新檔案並寫入 cat &amp;gt; {your file} 他會接收你接下來的輸入並寫入檔案 所以有些自動化腳本會使用這個指令來自動化創建檔案 1 2 3 cat &amp;gt; testFile &amp;lt;&amp;lt; EOF {your content} EOF grep 1 grep -R SELINUX /etc/* -i 忽略大小寫 -R 包含子資料夾 -v 反向，輸出關鍵字以外的內容 cut 可以用來快速提取固定格式檔案中的內容。好比/etc/passwd 中，可以看見內容都是以&amp;quot;:&amp;ldquo;做分隔
-1 2 root:x:0:0:root:/root:/bin/bash vagrant:x:1000:1000::/home/vagrant:/bin/bash 此時我們用cut指令
-1 cut -d: -f1 /etc/passwd -d 是切分的參數，後面接著&amp;rdquo;:&amp;ldquo;代表要以&amp;rdquo;:&amp;ldquo;做分隔 -f1 是要提取切分後的field 1的意思，此處取出的部分會是username 出來的output就會是
-1 2 root vagrant awk 前一個指令cut適用於有適合的separator，當變化較複雜時我們使用awk。如果是上述的例子改用awk改寫會是:'>
-<title>常用於filter的shell command </title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記。
+Original Application Stack 專案github
+Nginx Apache Tomcat RabbitMQ Memcache Mysql 移轉目標 EC2 vm for tomcat, rabbitmq,memcache, mysql ELB nginx load balancer Autoscaling automation for vm scaling S3/EFS shared storage route53 private dns service 目標架構圖 flow of execution Create key pairs Create security groups 此處切為三組: LB(取代nginx) APP(tomcat) Backend(包含rabbitmq, memcache, mysql) Launch instance with user data 目前還是半自動化的流程 手動建立intance並且於userdata中貼上環境安裝設定的shell Update ip to name mapping in route53 這邊設定一個內部DNS，讓instance之間的溝通可以用hostname Build application from source code 這邊仍是半自動化的部分，我們在local端將java的專案build完畢 Upload to S3 bucket 使用aws cli上傳build的java war至APP instance Download artifact to Tomcat EC2 instance 之前在local端是使用key的方式來連接s3 此處instance連接S3練習使用IAM role 於IAM建立新的S3 access role 於APP instance中加入建立的role aws s3 ls即可確認是否通過 Setup ELB with https(cert from amazon certificate manager) 建立target group 須注意這邊是要通向app的8080port 建立LB 設定listen HTTP/HTTPS routing 至 target group 購買網域後於aws的certificate manager申請ssl cert secure listener 選用from ACM，使用剛剛的ssl cert Map ELB endpoint to website name in DNS 於DNS提供商(此處是用godaddy)，建立CNAME，並轉向AWS LB的domain Verify DNS的設定通常會需要一點時間 可以直接先access LB的domain檢查80有沒有APP出現 Build autoscaling group for tomcat instance autoscaling三個步驟 AMI 此處我們以app作為目標，將當前的app instance create image launch template 使用剛建立的AMI，security group 與原本的APP相同 autoscaling group attach to existing load balancer 選擇load balancer使用的target group 設定scaling policy，可以使用CPU用量或是network in/out 設定notification '>
+<title>AWS 筆記-專案轉移至雲端</title>
 
-<link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/shell-cmd-filter/'>
+<link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='常用於filter的shell command '>
-<meta property='og:description' content='對於有在使用linux的初階使用者，cp mv ls 等的指令應該都用的很熟練了。這邊要筆記的是我一些常用但也花了一段時間才熟練的指令
-cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但其實他還有連結兩個檔案，與創建檔案寫入的功能
-連接兩檔案 cat {file1} {file2} &amp;gt; {merged file} 創建新檔案並寫入 cat &amp;gt; {your file} 他會接收你接下來的輸入並寫入檔案 所以有些自動化腳本會使用這個指令來自動化創建檔案 1 2 3 cat &amp;gt; testFile &amp;lt;&amp;lt; EOF {your content} EOF grep 1 grep -R SELINUX /etc/* -i 忽略大小寫 -R 包含子資料夾 -v 反向，輸出關鍵字以外的內容 cut 可以用來快速提取固定格式檔案中的內容。好比/etc/passwd 中，可以看見內容都是以&amp;quot;:&amp;ldquo;做分隔
-1 2 root:x:0:0:root:/root:/bin/bash vagrant:x:1000:1000::/home/vagrant:/bin/bash 此時我們用cut指令
-1 cut -d: -f1 /etc/passwd -d 是切分的參數，後面接著&amp;rdquo;:&amp;ldquo;代表要以&amp;rdquo;:&amp;ldquo;做分隔 -f1 是要提取切分後的field 1的意思，此處取出的部分會是username 出來的output就會是
-1 2 root vagrant awk 前一個指令cut適用於有適合的separator，當變化較複雜時我們使用awk。如果是上述的例子改用awk改寫會是:'>
-<meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/shell-cmd-filter/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='AWS 筆記-專案轉移至雲端'>
+<meta property='og:description' content='最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記。
+Original Application Stack 專案github
+Nginx Apache Tomcat RabbitMQ Memcache Mysql 移轉目標 EC2 vm for tomcat, rabbitmq,memcache, mysql ELB nginx load balancer Autoscaling automation for vm scaling S3/EFS shared storage route53 private dns service 目標架構圖 flow of execution Create key pairs Create security groups 此處切為三組: LB(取代nginx) APP(tomcat) Backend(包含rabbitmq, memcache, mysql) Launch instance with user data 目前還是半自動化的流程 手動建立intance並且於userdata中貼上環境安裝設定的shell Update ip to name mapping in route53 這邊設定一個內部DNS，讓instance之間的溝通可以用hostname Build application from source code 這邊仍是半自動化的部分，我們在local端將java的專案build完畢 Upload to S3 bucket 使用aws cli上傳build的java war至APP instance Download artifact to Tomcat EC2 instance 之前在local端是使用key的方式來連接s3 此處instance連接S3練習使用IAM role 於IAM建立新的S3 access role 於APP instance中加入建立的role aws s3 ls即可確認是否通過 Setup ELB with https(cert from amazon certificate manager) 建立target group 須注意這邊是要通向app的8080port 建立LB 設定listen HTTP/HTTPS routing 至 target group 購買網域後於aws的certificate manager申請ssl cert secure listener 選用from ACM，使用剛剛的ssl cert Map ELB endpoint to website name in DNS 於DNS提供商(此處是用godaddy)，建立CNAME，並轉向AWS LB的domain Verify DNS的設定通常會需要一點時間 可以直接先access LB的domain檢查80有沒有APP出現 Build autoscaling group for tomcat instance autoscaling三個步驟 AMI 此處我們以app作為目標，將當前的app instance create image launch template 使用剛建立的AMI，security group 與原本的APP相同 autoscaling group attach to existing load balancer 選擇load balancer使用的target group 設定scaling policy，可以使用CPU用量或是network in/out 設定notification '>
+<meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='linux' /><meta property='article:tag' content='shell' /><meta property='article:tag' content='devops' /><meta property='article:published_time' content='2023-10-30T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-30T00:00:00&#43;08:00'/>
-<meta name="twitter:title" content="常用於filter的shell command ">
-<meta name="twitter:description" content="對於有在使用linux的初階使用者，cp mv ls 等的指令應該都用的很熟練了。這邊要筆記的是我一些常用但也花了一段時間才熟練的指令
-cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但其實他還有連結兩個檔案，與創建檔案寫入的功能
-連接兩檔案 cat {file1} {file2} &amp;gt; {merged file} 創建新檔案並寫入 cat &amp;gt; {your file} 他會接收你接下來的輸入並寫入檔案 所以有些自動化腳本會使用這個指令來自動化創建檔案 1 2 3 cat &amp;gt; testFile &amp;lt;&amp;lt; EOF {your content} EOF grep 1 grep -R SELINUX /etc/* -i 忽略大小寫 -R 包含子資料夾 -v 反向，輸出關鍵字以外的內容 cut 可以用來快速提取固定格式檔案中的內容。好比/etc/passwd 中，可以看見內容都是以&amp;quot;:&amp;ldquo;做分隔
-1 2 root:x:0:0:root:/root:/bin/bash vagrant:x:1000:1000::/home/vagrant:/bin/bash 此時我們用cut指令
-1 cut -d: -f1 /etc/passwd -d 是切分的參數，後面接著&amp;rdquo;:&amp;ldquo;代表要以&amp;rdquo;:&amp;ldquo;做分隔 -f1 是要提取切分後的field 1的意思，此處取出的部分會是username 出來的output就會是
-1 2 root vagrant awk 前一個指令cut適用於有適合的separator，當變化較複雜時我們使用awk。如果是上述的例子改用awk改寫會是:">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='devops' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2023-11-02T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-11-02T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="AWS 筆記-專案轉移至雲端">
+<meta name="twitter:description" content="最近在 Udemy 上學習 DevOps Beginners to Advanced with Projects。在此做一些關於 AWS 使用上的筆記。
+Original Application Stack 專案github
+Nginx Apache Tomcat RabbitMQ Memcache Mysql 移轉目標 EC2 vm for tomcat, rabbitmq,memcache, mysql ELB nginx load balancer Autoscaling automation for vm scaling S3/EFS shared storage route53 private dns service 目標架構圖 flow of execution Create key pairs Create security groups 此處切為三組: LB(取代nginx) APP(tomcat) Backend(包含rabbitmq, memcache, mysql) Launch instance with user data 目前還是半自動化的流程 手動建立intance並且於userdata中貼上環境安裝設定的shell Update ip to name mapping in route53 這邊設定一個內部DNS，讓instance之間的溝通可以用hostname Build application from source code 這邊仍是半自動化的部分，我們在local端將java的專案build完畢 Upload to S3 bucket 使用aws cli上傳build的java war至APP instance Download artifact to Tomcat EC2 instance 之前在local端是使用key的方式來連接s3 此處instance連接S3練習使用IAM role 於IAM建立新的S3 access role 於APP instance中加入建立的role aws s3 ls即可確認是否通過 Setup ELB with https(cert from amazon certificate manager) 建立target group 須注意這邊是要通向app的8080port 建立LB 設定listen HTTP/HTTPS routing 至 target group 購買網域後於aws的certificate manager申請ssl cert secure listener 選用from ACM，使用剛剛的ssl cert Map ELB endpoint to website name in DNS 於DNS提供商(此處是用godaddy)，建立CNAME，並轉向AWS LB的domain Verify DNS的設定通常會需要一點時間 可以直接先access LB的domain檢查80有沒有APP出現 Build autoscaling group for tomcat instance autoscaling三個步驟 AMI 此處我們以app作為目標，將當前的app instance create image launch template 使用剛建立的AMI，security group 與原本的APP相同 autoscaling group attach to existing load balancer 選擇load balancer使用的target group 設定scaling policy，可以使用CPU用量或是network in/out 設定notification ">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -271,13 +262,13 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#cat">cat</a></li>
-    <li><a href="#grep">grep</a></li>
-    <li><a href="#cut">cut</a></li>
-    <li><a href="#awk">awk</a></li>
-    <li><a href="#sed">sed</a></li>
-    <li><a href="#redirection">redirection</a></li>
-    <li><a href="#pipe">pipe</a></li>
+    <li><a href="#original-application-stack">Original Application Stack</a></li>
+    <li><a href="#移轉目標">移轉目標</a>
+      <ol>
+        <li><a href="#目標架構圖">目標架構圖</a></li>
+      </ol>
+    </li>
+    <li><a href="#flow-of-execution">flow of execution</a></li>
   </ol>
 </nav>
         </div>
@@ -305,7 +296,7 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/zh-tw/post/shell-cmd-filter/">常用於filter的shell command </a>
+            <a href="/zh-tw/post/aws-note-shift-to-cloud/">AWS 筆記-專案轉移至雲端</a>
         </h2>
     
         
@@ -327,7 +318,7 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Oct 30, 2023</time>
+                <time class="article-time--published">Nov 02, 2023</time>
             </div>
         
 
@@ -364,7 +355,7 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
 
             <div>
                 
-                    <a href="http://shawn1251.github.io/post/shell-cmd-filter/" class="link">English</a>
+                    <a href="http://shawn1251.github.io/post/aws-note-shift-to-cloud/" class="link">English</a>
                 
             </div>
         </footer>
@@ -376,193 +367,156 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
     <section class="article-content">
     
     
-    <p>對於有在使用linux的初階使用者，cp mv ls 等的指令應該都用的很熟練了。這邊要筆記的是我一些常用但也花了一段時間才熟練的指令</p>
-<h2 id="cat">cat</h2>
-<p>大多數使用cat是用來顯示檔案的內容，如 <code>cat {your file}</code>。但其實他還有連結兩個檔案，與創建檔案寫入的功能</p>
+    <p>最近在 Udemy 上學習 <a class="link" href="https://www.udemy.com/course/decodingdevops/#reviews"  target="_blank" rel="noopener"
+    >DevOps Beginners to Advanced with Projects</a>。在此做一些關於 AWS 使用上的筆記。</p>
+<h2 id="original-application-stack">Original Application Stack</h2>
+<p><a class="link" href="https://github.com/hkhcoder/vprofile-project/tree/aws-LiftAndShift"  target="_blank" rel="noopener"
+    >專案github</a></p>
 <ul>
-<li>連接兩檔案
-<ul>
-<li><code>cat {file1} {file2} &gt; {merged file}</code></li>
-</ul>
-</li>
-<li>創建新檔案並寫入
-<ul>
-<li><code>cat &gt; {your file}</code></li>
-<li>他會接收你接下來的輸入並寫入檔案</li>
-<li>所以有些自動化腳本會使用這個指令來自動化創建檔案
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cat &gt; testFile &lt;&lt; EOF
-</span></span><span class="line"><span class="cl">{your content}
-</span></span><span class="line"><span class="cl">EOF
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
+<li>Nginx</li>
+<li>Apache</li>
+<li>Tomcat</li>
+<li>RabbitMQ</li>
+<li>Memcache</li>
+<li>Mysql
+<figure><img src="images/origin-arch.drawio.png" width="30%"/>
+</figure>
 </li>
 </ul>
-<h2 id="grep">grep</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">grep -R SELINUX /etc/*
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-i 忽略大小寫</li>
-<li>-R 包含子資料夾</li>
-<li>-v 反向，輸出關鍵字以外的內容</li>
-</ul>
-<h2 id="cut">cut</h2>
-<p>可以用來快速提取固定格式檔案中的內容。好比<code>/etc/passwd</code> 中，可以看見內容都是以&quot;:&ldquo;做分隔</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root:x:0:0:root:/root:/bin/bash
-</span></span><span class="line"><span class="cl">vagrant:x:1000:1000::/home/vagrant:/bin/bash
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>此時我們用cut指令</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">cut -d: -f1 /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-d 是切分的參數，後面接著&rdquo;:&ldquo;代表要以&rdquo;:&ldquo;做分隔</li>
-<li>-f1 是要提取切分後的field 1的意思，此處取出的部分會是username</li>
-</ul>
-<p>出來的output就會是</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root
-</span></span><span class="line"><span class="cl">vagrant
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="awk">awk</h2>
-<p>前一個指令<code>cut</code>適用於有適合的separator，當變化較複雜時我們使用awk。如果是上述的例子改用awk改寫會是:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">awk -F&#39;:&#39; &#39;{print $1}&#39; /etc/passwd
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>-F 是用來定義sepeartor</li>
-<li>{print $1} 是用來定義輸出，此處是輸出切分後的第一位</li>
-</ul>
-<h2 id="sed">sed</h2>
-<p>用來做文字取代，注意的是他是對stream做取代，所以不會覆蓋到原本文件。舉例如下:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#34;this is a book.&#34; &gt; test
-</span></span><span class="line"><span class="cl"># 建立一個範例文字
-</span></span><span class="line"><span class="cl">sed &#39;s/book/dog/g&#39; test
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span><span class="line"><span class="cl"># 他將文字輸出的book替換成dog
-</span></span><span class="line"><span class="cl"># s 為search
-</span></span><span class="line"><span class="cl"># g 為global
-</span></span><span class="line"><span class="cl"># test 可以替換成&#39;*&#39;，更改複數個檔案
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">cat test
-</span></span><span class="line"><span class="cl">&gt; this is a book.
-</span></span><span class="line"><span class="cl"># 原本的檔案沒有變化
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 如果要覆蓋，可以加上 -i
-</span></span><span class="line"><span class="cl">sed -i &#39;s/book/dog/g&#39; test
-</span></span><span class="line"><span class="cl">cat test
-</span></span><span class="line"><span class="cl">&gt; this is a dog.
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="redirection">redirection</h2>
-<p>我們在對linux下指令的輸出預設是在螢幕上，而我們也可以將輸出進行導向轉移到file。
-以下有幾個重點:</p>
+<h2 id="移轉目標">移轉目標</h2>
 <ul>
-<li><code>&gt;</code> 會對輸出對象覆蓋，<code>&gt;&gt;</code> 是append</li>
-<li><code>1</code>是stdout, <code>2</code>是stderr</li>
-<li>可以使用<code>&amp;</code>對所有輸出都進行導向</li>
+<li>EC2
+<ul>
+<li>vm for tomcat, rabbitmq,memcache, mysql</li>
 </ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 當目標是導出stdout，不用特別加上1
-</span></span><span class="line"><span class="cl">ls &gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># lss 為不存在指令，bash會報錯，此時可以將他報錯的stderr進行導出。
-</span></span><span class="line"><span class="cl">lss 2&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># &amp;符號代表將stdout stderr都導出
-</span></span><span class="line"><span class="cl">ls &amp;&gt;&gt; tmpfile
-</span></span><span class="line"><span class="cl">lss &amp;&gt;&gt; tmpfile
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="pipe">pipe</h2>
-<p>使用pipe <code>|</code>將輸出作為下個指令的輸入。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># 我們將ls輸出給wc計算行數
-</span></span><span class="line"><span class="cl">ls | wc -l
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># 將free輸出的mem欄位提取出來
-</span></span><span class="line"><span class="cl">free | grep -i Mem
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+</li>
+<li>ELB
+<ul>
+<li>nginx load balancer</li>
+</ul>
+</li>
+<li>Autoscaling
+<ul>
+<li>automation for vm scaling</li>
+</ul>
+</li>
+<li>S3/EFS
+<ul>
+<li>shared storage</li>
+</ul>
+</li>
+<li>route53
+<ul>
+<li>private dns service</li>
+</ul>
+</li>
+</ul>
+<h3 id="目標架構圖">目標架構圖</h3>
+<figure><img src="images/shift-aws-arch.drawio.png" width="70%"/>
+</figure>
+
+<h2 id="flow-of-execution">flow of execution</h2>
+<ol>
+<li>Create key pairs</li>
+<li>Create security groups
+<ul>
+<li>此處切為三組:
+<ul>
+<li>LB(取代nginx)</li>
+<li>APP(tomcat)</li>
+<li>Backend(包含rabbitmq, memcache, mysql)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Launch instance with user data
+<ul>
+<li>目前還是半自動化的流程</li>
+<li>手動建立intance並且於userdata中貼上環境安裝設定的shell</li>
+</ul>
+</li>
+<li>Update ip to name mapping in route53
+<ul>
+<li>這邊設定一個內部DNS，讓instance之間的溝通可以用hostname</li>
+</ul>
+</li>
+<li>Build application from source code
+<ul>
+<li>這邊仍是半自動化的部分，我們在local端將java的專案build完畢</li>
+</ul>
+</li>
+<li>Upload to S3 bucket
+<ul>
+<li>使用aws cli上傳build的java war至APP instance</li>
+</ul>
+</li>
+<li>Download artifact to Tomcat EC2 instance
+<ul>
+<li>之前在local端是使用key的方式來連接s3</li>
+<li>此處instance連接S3練習使用IAM role
+<ul>
+<li>於IAM建立新的S3 access role</li>
+<li>於APP instance中加入建立的role</li>
+<li><code>aws s3 ls</code>即可確認是否通過</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Setup ELB with https(cert from amazon certificate manager)
+<ul>
+<li>建立target group
+<ul>
+<li>須注意這邊是要通向app的8080port</li>
+</ul>
+</li>
+<li>建立LB
+<ul>
+<li>設定listen HTTP/HTTPS routing 至 target group</li>
+<li>購買網域後於aws的certificate manager申請ssl cert</li>
+<li>secure listener 選用from ACM，使用剛剛的ssl cert</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map ELB endpoint to website name in DNS
+<ul>
+<li>於DNS提供商(此處是用godaddy)，建立CNAME，並轉向AWS LB的domain</li>
+</ul>
+</li>
+<li>Verify
+<ul>
+<li>DNS的設定通常會需要一點時間</li>
+<li>可以直接先access LB的domain檢查80有沒有APP出現</li>
+</ul>
+</li>
+<li>Build autoscaling group for tomcat instance
+<ul>
+<li>autoscaling三個步驟
+<ul>
+<li>AMI
+<ul>
+<li>此處我們以app作為目標，將當前的app instance create image</li>
+</ul>
+</li>
+<li>launch template
+<ul>
+<li>使用剛建立的AMI，security group 與原本的APP相同</li>
+</ul>
+</li>
+<li>autoscaling group
+<ul>
+<li>attach to existing load balancer</li>
+<li>選擇load balancer使用的target group</li>
+<li>設定scaling policy，可以使用CPU用量或是network in/out</li>
+<li>設定notification</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
 </section>
 
 
@@ -570,11 +524,9 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
     
     <section class="article-tags">
         
-            <a href="/zh-tw/tags/linux/">linux</a>
-        
-            <a href="/zh-tw/tags/shell/">shell</a>
-        
             <a href="/zh-tw/tags/devops/">devops</a>
+        
+            <a href="/zh-tw/tags/aws/">aws</a>
         
     </section>
 
@@ -620,12 +572,12 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
             
                 
 <article class="">
-    <a href="/zh-tw/post/aws-note-shift-to-cloud/">
+    <a href="/zh-tw/post/aws-note/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">AWS 筆記-專案轉移至雲端</h2>
+            <h2 class="article-title">AWS 筆記</h2>
         </div>
     </a>
 </article>
@@ -633,12 +585,12 @@ cat 大多數使用cat是用來顯示檔案的內容，如 cat {your file}。但
             
                 
 <article class="">
-    <a href="/zh-tw/post/aws-note/">
+    <a href="/zh-tw/post/shell-cmd-filter/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">AWS 筆記</h2>
+            <h2 class="article-title">常用於filter的shell command </h2>
         </div>
     </a>
 </article>
