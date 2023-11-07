@@ -6,7 +6,75 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Thu, 02 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 06 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Addiction Recovery</title>
+        <link>http://shawn1251.github.io/zh-tw/post/addiction-recovery/</link>
+        <pubDate>Mon, 06 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/addiction-recovery/</guid>
+        <description>&lt;p&gt;本篇筆記是來自&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=LbbyLeR1ZRk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;心河擺渡-成瘾始于痛苦，戒瘾终于平衡！深度解读多巴胺，用身体内稳态戒瘾&lt;/a&gt; 。影片中有作者自己的心得分享以及他對Anna Lembke的著作&lt;a class=&#34;link&#34; href=&#34;https://www.amazon.com/Drug-Dealer-MD-Doctors-Patients/dp/1421421402&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Drug Dealer, MD: How Doctors Were Duped, Patients Got Hooked, and Why It’s So Hard to Stop&lt;/a&gt; 的一些整理。內容十分受用，特地作筆記提醒自己。&lt;/p&gt;
+&lt;h2 id=&#34;成癮的背景&#34;&gt;成癮的背景&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;成癮的原因在於提升的多巴胺
+&lt;ul&gt;
+&lt;li&gt;巧克力提升55%&lt;/li&gt;
+&lt;li&gt;尼古丁提高150%&lt;/li&gt;
+&lt;li&gt;苯丙胺提高1000%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;多巴胺的主要作用不是在獲得獎勵後感到快樂，而是驅動人們追求獎勵的動機
+&lt;ul&gt;
+&lt;li&gt;好比看到巧克力時，多巴胺會啟動腦中獎賞迴路，還沒食用就能感受到愉悅，進而產生食用的衝動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;大腦中產生快樂的區域與產生痛苦的區域是重疊的
+&lt;ul&gt;
+&lt;li&gt;快樂與痛苦有自我調節功能，當現在快樂的同時，大腦會在另一端產生足夠的痛苦來平衡&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;獎賞預測誤差
+&lt;ul&gt;
+&lt;li&gt;因為神經適應，實際的獎勵要超出預期才會令多巴胺有好的效果&lt;/li&gt;
+&lt;li&gt;重度成癮者，感受快樂的門檻會越來越高，造成快感缺失&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;利用多巴胺機制&#34;&gt;利用多巴胺機制&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;根據臨床經驗，重製大腦獎賞迴路最短需要一個月&lt;/li&gt;
+&lt;li&gt;以痛治痛
+&lt;ul&gt;
+&lt;li&gt;大腦會用痛苦平衡快樂，反過來用痛苦平衡快樂
+&lt;ul&gt;
+&lt;li&gt;根據研究，人浸泡在冷水中，血漿中的多巴胺濃度增加250%，而且持續時間超過浸泡的時間&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;運動是最好的選擇&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;物理阻斷
+&lt;ul&gt;
+&lt;li&gt;與成癮物徹底分開&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;激進誠實
+&lt;ul&gt;
+&lt;li&gt;前額葉皮質負責理性決策&lt;/li&gt;
+&lt;li&gt;在多巴胺獎勵迴路發生時，說謊會抑制前額葉皮質作用，停止對獎勵迴路的約束，造成大腦認為自己沒有上癮&lt;/li&gt;
+&lt;li&gt;在戒癮當中重要的一環就是重建前額葉皮質與多巴胺迴路的關係&lt;/li&gt;
+&lt;li&gt;透過&amp;quot;說實話&amp;quot;強化前額葉皮質，提高自控力
+&lt;ul&gt;
+&lt;li&gt;在成癮時，與自我對話或是對身邊的人宣布自己有什麼癮&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>AWS 筆記-專案轉移至雲端</title>
         <link>http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/</link>
         <pubDate>Thu, 02 Nov 2023 00:00:00 +0800</pubDate>

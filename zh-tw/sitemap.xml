@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/zh-tw/</loc>
-    <lastmod>2023-11-02T00:00:00+08:00</lastmod>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +13,97 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/addiction/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/addiction/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/addiction/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/addiction-recovery/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/addiction-recovery/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/addiction-recovery/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/categories/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/dopamine/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/dopamine/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/dopamine/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/categories/knowledgenotes/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/knowledgenotes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/knowledgenotes/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/</loc>
+    <lastmod>2023-11-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/aws/</loc>
@@ -41,19 +132,6 @@
                 href="http://shawn1251.github.io/zh-tw/post/aws-note-shift-to-cloud/"
                 />
   </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/categories/</loc>
-    <lastmod>2023-11-02T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/"
-                />
-  </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/devops/</loc>
     <lastmod>2023-11-02T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -78,32 +156,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/categories/devops/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
-    <lastmod>2023-11-02T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/tags/</loc>
-    <lastmod>2023-11-02T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/tags/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/post/aws-note/</loc>
