@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CH340 on Shawn&#39;s Note</title>
+        <link>http://shawn1251.github.io/tags/ch340/</link>
+        <description>Recent content in CH340 on Shawn&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/tags/ch340/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Flashing STM32 with CH340</title>
+        <link>http://shawn1251.github.io/post/stm32-ch340/</link>
+        <pubDate>Mon, 20 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/post/stm32-ch340/</guid>
+        <description>&lt;p&gt;Recently, I&amp;rsquo;ve been learning embedded development with STM32. However, since I don&amp;rsquo;t have STLINK, I have to use CH340 for flashing. Here&amp;rsquo;s a quick overview of the process.&lt;/p&gt;
+&lt;h2 id=&#34;required-software&#34;&gt;Required Software&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Keil5&lt;/li&gt;
+&lt;li&gt;FlyMcu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;steps&#34;&gt;Steps&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;CH340 Pinout:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VCC: Jumper cap for setting 5V/3.3V&lt;/li&gt;
+&lt;li&gt;RX: Connects to GPIO PA09 for receiving&lt;/li&gt;
+&lt;li&gt;TX: Connects to GPIO PA10 for transmitting&lt;/li&gt;
+&lt;li&gt;GND: Ground connection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For flashing, a hex file is needed. So, in my IDE Keil5, additional settings are required.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click the magic wand icon (options for target).&lt;/li&gt;
+&lt;li&gt;Output &amp;gt; create hex file.&lt;/li&gt;
+&lt;li&gt;After building, the hex file will appear in the Objects folder.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The flashing software used here is FlyMcu. Below are the flashing steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Plug in CH340 and ensure that the COM port above is for our CH340.&lt;/li&gt;
+&lt;li&gt;Code file for online ISP &amp;gt; Choose the built hex file.&lt;/li&gt;
+&lt;li&gt;Check Verify, Run After ISP complete.&lt;/li&gt;
+&lt;li&gt;Uncheck Program OptionBytes when ISP.&lt;/li&gt;
+&lt;li&gt;Click Start ISP.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the message on the right side shows the following, it indicates success:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;....
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Write 1KB Ok,100%,@1562ms
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Go from 08000000 Ok
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you want to flash a new program, press the reset button on the STM32.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
