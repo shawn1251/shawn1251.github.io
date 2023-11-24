@@ -6,7 +6,46 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>I2C Note</title>
+        <link>http://shawn1251.github.io/post/i2c-note/</link>
+        <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/post/i2c-note/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;I2C communication uses two lines, unlike TX and RX. I2C has only one line called SDA for data transmission and another line called SCL for clock pulses.
+&lt;ul&gt;
+&lt;li&gt;SDA (serial data): carries the actual data.&lt;/li&gt;
+&lt;li&gt;SCL (serial clock): provides clock pulses.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Half-Duplex
+&lt;ul&gt;
+&lt;li&gt;Unlike full-duplex communication where TX and RX can transmit and receive simultaneously, I2C allows only one side to transmit at a time, making it half-duplex.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Master-Slave Mode
+&lt;ul&gt;
+&lt;li&gt;Only one side can send a signal at a time to avoid conflicts, so communication is initiated by the master, and the slave responds after receiving the message.&lt;/li&gt;
+&lt;li&gt;Multiple slaves can exist.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bus Protocol
+&lt;ul&gt;
+&lt;li&gt;I2C is a bus protocol that enables communication between multiple devices.&lt;/li&gt;
+&lt;li&gt;The master includes the target device&amp;rsquo;s address at the beginning of the message. Other slaves discard the message if it&amp;rsquo;s not meant for them.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Synchronous Communication
+&lt;ul&gt;
+&lt;li&gt;In asynchronous communication, both sides have their own clocks and communicate based on the agreed Baud Rate.&lt;/li&gt;
+&lt;li&gt;Some small sensors lack accurate crystals for clocks, so the master&amp;rsquo;s SCL provides clock pulses to all slaves.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Flashing STM32 with CH340</title>
         <link>http://shawn1251.github.io/post/stm32-ch340/</link>
         <pubDate>Mon, 20 Nov 2023 00:00:00 +0800</pubDate>

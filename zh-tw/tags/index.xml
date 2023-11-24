@@ -6,20 +6,28 @@
         <description>Recent content in Tags on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Mon, 20 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>embedded</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/embedded/</link>
+        <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/embedded/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>I2C</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/i2c/</link>
+        <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/i2c/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>CH340</title>
         <link>http://shawn1251.github.io/zh-tw/tags/ch340/</link>
         <pubDate>Mon, 20 Nov 2023 00:00:00 +0800</pubDate>
         
         <guid>http://shawn1251.github.io/zh-tw/tags/ch340/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>embedded</title>
-        <link>http://shawn1251.github.io/zh-tw/tags/embedded/</link>
-        <pubDate>Mon, 20 Nov 2023 00:00:00 +0800</pubDate>
-        
-        <guid>http://shawn1251.github.io/zh-tw/tags/embedded/</guid>
         <description></description>
         </item>
         <item>

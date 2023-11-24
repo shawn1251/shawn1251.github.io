@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>I2C on Shawn&#39;s Note</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/i2c/</link>
+        <description>Recent content in I2C on Shawn&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/i2c/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>I2C筆記</title>
+        <link>http://shawn1251.github.io/zh-tw/post/i2c-note/</link>
+        <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/i2c-note/</guid>
+        <description>&lt;ul&gt;
+&lt;li&gt;I2C的傳輸一樣是兩條線，但不同於TX RX，I2C只有一條SDA可以運作，另一條是時鐘線SCL
+&lt;ul&gt;
+&lt;li&gt;SDA(serial data)，傳輸資料&lt;/li&gt;
+&lt;li&gt;SCL(serial clock)，提供時鐘脈衝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;半雙工
+&lt;ul&gt;
+&lt;li&gt;TX RX可以同一時間傳輸與接收，稱為全雙工通信。而I2C同時間只能有一方傳輸，所以為半雙工&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;主從模式
+&lt;ul&gt;
+&lt;li&gt;同一時間只能有一方發信，為了避免衝突只能先由主機發起通訊，從機收到後再回覆&lt;/li&gt;
+&lt;li&gt;可以有多個從機&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;總線協議
+&lt;ul&gt;
+&lt;li&gt;如I2C這種可以多個設備間的通信&lt;/li&gt;
+&lt;li&gt;主機在發送的訊息開頭，會加上目標設備地址，其餘從機收到目標不是自己的訊息會選擇丟棄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;同步通信
+&lt;ul&gt;
+&lt;li&gt;異步通信雙方有各自的時鐘，以協議的Baud Rate進行通信&lt;/li&gt;
+&lt;li&gt;但一些小型的傳感器沒有準確的晶振可以提供時鐘&lt;/li&gt;
+&lt;li&gt;所以由主機的SCL給予所有從機時鐘脈衝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
