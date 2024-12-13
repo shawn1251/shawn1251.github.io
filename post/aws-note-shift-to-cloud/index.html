@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='I&amp;rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='I&rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
 Original Application Stack Project GitHub
-Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated.'>
+Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated. Build the Java project on the local machine. Upload to S3 bucket Use AWS CLI to upload the built Java WAR file to the APP instance. Download artifact to Tomcat EC2 instance Previously, we used keys for S3 access. Here, instances connect to S3 using IAM roles. Create a new S3 access role in IAM. Attach the created role to the APP instance. Use aws s3 ls to confirm successful access. Set up ELB with HTTPS (certificate from Amazon Certificate Manager) Create a target group, ensuring it points to port 8080 on the app. Create an ELB with HTTP/HTTPS routing to the target group. Purchase a domain and apply for an SSL certificate from AWS Certificate Manager. In the secure listener, select the SSL certificate from ACM. Map ELB endpoint to website name in DNS At the DNS provider (in this case, GoDaddy), create a CNAME record that redirects to the AWS LB domain. Verify DNS settings may take some time to propagate. You can directly access the LB&rsquo;s domain to check if the APP is running on port 80. Build an autoscaling group for the tomcat instance Autoscaling involves three steps: AMI (Amazon Machine Image) Create an image from the current APP instance. Launch template Use the created AMI, and keep the security group the same as the original APP. Autoscaling group Attach it to the existing load balancer. Choose the load balancer&rsquo;s target group. Set scaling policies based on CPU usage or network in/out. Configure notifications. '>
 <title>AWS Note - Project Lifting and Shifting</title>
 
 <link rel='canonical' href='http://shawn1251.github.io/post/aws-note-shift-to-cloud/'>
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='AWS Note - Project Lifting and Shifting'>
-<meta property='og:description' content='I&amp;rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
+<meta property='og:description' content='I&rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
 Original Application Stack Project GitHub
-Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated.'>
+Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated. Build the Java project on the local machine. Upload to S3 bucket Use AWS CLI to upload the built Java WAR file to the APP instance. Download artifact to Tomcat EC2 instance Previously, we used keys for S3 access. Here, instances connect to S3 using IAM roles. Create a new S3 access role in IAM. Attach the created role to the APP instance. Use aws s3 ls to confirm successful access. Set up ELB with HTTPS (certificate from Amazon Certificate Manager) Create a target group, ensuring it points to port 8080 on the app. Create an ELB with HTTP/HTTPS routing to the target group. Purchase a domain and apply for an SSL certificate from AWS Certificate Manager. In the secure listener, select the SSL certificate from ACM. Map ELB endpoint to website name in DNS At the DNS provider (in this case, GoDaddy), create a CNAME record that redirects to the AWS LB domain. Verify DNS settings may take some time to propagate. You can directly access the LB&rsquo;s domain to check if the APP is running on port 80. Build an autoscaling group for the tomcat instance Autoscaling involves three steps: AMI (Amazon Machine Image) Create an image from the current APP instance. Launch template Use the created AMI, and keep the security group the same as the original APP. Autoscaling group Attach it to the existing load balancer. Choose the load balancer&rsquo;s target group. Set scaling policies based on CPU usage or network in/out. Configure notifications. '>
 <meta property='og:url' content='http://shawn1251.github.io/post/aws-note-shift-to-cloud/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='devops' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2023-11-02T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-11-02T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="AWS Note - Project Lifting and Shifting">
-<meta name="twitter:description" content="I&amp;rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
+<meta name="twitter:description" content="I&rsquo;m currently learning DevOps Beginners to Advanced with Projects on Udemy. Here are some notes on using AWS.
 Original Application Stack Project GitHub
-Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated.">
+Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, rabbitmq, memcache, mysql ELB (Elastic Load Balancer) Replaces nginx for load balancing Autoscaling Automation for VM scaling S3/EFS Shared storage Route 53 Private DNS service Target Architecture Flow of Execution Create key pairs Create security groups Split into three groups: LB (replaces nginx) APP (for tomcat) Backend (including rabbitmq, memcache, mysql) Launch instances with user data Currently a semi-automated process Manually create instances and paste shell scripts for environment setup into userdata Update IP to name mapping in Route 53 Set up an internal DNS for communication between instances using hostnames Build the application from source code This part is still semi-automated. Build the Java project on the local machine. Upload to S3 bucket Use AWS CLI to upload the built Java WAR file to the APP instance. Download artifact to Tomcat EC2 instance Previously, we used keys for S3 access. Here, instances connect to S3 using IAM roles. Create a new S3 access role in IAM. Attach the created role to the APP instance. Use aws s3 ls to confirm successful access. Set up ELB with HTTPS (certificate from Amazon Certificate Manager) Create a target group, ensuring it points to port 8080 on the app. Create an ELB with HTTP/HTTPS routing to the target group. Purchase a domain and apply for an SSL certificate from AWS Certificate Manager. In the secure listener, select the SSL certificate from ACM. Map ELB endpoint to website name in DNS At the DNS provider (in this case, GoDaddy), create a CNAME record that redirects to the AWS LB domain. Verify DNS settings may take some time to propagate. You can directly access the LB&rsquo;s domain to check if the APP is running on port 80. Build an autoscaling group for the tomcat instance Autoscaling involves three steps: AMI (Amazon Machine Image) Create an image from the current APP instance. Launch template Use the created AMI, and keep the security group the same as the original APP. Autoscaling group Attach it to the existing load balancer. Choose the load balancer&rsquo;s target group. Set scaling policies based on CPU usage or network in/out. Configure notifications. ">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -64,7 +64,7 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
                     
                     
                         
-                        <img src="/avatar_hudf307f7ba2d9addd8a436e1972aff141_453473_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
                             height="306" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -98,7 +98,7 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
             
                 <li>
                     <a 
-                        href='https://www.linkedin.com/in/shawn-hong-24ba3a264'
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
                         target="_blank"
                         title="Linkedin"
                         rel="me"
@@ -207,9 +207,9 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="http://shawn1251.github.io/" selected>English</option>
-                        
                             <option value="http://shawn1251.github.io/zh-tw/" >繁體中文</option>
+                        
+                            <option value="http://shawn1251.github.io/" selected>English</option>
                         
                     </select>
                 </li>
@@ -379,7 +379,7 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
 <li>RabbitMQ</li>
 <li>Memcache</li>
 <li>Mysql
-<figure><img src="images/origin-arch.drawio.png" width="30%"/>
+<figure><img src="/post/aws-note-shift-to-cloud/images/origin-arch.drawio.png" width="30%">
 </figure>
 </li>
 </ul>
@@ -412,7 +412,7 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
 </li>
 </ul>
 <h3 id="target-architecture">Target Architecture</h3>
-<figure><img src="images/shift-aws-arch.drawio.png" width="70%"/>
+<figure><img src="/post/aws-note-shift-to-cloud/images/shift-aws-arch.drawio.png" width="70%">
 </figure>
 
 <h3 id="flow-of-execution">Flow of Execution</h3>
@@ -516,9 +516,9 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
     
     <section class="article-tags">
         
-            <a href="/tags/devops/">devops</a>
+            <a href="/tags/devops/">Devops</a>
         
-            <a href="/tags/aws/">aws</a>
+            <a href="/tags/aws/">Aws</a>
         
     </section>
 
@@ -614,7 +614,9 @@ Nginx Apache Tomcat RabbitMQ Memcache Mysql Migration Goals EC2 VMs for tomcat, 
     <section class="copyright">
         &copy; 
         
-        2023 Shawn&#39;s Note
+            2023 - 
+        
+        2024 Shawn&#39;s Note
     </section>
     
     <section class="powerby">

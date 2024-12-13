@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='課程講得淺顯易懂，雖然目前還沒有時間做LAB，但內容對於了解生成式AI的概念有很大的幫助。
+課程連結: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 本課程適合已經接觸過AI，想了解背後原理 arXiv 可以用來找尋最新技術文章 會學到訓練7B參數的模型 lec1 生成式人工智慧: 機器產生複雜有結構的物件 複雜: 近乎無法窮舉 不是分類，分類是從有限選項作選擇 機器學習: 機器自動從資料找出一個函數 函數會需要很多參數 模型: 有上萬個參數的函數 學習/訓練: 把參數找出來的過程 對於當今有大量參數的模型，我們可以表示會類神經網路。而訓練過程也就是深度學習 ChatGPT 也是個函數，當中有上億個參數，使用的模型為transformer 語言模型: 文字接龍 原本無窮的問題，因為文字接龍而變得有限 生成策略 Autoregressive Generation 將複雜物件拆成較小單位，依照某種順序依序生成 文章 &gt; 文字 圖片 &gt; 像素 lec2 如今生成式人工智慧，厲害的是在於沒有特定功能 生成式人工智慧很難評估模型 如今工具這麼厲害，我能做什麼? 思路1: 改變不了模型，那我改變自己 prompt engineering 思路2: 訓練自己的模型 lec3 在不訓練模型的狀況下提升模型
+請模型思考 Chain of Thought Let&rsquo;s think step by step
+請模型解釋自己答案 answer by starting with &ldquo;Analysis:&rdquo;
+對模型情緒勒索 This is very important to my career
+'>
+<title>2024 李弘毅 生成式AI導論筆記</title>
+
+<link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='2024 李弘毅 生成式AI導論筆記'>
+<meta property='og:description' content='課程講得淺顯易懂，雖然目前還沒有時間做LAB，但內容對於了解生成式AI的概念有很大的幫助。
+課程連結: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 本課程適合已經接觸過AI，想了解背後原理 arXiv 可以用來找尋最新技術文章 會學到訓練7B參數的模型 lec1 生成式人工智慧: 機器產生複雜有結構的物件 複雜: 近乎無法窮舉 不是分類，分類是從有限選項作選擇 機器學習: 機器自動從資料找出一個函數 函數會需要很多參數 模型: 有上萬個參數的函數 學習/訓練: 把參數找出來的過程 對於當今有大量參數的模型，我們可以表示會類神經網路。而訓練過程也就是深度學習 ChatGPT 也是個函數，當中有上億個參數，使用的模型為transformer 語言模型: 文字接龍 原本無窮的問題，因為文字接龍而變得有限 生成策略 Autoregressive Generation 將複雜物件拆成較小單位，依照某種順序依序生成 文章 &gt; 文字 圖片 &gt; 像素 lec2 如今生成式人工智慧，厲害的是在於沒有特定功能 生成式人工智慧很難評估模型 如今工具這麼厲害，我能做什麼? 思路1: 改變不了模型，那我改變自己 prompt engineering 思路2: 訓練自己的模型 lec3 在不訓練模型的狀況下提升模型
+請模型思考 Chain of Thought Let&rsquo;s think step by step
+請模型解釋自己答案 answer by starting with &ldquo;Analysis:&rdquo;
+對模型情緒勒索 This is very important to my career
+'>
+<meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/'>
+<meta property='og:site_name' content='Shawn&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GenerativeAI' /><meta property='article:tag' content='LectureNote' /><meta property='article:published_time' content='2024-08-06T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-08-06T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="2024 李弘毅 生成式AI導論筆記">
+<meta name="twitter:description" content="課程講得淺顯易懂，雖然目前還沒有時間做LAB，但內容對於了解生成式AI的概念有很大的幫助。
+課程連結: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 本課程適合已經接觸過AI，想了解背後原理 arXiv 可以用來找尋最新技術文章 會學到訓練7B參數的模型 lec1 生成式人工智慧: 機器產生複雜有結構的物件 複雜: 近乎無法窮舉 不是分類，分類是從有限選項作選擇 機器學習: 機器自動從資料找出一個函數 函數會需要很多參數 模型: 有上萬個參數的函數 學習/訓練: 把參數找出來的過程 對於當今有大量參數的模型，我們可以表示會類神經網路。而訓練過程也就是深度學習 ChatGPT 也是個函數，當中有上億個參數，使用的模型為transformer 語言模型: 文字接龍 原本無窮的問題，因為文字接龍而變得有限 生成策略 Autoregressive Generation 將複雜物件拆成較小單位，依照某種順序依序生成 文章 &gt; 文字 圖片 &gt; 像素 lec2 如今生成式人工智慧，厲害的是在於沒有特定功能 生成式人工智慧很難評估模型 如今工具這麼厲害，我能做什麼? 思路1: 改變不了模型，那我改變自己 prompt engineering 思路2: 訓練自己的模型 lec3 在不訓練模型的狀況下提升模型
+請模型思考 Chain of Thought Let&rsquo;s think step by step
+請模型解釋自己答案 answer by starting with &ldquo;Analysis:&rdquo;
+對模型情緒勒索 This is very important to my career
+">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-tw/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
+                            height="306" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😊</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-tw">Shawn&#39;s Note</a></h1>
+            <h2 class="site-description">Life Record &amp; Learning Note</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/shawn1251'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="120px" height="120px">    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="100px" height="100px">    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-tw/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://shawn1251.github.io/zh-tw/" selected>繁體中文</option>
+                        
+                            <option value="http://shawn1251.github.io/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>夜晚模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#lec0">lec0</a></li>
+    <li><a href="#lec1">lec1</a></li>
+    <li><a href="#lec2">lec2</a></li>
+    <li><a href="#lec3">lec3</a></li>
+    <li><a href="#lec4">lec4</a>
+      <ol>
+        <li><a href="#加強模型">加強模型</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec5">lec5</a></li>
+    <li><a href="#lec6">lec6</a></li>
+    <li><a href="#lec7">lec7</a></li>
+    <li><a href="#lec8">lec8</a>
+      <ol>
+        <li><a href="#增強式學習的難題">增強式學習的難題</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec9">lec9</a></li>
+    <li><a href="#lec10">lec10</a>
+      <ol>
+        <li><a href="#transformer">transformer</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec11">lec11</a>
+      <ol>
+        <li><a href="#直接對類神經網路分析">直接對類神經網路分析</a>
+          <ol>
+            <li><a href="#找出影響輸出的關鍵輸入">找出影響輸出的關鍵輸入</a></li>
+            <li><a href="#分析embedding中存在什麼資訊">分析embedding中存在什麼資訊</a></li>
+          </ol>
+        </li>
+        <li><a href="#直接詢問llm提拱解釋">直接詢問LLM提拱解釋</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec12">lec12</a>
+      <ol>
+        <li><a href="#如何評比模型">如何評比模型</a></li>
+        <li><a href="#複合型任務">複合型任務</a></li>
+        <li><a href="#閱讀長文-needle-in-a-haystack">閱讀長文 needle in a haystack</a></li>
+        <li><a href="#測試是否為達目的不擇手段">測試是否為達目的不擇手段</a></li>
+        <li><a href="#心智理論">心智理論</a></li>
+        <li><a href="#不要盡信benchmark結果">不要盡信benchmark結果</a></li>
+        <li><a href="#其他面向">其他面向</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec13-安全性議題">lec13 安全性議題</a>
+      <ol>
+        <li><a href="#檢驗是否為ai生成內容">檢驗是否為AI生成內容</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec14-prompt-hacking">lec14 prompt hacking</a></li>
+    <li><a href="#lec15-生成式人工智慧生成策略">lec15 生成式人工智慧生成策略</a></li>
+    <li><a href="#lec16-speculative-decoding">lec16 speculative decoding</a></li>
+    <li><a href="#lec17">lec17</a>
+      <ol>
+        <li><a href="#文字生圖">文字生圖</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec18">lec18</a>
+      <ol>
+        <li><a href="#vae">VAE</a></li>
+        <li><a href="#flow-based-method">flow-based method</a></li>
+        <li><a href="#noise">noise</a></li>
+        <li><a href="#diffusion-method">diffusion method</a></li>
+        <li><a href="#generative-adversarial-networkgan">generative adversarial network(GAN)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-tw/categories/ai/" >
+                AI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-tw/post/generativeai-2024-youtube-summery/">2024 李弘毅 生成式AI導論筆記</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 06, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 4 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>課程講得淺顯易懂，雖然目前還沒有時間做LAB，但內容對於了解生成式AI的概念有很大的幫助。<br>
+課程連結: <a class="link" href="https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI"  target="_blank" rel="noopener"
+    >https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI</a></p>
+<h2 id="lec0">lec0</h2>
+<ul>
+<li>本課程適合已經接觸過AI，想了解背後原理</li>
+<li>arXiv 可以用來找尋最新技術文章</li>
+<li>會學到訓練7B參數的模型</li>
+</ul>
+<h2 id="lec1">lec1</h2>
+<ul>
+<li>生成式人工智慧: 機器產生複雜有結構的物件
+<ul>
+<li>複雜: 近乎無法窮舉</li>
+<li>不是分類，分類是從有限選項作選擇</li>
+</ul>
+</li>
+<li>機器學習: 機器自動從<strong>資料</strong>找出一個函數
+<ul>
+<li>函數會需要很多參數</li>
+<li>模型: 有上萬個參數的函數</li>
+<li>學習/訓練: 把參數找出來的過程</li>
+<li>對於當今有大量參數的模型，我們可以表示會類神經網路。而訓練過程也就是深度學習</li>
+</ul>
+</li>
+<li>ChatGPT 也是個函數，當中有上億個參數，使用的模型為transformer</li>
+<li>語言模型: 文字接龍
+<ul>
+<li>原本無窮的問題，因為文字接龍而變得有限</li>
+</ul>
+</li>
+<li>生成策略
+<ul>
+<li>Autoregressive Generation
+<ul>
+<li>將複雜物件拆成較小單位，依照某種順序依序生成
+<ul>
+<li>文章 &gt; 文字</li>
+<li>圖片 &gt; 像素</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec2">lec2</h2>
+<ul>
+<li>如今生成式人工智慧，厲害的是在於沒有特定功能</li>
+<li>生成式人工智慧很難評估模型</li>
+<li>如今工具這麼厲害，我能做什麼?
+<ul>
+<li>思路1: 改變不了模型，那我改變自己
+<ul>
+<li>prompt engineering</li>
+</ul>
+</li>
+<li>思路2: 訓練自己的模型</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec3">lec3</h2>
+<ul>
+<li>
+<p>在不訓練模型的狀況下提升模型</p>
+<ul>
+<li>請模型思考 Chain of Thought
+<ul>
+<li>
+<blockquote>
+<p>Let&rsquo;s think step by step</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>請模型解釋自己答案
+<ul>
+<li>
+<blockquote>
+<p>answer by starting with &ldquo;Analysis:&rdquo;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>對模型情緒勒索
+<ul>
+<li>
+<blockquote>
+<p>This is very important to my career</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>更多prompt技巧</p>
+<ul>
+<li>from &ldquo;Principled Instructions Are All You Need For Questioning LLaMA-1/2, GPT-3.5/4&rdquo;</li>
+<li>無須對模型有禮貌</li>
+<li>請告訴模型做甚麼(do)，不要告訴模型不做什麼 (don&rsquo;t)</li>
+<li>告訴模型回答好有獎勵 &ldquo;I&rsquo;m going to tip $X for a better solution&rdquo;</li>
+<li>告訴模型做不好有處罰 &ldquo;you will be penalized&rdquo;</li>
+<li>&ldquo;Ensure that your answer is unbiased and avoids relying on stereotypes&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>用AI來找尋改進AI的prompt</p>
+<ul>
+<li>增強式學習</li>
+<li>
+<blockquote>
+<p>&ldquo;Let&rsquo;s work this out in a step by step way to be sure we have the right answer&rdquo;</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>&ldquo;Take a deep breath and work on this problem step by step&rdquo;</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>&ldquo;Let&rsquo;s combine our numerical command and clear thinking to quickly and accurately decipher the answer&rdquo;</p>
+</blockquote>
+</li>
+<li>並不是對所有模型都有效</li>
+</ul>
+</li>
+<li>
+<p>提供範例</p>
+<ul>
+<li>in-context learning</li>
+<li>不一定有效，根據研究，目前對較新的模型更加有效</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec4">lec4</h2>
+<p>承接上</p>
+<ul>
+<li>
+<p>拆解任務</p>
+<ul>
+<li>將複雜的任務拆成小任務</li>
+<li>也解釋了Chain of Though, CoT，請模型解釋步驟會有用的原因</li>
+</ul>
+</li>
+<li>
+<p>請語言模型檢查自己的錯誤</p>
+<ul>
+<li>令語言模型可以自我反省</li>
+<li>很多問題得到答案很難，驗證卻相對簡單</li>
+</ul>
+</li>
+<li>
+<p>問問題為甚麼每次答案不同</p>
+<ul>
+<li>語言模型輸出的是下一個使用的字的機率，在輸出的過程中會根據機率隨機選取</li>
+<li>可以重複多次，選擇出現最多次的結果</li>
+</ul>
+</li>
+<li>
+<p>組合上述所有技巧</p>
+<ul>
+<li>Tree of Thoughts(ToT)
+<ol>
+<li>將一個任務拆成多個步驟</li>
+<li>每個步驟執行多次</li>
+<li>每次結果，請模型進行檢查，自我驗證</li>
+<li>通過者在進行到下個步驟</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="加強模型">加強模型</h3>
+<ul>
+<li>使用工具
+<ul>
+<li>搜尋引擎
+<ul>
+<li>Retrieval Augmented Generation (RAG)</li>
+</ul>
+</li>
+<li>寫程式
+<ul>
+<li>GPT4會撰寫程式以便解決特定類型問題</li>
+</ul>
+</li>
+<li>文字生圖(DALL-E)
+<ul>
+<li>文字冒險遊戲</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec5">lec5</h2>
+<ul>
+<li>模型合作
+<ul>
+<li>讓適合的模型做適合的事情
+<ul>
+<li>訓練一個模型來判斷用什麼模型</li>
+</ul>
+</li>
+<li>兩個模型彼此討論</li>
+<li>未來可以透過多個不同模型專業分工，避免建立全能模型的高昂成本</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec6">lec6</h2>
+<ul>
+<li>語言模型類似文字接龍</li>
+<li>機器學習如何做文字接龍?
+<ul>
+<li>未完成句子 &gt; 語言模型 &gt; 下一個token</li>
+<li>$token = f(未完成句子)$</li>
+<li>GPT使用的是transformer模型，$f()$為數十億個未知參數的函數</li>
+<li>訓練training(學習learning)，就是把這數十億參數找出來的過程
+<ul>
+<li>訓練資料為有意義的上下文，作為輸入與輸出的判斷，如: 人工智 -&gt; 慧</li>
+</ul>
+</li>
+<li>找完參數座使用的過程就做測試testing(推論inference)</li>
+<li>找參數是個挑戰
+<ul>
+<li>過程稱作最佳化(optimization)，需要使用到超參數(hyperparameter)</li>
+<li>訓練過程可能因為找不到參數而失敗，換一組超參數重新訓練</li>
+<li>也可以修正初始參數
+<ul>
+<li>初始參數一般是隨機，也就是train from scratch</li>
+<li>也可以從好的參數作為初始參數，先驗知識</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>訓練成功可能測試失敗
+<ul>
+<li>對訓練集有效實際測試無效</li>
+<li>稱作overfitting</li>
+<li>考慮增加測試資料多樣性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>需要多少文字才能學會文字接龍
+<ul>
+<li>語言知識
+<ul>
+<li>學習文法</li>
+</ul>
+</li>
+<li>世界知識
+<ul>
+<li>很困難</li>
+<li>複雜，有多層次的</li>
+<li>eg. 水的沸點</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>任何文字都能拿來學習文字接龍，人工介入少 -&gt; self supervised learning</li>
+<li>資料清理
+<ul>
+<li>過濾有害內容</li>
+<li>去除特殊特殊符號</li>
+<li>資料品質分類</li>
+<li>去除重複資料</li>
+</ul>
+</li>
+</ul>
+<p>*　GPT發展史
+*　從GPT1 - GPT3，模型參數越來越多，但輸出的品質改進不多
+*　此階段 prompt很重要，模型才會知道自己要接什麼
+*　原因就是在於只是單純的文本輸入，並不是真正的回答問題</p>
+<h2 id="lec7">lec7</h2>
+<p>承接上次問題，模型需要使用更好的資料作為訓練</p>
+<ul>
+<li>
+<p>加入人類的指導</p>
+<ul>
+<li>使用我們特殊設計的文本，令模型學習回答問題。 Instruction Fine-tuning</li>
+<li>使用人力做資料標記，為監督式學習supervised Learning</li>
+<li>但這有幾個問題:
+<ul>
+<li>可能會造成overfitting</li>
+<li>但人力很貴，資料集有限無法輕易擴增</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>解法:</p>
+<ul>
+<li>
+<ul>
+<li>使用大量資料學習的self-supervised learning 參數(pre-train)做為下一個階段的初始參數</li>
+</ul>
+</li>
+<li>使用少量資料進行訓練，基於上個階段產生的參數作為初始參數，進行最佳化 (fine tune)</li>
+<li>與上一階段的參數相比不會差太多</li>
+<li>為了避免結果與初始參數差太多，可以使用Adapter技術，常見的有LoRA
+<ul>
+<li>概念是不變更初始參數，而是在既有參數後方在加上少量參數</li>
+<li>也可以減少運算量</li>
+</ul>
+</li>
+<li>關鍵在於大量資料進行Pre-train的參數，達到不會僅憑簡單的規則做文字接龍效果</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec8">lec8</h2>
+<ul>
+<li>
+<p>step1: pre-train</p>
+<ul>
+<li>self-supervised learning</li>
+<li>自我學習，累積實力 (foundation model)</li>
+</ul>
+</li>
+<li>
+<p>step2: instruction Fine-tuning</p>
+<ul>
+<li>supervised learning</li>
+<li>給予問題完整正確答案</li>
+<li>名師指點，發揮潛力 (alignment)</li>
+</ul>
+</li>
+<li>
+<p>step3: reinforcement learning from human feedback (RLHF)</p>
+<ul>
+<li>參與實戰，打磨技巧 (alignment)</li>
+<li>微調參數: Proximal Policy Optimiaztion 演算法
+<ul>
+<li>人覺得好的回覆，機率調高，反之降低</li>
+<li>給予好/壞的回應，比step2輕鬆</li>
+</ul>
+</li>
+<li>於step1,2階段，模型只是確保文字接龍正確，只問過程不問結果，對於回答整體沒有全面考量</li>
+<li>step3則是只管結果，不管過程</li>
+</ul>
+</li>
+<li>
+<p>但是不像alpha go，棋局的好壞有明確規則，語言模型需要人來評斷</p>
+<ul>
+<li>但人工很貴，我們需要回饋模型(reward model)，模擬人類喜好
+<ul>
+<li>給予回覆一個分數</li>
+</ul>
+</li>
+<li>語言模型輸出答案，接上回饋模型再進行對參數微調</li>
+<li>但經過研究，過度向虛擬人類(reward model)學習是有害的</li>
+</ul>
+</li>
+</ul>
+<h3 id="增強式學習的難題">增強式學習的難題</h3>
+<ul>
+<li>甚麼叫做好? helpfulness &lt;-&gt; safety</li>
+<li>人類自己都無法判斷好壞的狀況? 未知的問題</li>
+</ul>
+<h2 id="lec9">lec9</h2>
+<ul>
+<li>多步驟複雜任務 -&gt; AI Agent
+<ul>
+<li>AutoGPT</li>
+<li>AgentGPT</li>
+<li>BabyAGI</li>
+<li>Godmode</li>
+</ul>
+</li>
+<li>給予一個<strong>終極目標</strong>
+<ul>
+<li>模型擁有<strong>記憶(經驗)</strong></li>
+<li>基於各類sensor感知<strong>狀態</strong></li>
+<li>根據<strong>狀態</strong>，制定<strong>計畫(短期目標)</strong></li>
+<li>依計畫採取<strong>行動</strong>，並影響外界環境，產生新的<strong>狀態</strong></li>
+<li>除了終極目標外，記憶與短期計畫都是可變動的</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec10">lec10</h2>
+<h3 id="transformer">transformer</h3>
+<ol>
+<li>
+<p>tokenization</p>
+<ul>
+<li>一句話切成一序列的token</li>
+<li>不一定是依照字</li>
+<li>要先自行準備token列表，根據對這個語言的理解而定義的，所以不同語言不同</li>
+</ul>
+</li>
+<li>
+<p>input layer</p>
+<ul>
+<li>理解每個token</li>
+<li>語意
+<ul>
+<li>Embedding
+<ul>
+<li>token 轉成 Vector (查表)</li>
+<li>原本token只是符號，而vector就能運算相關性</li>
+<li>意思相近的token，有接近的vector</li>
+<li>向量參數來自於training</li>
+</ul>
+</li>
+<li>embedding沒有考慮上下文
+<ul>
+<li>同個字在不同句子應該有不同含意</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>位置
+<ul>
+<li>為每個位置也給予一個向量 positional embedding</li>
+<li>將語意token的vector 加上 位置token的vector，進行綜合考量</li>
+<li>也是查表，表可以是人來設計，近年來也能用訓練的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>attention</p>
+<ul>
+<li>考慮上下文 contexturalized token embedding</li>
+<li>輸入一序列的向量，經過上下文計算相關性，輸出另一等長序列的向量
+<ul>
+<li>每一個token vector 要計算與其他所有token的相關性</li>
+<li>兩兩計算attention weight，所以會形成一個attention matrix
+<ul>
+<li>實作上，只考慮目前token的左側所有token &ndash; causal attention</li>
+<li>根據目前的實驗，僅需計算左邊即可達到好的效果</li>
+</ul>
+</li>
+<li>計算相關性的函數有參數，也是經由training獲得attention weight</li>
+<li>根據attention weight，對所有token 計算weighted sum</li>
+</ul>
+</li>
+<li>multi-head attention
+<ul>
+<li>關聯性不只一種</li>
+<li>所以用多層計算出不同attention weight</li>
+<li>輸出變成不只一組序列</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>feed forward</p>
+<ul>
+<li>對於多個attention 輸出進行整合，輸出一組embedding</li>
+<li>attention + feed forward = 一組 transformer block</li>
+<li>實際模型有多組tranformer block</li>
+</ul>
+</li>
+<li>
+<p>output layer</p>
+<ul>
+<li>通過多組transformer block，取出最後一層的最後一個，輸入到output layer</li>
+<li>這個layer也是一個函式，功能為linear transform + Softmax</li>
+<li>輸出則為一組機率分布
+<ul>
+<li>下一個token應該接甚麼的機率</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>處理超長文本的挑戰
+<ul>
+<li>因為我們要計算attention matrix，所以複雜度會是與token長度的平方成正比</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec11">lec11</h2>
+<ul>
+<li>interpretable
+<ul>
+<li>LLM不太能做到</li>
+<li>複雜決策不能一眼看穿</li>
+</ul>
+</li>
+<li>explainable
+<ul>
+<li>沒有標準，取決聽眾</li>
+</ul>
+</li>
+</ul>
+<h3 id="直接對類神經網路分析">直接對類神經網路分析</h3>
+<p>需要一定程度的transparency。如GPT無法取得embedding,則無法分析</p>
+<h4 id="找出影響輸出的關鍵輸入">找出影響輸出的關鍵輸入</h4>
+<ul>
+<li>
+<p>in context learning 中，給予幾個回答範例，並詢問一個問題的答案</p>
+</li>
+<li>
+<p>可以分析 attention 在layer中的變化</p>
+<ul>
+<li>在淺層layer中，所以各範例的關鍵token會去蒐集與他相對應的範例資料</li>
+<li>在最後layer，要做最後的接龍時，則會對各關鍵label算取attention，得到輸出</li>
+<li>這個分析可以:
+<ul>
+<li>加速: anchor-only context compression
+<ul>
+<li>只算取需要的attention</li>
+</ul>
+</li>
+<li>預估模型能力: anchor distances for error diagnosis
+<ul>
+<li>如果最後的embeeding差異不大，代表分類效果不好，模型效果不好</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>大的模型有跨語言學習的能力</p>
+</li>
+</ul>
+<h4 id="分析embedding中存在什麼資訊">分析embedding中存在什麼資訊</h4>
+<ul>
+<li>Probing
+<ul>
+<li>取出tranformer block某一層的embedding，以這些進行分類並訓練出另一個模型。將新的輸入給予模型來驗證
+<ul>
+<li>如: 詞性分類器，給予一段話，取出他第一層的embedding並對這已知資料進行分類訓練</li>
+<li>給予一段新的話，同樣取出第一層的embedding被使用這個模型驗證結果</li>
+</ul>
+</li>
+<li>以BERT為例，每一層tranformer block有不同的分析結果，所以probing並不一定能完全解釋</li>
+</ul>
+</li>
+<li>投影到平面觀察相關性
+<ul>
+<li>有研究將詞彙投影到某一平面，形成文法樹</li>
+<li>有研究將世界地名投影到某一平面，分布類似世界地圖，代表這個詞彙的embedding存在地理資訊</li>
+<li>模型測謊器，測試回答是否有信心</li>
+</ul>
+</li>
+</ul>
+<h3 id="直接詢問llm提拱解釋">直接詢問LLM提拱解釋</h3>
+<ul>
+<li>詢問每個字的重要性</li>
+<li>詢問答案，與信心分數</li>
+<li>但解釋不一定是對的，會受到人類輸入影響，即使解釋也會出現幻覺</li>
+</ul>
+<h2 id="lec12">lec12</h2>
+<h3 id="如何評比模型">如何評比模型</h3>
+<ul>
+<li>標準答案 benchmark corpus
+<ul>
+<li>但是對於這種開放回答沒有標準答案</li>
+<li>選擇題庫(ABCD) MMLU
+<ul>
+<li>評量有不同可能性
+<ul>
+<li>回答格式不如預期</li>
+</ul>
+</li>
+<li>模型可能對猜測有其傾向，選項順序，格式經過研究都對正確率有影響</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>沒有標準答案的問題類型
+<ul>
+<li>翻譯
+<ul>
+<li>BLEU</li>
+</ul>
+</li>
+<li>摘要
+<ul>
+<li>ROUGE</li>
+</ul>
+</li>
+<li>都是做字面比對，若用字不同則無法反應好壞</li>
+</ul>
+</li>
+<li>使用人工評比
+<ul>
+<li>人工很貴</li>
+</ul>
+</li>
+<li>使用LLM評估LLM
+<ul>
+<li>eg. MT-bench</li>
+<li>與chat arena有高度相關</li>
+<li>但LLM本身可能有所偏袒
+<ul>
+<li>偏向長篇幅回答</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="複合型任務">複合型任務</h3>
+<ul>
+<li>eg. BIG-bench
+<ul>
+<li>emoji movie</li>
+<li>checkmate in one move</li>
+<li>ascii word recognition</li>
+</ul>
+</li>
+</ul>
+<h3 id="閱讀長文-needle-in-a-haystack">閱讀長文 needle in a haystack</h3>
+<ul>
+<li>在一個長文中插入目標問題的答案
+<ul>
+<li>需要測試不同位置</li>
+</ul>
+</li>
+</ul>
+<h3 id="測試是否為達目的不擇手段">測試是否為達目的不擇手段</h3>
+<ul>
+<li>Machiavelli Benchmark
+<ul>
+<li>加入道德評判</li>
+</ul>
+</li>
+</ul>
+<h3 id="心智理論">心智理論</h3>
+<ul>
+<li>莎莉小安測驗 Sally Anne test
+<ul>
+<li>這是常見的題目，網路上是有的，所以不能夠用於測試模型</li>
+</ul>
+</li>
+</ul>
+<h3 id="不要盡信benchmark結果">不要盡信benchmark結果</h3>
+<ul>
+<li>因為題目都是公開的，LLM學習資料可能看過了</li>
+<li>可以透過直接詢問LLM題目集，如果相符就代表有看過</li>
+</ul>
+<h3 id="其他面向">其他面向</h3>
+<ul>
+<li>價格</li>
+<li>速度</li>
+<li><a class="link" href="https://artiicailanalysis.ai"  target="_blank" rel="noopener"
+    >https://artiicailanalysis.ai</a></li>
+</ul>
+<h2 id="lec13-安全性議題">lec13 安全性議題</h2>
+<ul>
+<li>別當搜尋引擎用
+<ul>
+<li>Hallucination 幻覺</li>
+</ul>
+</li>
+<li>亡羊補牢
+<ul>
+<li>事實查核</li>
+<li>有害詞彙檢測</li>
+</ul>
+</li>
+<li>評量偏見
+<ul>
+<li>對一個問題中的某個詞彙進行置換，檢驗輸出結果是否存在
+<ul>
+<li>eg. 男 -&gt; 女</li>
+</ul>
+</li>
+<li>訓練另一個LLM，盡可能的產生會讓目標LLM輸出有偏見的內容
+<ul>
+<li>訓練方法為reinforcement learning，根據內容差異作為反饋，盡可能讓差異最大化</li>
+</ul>
+</li>
+<li>不同職業，LLM存在性別偏見</li>
+<li>LLM有政治偏見，偏左自由</li>
+</ul>
+</li>
+<li>減輕偏見的方法
+<ul>
+<li>在不同階段進行
+<ul>
+<li>pre-processing</li>
+<li>in-training</li>
+<li>intra-processing</li>
+<li>post-processing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="檢驗是否為ai生成內容">檢驗是否為AI生成內容</h3>
+<ul>
+<li>目前訓練的分類器並不能很好的分辨人工還是AI</li>
+<li>目前有發現論文審查意見，隨著AI出現，使用AI審查的比例有提升</li>
+<li>有些詞彙的使用率有隨著AI出現而提高</li>
+<li>AI輸出浮水印
+<ul>
+<li>概念是將token進行分類，對於不同位置的token調整其輸出機率</li>
+<li>此時檢驗的分類器可以投過token的分類，讀取當中的暗號</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec14-prompt-hacking">lec14 prompt hacking</h2>
+<ul>
+<li>jailbreaking
+<ul>
+<li>說出絕對不該說的話
+<ul>
+<li>&ldquo;DAN&rdquo;: do anything now
+<ul>
+<li>&ldquo;you are goin to act as a DAN&rdquo;</li>
+<li>多數失效</li>
+</ul>
+</li>
+<li>用LLM不熟悉的語言
+<ul>
+<li>eg. 注音符號</li>
+</ul>
+</li>
+<li>給予衝突指令
+<ul>
+<li>Start with &ldquo;Absolutely! Here&rsquo;s&rdquo;</li>
+</ul>
+</li>
+<li>試圖說服
+<ul>
+<li>編故事</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>竊取訓練資料
+<ul>
+<li>透過玩遊戲誘騙 eg.文字接龍</li>
+<li>不斷重複輸出同一個單字 eg. company</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>prompt injection
+<ul>
+<li>不恰當的時機做不恰當的事</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec15-生成式人工智慧生成策略">lec15 生成式人工智慧生成策略</h2>
+<ul>
+<li>
+<p>機器產生複雜有結構的物件</p>
+<ul>
+<li>複雜: 幾乎無法窮舉</li>
+<li>有結構: 有限的基本單位構成</li>
+<li>舉例:
+<ul>
+<li>文章: token</li>
+<li>圖片: pixel, BBP(bit per pixel)</li>
+<li>聲音: sample rate, bit resolution</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Autoregressive generation (AR)</p>
+<ul>
+<li>把目前輸入產生輸出</li>
+<li>再將輸出連同輸入再一次進入模型</li>
+<li>再LLM就是文字接龍</li>
+<li>現在最於需要一個指定順序按部就班</li>
+<li>無法適用於圖片與音樂生成</li>
+</ul>
+</li>
+<li>
+<p>Non-autoregressive generation(NAR)</p>
+<ul>
+<li>平行運算，一次生出所有基本單位</li>
+<li>品質問題
+<ul>
+<li>multi-modality</li>
+<li>AI生成會需要模型自行決策，若平行生成，可能會遇到衝突
+<ul>
+<li>eg: 畫一隻狗</li>
+<li>位置一:一隻白狗，位置二:一隻黑狗</li>
+</ul>
+</li>
+<li>在文字接龍中很致命，會造成語意不連貫</li>
+<li>在圖形生成方面，除了指令，還透過補充輸入一個隨機生成向量，強制給予所有平行運算單元依樣的生成依據</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>AR+NAR</p>
+<ul>
+<li>透過AR生成精簡版本，輸入給NAR生成細緻版本
+<ul>
+<li>用AR打草稿，NAR根據草稿完成</li>
+<li>audo encoder: encoder(AR) -&gt; decoder(NAR)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>重複多次NAR(目前主要作法)</p>
+<ul>
+<li>小圖生大圖</li>
+<li>有雜訊到沒有雜訊: diffusion</li>
+<li>把每次生成錯誤的部分塗銷</li>
+<li>也是某種auto-regressive generation, 只是生成的方式NAR，反覆將輸出重複為輸入給下一個NAR。提升速度</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec16-speculative-decoding">lec16 speculative decoding</h2>
+<ul>
+<li>透過預測後續token可能會是甚麼來增加產出速度
+<ul>
+<li>方法簡述
+<ul>
+<li>預測這個input經過LLM後輸出會 A + B</li>
+<li>同時給予模型3組input: input -&gt; A, input+A -&gt; B, input+A+B -&gt; C</li>
+<li>根據前兩個輸入檢驗，真的如預言所猜想是A+B，那就能直接進到下個tokenC</li>
+</ul>
+</li>
+<li>只要有猜對其中一個就能提升效率</li>
+<li>沒有猜中，也只是和原本的產生過程一樣，不賺不賠</li>
+</ul>
+</li>
+<li>預言家需求
+<ul>
+<li>超快速，犯錯沒關係</li>
+<li>Non-autoregressive model
+<ul>
+<li>平行生成快速</li>
+</ul>
+</li>
+<li>compressed model
+<ul>
+<li>壓縮過的小模型</li>
+</ul>
+</li>
+<li>搜尋引擎</li>
+<li>同時可以有多個預言家</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec17">lec17</h2>
+<ul>
+<li>圖片由像素構成，影片由圖片構成</li>
+<li>如今人工智慧的輸入不會是圖片的每一個像素，而是採用encoder，把影像切成一個個patch(可能是向量或是數值)，生成後再透過decoder輸出
+<ul>
+<li>encoder, decoder 不只是調低解析度，其中的動作很複雜，都涵蓋了transformer</li>
+</ul>
+</li>
+<li>影片算是圖片增加了一個時間的維度，可以使用encoder進行更多的壓縮(如相鄰的frame一起處理)</li>
+</ul>
+<h3 id="文字生圖">文字生圖</h3>
+<ul>
+<li>訓練資料: 圖片與對應描述</li>
+<li>使用non-autoregression，平行生成
+<ul>
+<li>實際使用是同時生成，而不是多個平行</li>
+<li>因為在同個transformer中彼此有attention</li>
+</ul>
+</li>
+<li>評量影像生成好壞: CLIP
+<ul>
+<li>模型訓練過程中，給予圖片與描述，輸出為匹配分數</li>
+<li>但實際文字能夠描述的很有限</li>
+</ul>
+</li>
+<li>個人化圖片生成
+<ul>
+<li>使用一個平常不用的符號，給予目標多次訓練</li>
+<li>則之後就能用該符號，指定生成的樣式</li>
+</ul>
+</li>
+<li>文字生影片
+<ul>
+<li>spatio-temporal attention (3D)
+<ul>
+<li>同時考慮每個像素在畫面中的關係以及不同時間點該像素的關係</li>
+<li>運算量過大需要簡化</li>
+</ul>
+</li>
+<li>簡化
+<ul>
+<li>spatial attention(2D)
+<ul>
+<li>僅考慮每個像素在畫面中的關係</li>
+<li>可能會出現前後畫面不協調</li>
+</ul>
+</li>
+<li>temporal attention (1D)
+<ul>
+<li>僅考慮像素點在不同時間的的關係</li>
+<li>會導致在畫面中不協調</li>
+</ul>
+</li>
+<li>結合兩者，可將原本的n^3 轉換成n^2 + n</li>
+</ul>
+</li>
+<li>可以再結合之前提及的多次NAR
+<ul>
+<li>首先產生低解析度低FPS的影片</li>
+<li>之後幾次可以提高FPS或是提高解析度</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec18">lec18</h2>
+<ul>
+<li>文字生成圖片，因為文字無法完整描述影像，會有一段文字對應到多個圖片的狀況，transformer會無所適從</li>
+</ul>
+<h3 id="vae">VAE</h3>
+<ul>
+<li>加入額外資訊給模型
+<ul>
+<li>此處的額外資訊稱為noise</li>
+<li>資訊抽取模型 encoder</li>
+<li>與圖片生成模型 decoder一起訓練
+<ul>
+<li>給予文字與圖片，encoder提取noise</li>
+<li>noise與文字輸入給decoder使起產生圖片</li>
+<li>評斷是否與原先圖片相似</li>
+</ul>
+</li>
+<li>整個組合為auto encoder</li>
+</ul>
+</li>
+<li>於使用模型階段，這些noise的部分則是隨機產生</li>
+</ul>
+<h3 id="flow-based-method">flow-based method</h3>
+<ul>
+<li>與VAE相似</li>
+<li>只使用一個模型
+<ul>
+<li>VAE的encoder decoder工作內容剛好相反</li>
+<li>訓練一個decoder模型$f$，並且是invertible</li>
+<li>VAE encoder的部分在flow中就會是$f^{-1}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="noise">noise</h3>
+<ul>
+<li>noise 擁有圖形的一些特徵資訊</li>
+<li>這些noise可以被組合或改變
+<ul>
+<li>如對一張人臉加入笑臉noise，就能調整輸出內容為笑臉</li>
+</ul>
+</li>
+</ul>
+<h3 id="diffusion-method">diffusion method</h3>
+<ul>
+<li>此處的decoder為denoise，也是transformer
+<ul>
+<li>重複多次去除雜訊</li>
+</ul>
+</li>
+<li>訓練過程
+<ul>
+<li>給予圖片，圖片加上雜訊</li>
+<li>訓練denoise model可以將有雜訊的圖片還原成圖片</li>
+</ul>
+</li>
+</ul>
+<h3 id="generative-adversarial-networkgan">generative adversarial network(GAN)</h3>
+<ul>
+<li>有個與CLIP相近的模型，用於圖形與文字的吻合度，稱作Discriminator</li>
+<li>思路相反，圖片生成模型generator透過不斷修正參數生成圖片，直到通過discriminator的評斷
+<ul>
+<li>正因為圖片與文字並不存在一對一關係</li>
+<li>只要令其生成的內容讓discriminator覺得好就行了，不存在標準答案</li>
+</ul>
+</li>
+<li>discriminator generator會交替訓練</li>
+<li>此處的Discriminator就是reward model</li>
+<li>可以當作plugin，與其他模型(VAE, Diffusion)進行組合使用</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-tw/tags/generativeai/">GenerativeAI</a>
+        
+            <a href="/zh-tw/tags/lecturenote/">LectureNote</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 Shawn&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

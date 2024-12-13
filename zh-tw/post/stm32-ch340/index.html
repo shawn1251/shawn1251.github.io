@@ -2,20 +2,20 @@
 <html lang="zh-tw" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='最近在用STM32學習嵌入式開發。但由於沒有STLINK，我這邊只能使用CH340燒錄。這邊記錄了一下過程。
-需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &amp;gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &amp;gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 '>
+需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 '>
 <title>使用CH340燒錄程式到STM32</title>
 
 <link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/stm32-ch340/'>
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='使用CH340燒錄程式到STM32'>
 <meta property='og:description' content='最近在用STM32學習嵌入式開發。但由於沒有STLINK，我這邊只能使用CH340燒錄。這邊記錄了一下過程。
-需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &amp;gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &amp;gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 '>
+需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 '>
 <meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/stm32-ch340/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='embedded' /><meta property='article:tag' content='stm32' /><meta property='article:tag' content='CH340' /><meta property='article:published_time' content='2023-11-20T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-11-20T00:00:00&#43;08:00'/>
 <meta name="twitter:title" content="使用CH340燒錄程式到STM32">
 <meta name="twitter:description" content="最近在用STM32學習嵌入式開發。但由於沒有STLINK，我這邊只能使用CH340燒錄。這邊記錄了一下過程。
-需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &amp;gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &amp;gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 ">
+需求軟體 Keil5 FlyMcu 步驟 CH340有幾個針腳 VCC: 這有一個跳線帽，可以設定5V/3.3V RX: 接收，接在GPIO的PA09 TX: 發送，接在GPIO的PA10 GND: 接地 燒錄需要的是hex檔，所以在我的IDE Keil5上要額外設定 點擊魔術棒的icon(options for target) Output &gt; create hex file 之後在build後，hex file會出現在Objects資料夾中 這邊使用的燒錄軟體是FlyMcu，以下是燒錄步驟 插上CH340後，確認上方的port com為我們的CH340 Code file for online ISP &gt; 選擇build好的hex file 勾選 Verify, Run After ISP complete 取消勾選 Program OptionBytes when ISP 接著就能點擊 Start ISP 如果右側訊息出現下方訊息表示成功 1 2 3 .... Write 1KB Ok,100%,@1562ms Go from 08000000 Ok 如果要再燒錄新的program，要按一下stm32上的reset按鈕 ">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -55,13 +55,13 @@
         
             
             <figure class="site-avatar">
-                <a href="/zh-tw">
+                <a href="/zh-tw/">
                 
                     
                     
                     
                         
-                        <img src="/avatar_hudf307f7ba2d9addd8a436e1972aff141_453473_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
                             height="306" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -95,7 +95,7 @@
             
                 <li>
                     <a 
-                        href='https://www.linkedin.com/in/shawn-hong-24ba3a264'
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
                         target="_blank"
                         title="Linkedin"
                         rel="me"
@@ -204,9 +204,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="http://shawn1251.github.io/" >English</option>
-                        
                             <option value="http://shawn1251.github.io/zh-tw/" selected>繁體中文</option>
+                        
+                            <option value="http://shawn1251.github.io/" >English</option>
                         
                     </select>
                 </li>
@@ -415,9 +415,9 @@
     
     <section class="article-tags">
         
-            <a href="/zh-tw/tags/embedded/">embedded</a>
+            <a href="/zh-tw/tags/embedded/">Embedded</a>
         
-            <a href="/zh-tw/tags/stm32/">stm32</a>
+            <a href="/zh-tw/tags/stm32/">Stm32</a>
         
             <a href="/zh-tw/tags/ch340/">CH340</a>
         
@@ -489,7 +489,9 @@
     <section class="copyright">
         &copy; 
         
-        2023 Shawn&#39;s Note
+            2023 - 
+        
+        2024 Shawn&#39;s Note
     </section>
     
     <section class="powerby">

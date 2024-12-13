@@ -349,7 +349,7 @@
 &lt;li&gt;RabbitMQ&lt;/li&gt;
 &lt;li&gt;Memcache&lt;/li&gt;
 &lt;li&gt;Mysql
-&lt;figure&gt;&lt;img src=&#34;images/origin-arch.drawio.png&#34; width=&#34;30%&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;http://shawn1251.github.io/post/aws-note-shift-to-cloud/images/origin-arch.drawio.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -382,7 +382,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;target-architecture&#34;&gt;Target Architecture&lt;/h3&gt;
-&lt;figure&gt;&lt;img src=&#34;images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;http://shawn1251.github.io/post/aws-note-shift-to-cloud/images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;h3 id=&#34;flow-of-execution&#34;&gt;Flow of Execution&lt;/h3&gt;

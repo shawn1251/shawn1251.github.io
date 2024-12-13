@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/zh-tw/</loc>
-    <lastmod>2023-11-23T00:00:00+08:00</lastmod>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,14 @@
                 href="http://shawn1251.github.io/zh-tw/"
                 />
   </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/categories/ai/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>http://shawn1251.github.io/zh-tw/categories/</loc>
-    <lastmod>2023-11-23T00:00:00+08:00</lastmod>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -26,6 +32,38 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/categories/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/generativeai/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/lecturenote/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/tags/</loc>
+    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/tags/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/embedded/</loc>
@@ -78,32 +116,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/post/i2c-note/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
-    <lastmod>2023-11-23T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/tags/</loc>
-    <lastmod>2023-11-23T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/tags/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/ch340/</loc>

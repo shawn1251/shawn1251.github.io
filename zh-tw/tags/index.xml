@@ -6,8 +6,24 @@
         <description>Recent content in Tags on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>embedded</title>
+        <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GenerativeAI</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/generativeai/</link>
+        <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/generativeai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LectureNote</title>
+        <link>http://shawn1251.github.io/zh-tw/tags/lecturenote/</link>
+        <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/tags/lecturenote/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Embedded</title>
         <link>http://shawn1251.github.io/zh-tw/tags/embedded/</link>
         <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -31,7 +47,7 @@
         <description></description>
         </item>
         <item>
-        <title>stm32</title>
+        <title>Stm32</title>
         <link>http://shawn1251.github.io/zh-tw/tags/stm32/</link>
         <pubDate>Mon, 20 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -39,7 +55,7 @@
         <description></description>
         </item>
         <item>
-        <title>airflow</title>
+        <title>Airflow</title>
         <link>http://shawn1251.github.io/zh-tw/tags/airflow/</link>
         <pubDate>Tue, 14 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -55,7 +71,7 @@
         <description></description>
         </item>
         <item>
-        <title>addiction</title>
+        <title>Addiction</title>
         <link>http://shawn1251.github.io/zh-tw/tags/addiction/</link>
         <pubDate>Mon, 06 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -63,7 +79,7 @@
         <description></description>
         </item>
         <item>
-        <title>dopamine</title>
+        <title>Dopamine</title>
         <link>http://shawn1251.github.io/zh-tw/tags/dopamine/</link>
         <pubDate>Mon, 06 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -71,7 +87,7 @@
         <description></description>
         </item>
         <item>
-        <title>aws</title>
+        <title>Aws</title>
         <link>http://shawn1251.github.io/zh-tw/tags/aws/</link>
         <pubDate>Thu, 02 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -79,7 +95,7 @@
         <description></description>
         </item>
         <item>
-        <title>devops</title>
+        <title>Devops</title>
         <link>http://shawn1251.github.io/zh-tw/tags/devops/</link>
         <pubDate>Thu, 02 Nov 2023 00:00:00 +0800</pubDate>
         
@@ -87,7 +103,7 @@
         <description></description>
         </item>
         <item>
-        <title>linux</title>
+        <title>Linux</title>
         <link>http://shawn1251.github.io/zh-tw/tags/linux/</link>
         <pubDate>Mon, 30 Oct 2023 00:00:00 +0800</pubDate>
         
@@ -95,7 +111,7 @@
         <description></description>
         </item>
         <item>
-        <title>shell</title>
+        <title>Shell</title>
         <link>http://shawn1251.github.io/zh-tw/tags/shell/</link>
         <pubDate>Mon, 30 Oct 2023 00:00:00 +0800</pubDate>
         
@@ -103,7 +119,7 @@
         <description></description>
         </item>
         <item>
-        <title>vagrant</title>
+        <title>Vagrant</title>
         <link>http://shawn1251.github.io/zh-tw/tags/vagrant/</link>
         <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
         
@@ -111,7 +127,7 @@
         <description></description>
         </item>
         <item>
-        <title>vm</title>
+        <title>Vm</title>
         <link>http://shawn1251.github.io/zh-tw/tags/vm/</link>
         <pubDate>Sat, 28 Oct 2023 00:00:00 +0800</pubDate>
         
@@ -119,7 +135,7 @@
         <description></description>
         </item>
         <item>
-        <title>tool</title>
+        <title>Tool</title>
         <link>http://shawn1251.github.io/zh-tw/tags/tool/</link>
         <pubDate>Tue, 24 Oct 2023 06:42:46 +0800</pubDate>
         
@@ -127,7 +143,7 @@
         <description></description>
         </item>
         <item>
-        <title>windows</title>
+        <title>Windows</title>
         <link>http://shawn1251.github.io/zh-tw/tags/windows/</link>
         <pubDate>Tue, 24 Oct 2023 06:42:46 +0800</pubDate>
         
@@ -135,7 +151,7 @@
         <description></description>
         </item>
         <item>
-        <title>hugo</title>
+        <title>Hugo</title>
         <link>http://shawn1251.github.io/zh-tw/tags/hugo/</link>
         <pubDate>Sat, 21 Oct 2023 06:42:46 +0800</pubDate>
         

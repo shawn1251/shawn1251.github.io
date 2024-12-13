@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>devops on Shawn&#39;s Note</title>
+        <title>Devops on Shawn&#39;s Note</title>
         <link>http://shawn1251.github.io/zh-tw/tags/devops/</link>
-        <description>Recent content in devops on Shawn&#39;s Note</description>
+        <description>Recent content in Devops on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <lastBuildDate>Thu, 02 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -24,7 +24,7 @@
 &lt;li&gt;RabbitMQ&lt;/li&gt;
 &lt;li&gt;Memcache&lt;/li&gt;
 &lt;li&gt;Mysql
-&lt;figure&gt;&lt;img src=&#34;images/origin-arch.drawio.png&#34; width=&#34;30%&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;http://shawn1251.github.io/post/aws-note-shift-to-cloud/images/origin-arch.drawio.png&#34; width=&#34;30%&#34;&gt;
 &lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -57,7 +57,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;目標架構圖&#34;&gt;目標架構圖&lt;/h3&gt;
-&lt;figure&gt;&lt;img src=&#34;images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;http://shawn1251.github.io/post/aws-note-shift-to-cloud/images/shift-aws-arch.drawio.png&#34; width=&#34;70%&#34;&gt;
 &lt;/figure&gt;
 
 &lt;h2 id=&#34;flow-of-execution&#34;&gt;flow of execution&lt;/h2&gt;

@@ -4,7 +4,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一個command line tool方便自動化啟動VM。vagrant本身不是hypervisor，而是基於hypervisor上的一層應用，令使用者可以利用他快速架設VM於hypervisor上。本身也不需要OS image，設定檔Vagrantfile中指定的image(box)會從vagrant cloud取用。在Vagrantfile中定義所需要的參數，即可使用vagrant up啟動
 常用指令 vagrant init {box name} vagrant up vagrant ssh vagrant halt vagrant destroy 流程 create folder create Vagrantfile vagrant up vagrant ssh vagrant halt/destroy 啟動範例 請在這邊找尋自己想要啟動的 box https://app.vagrantup.com/boxes/search
 1 2 3 vagrant init {box name} vagrant up vagrant global-status Vagrantfile 的 provision Vagrantfile 中有一段 provision，可以用於設定vm第一次啟動前要執行的指令，好比安裝指定的軟體。可以參考官方對Vagrantfile的說明
-1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &amp;#34;shell&amp;#34;, inline: &amp;lt;&amp;lt;-SHELL apt-get update apt-get install -y apache2 SHELL '>
+1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &#34;shell&#34;, inline: &lt;&lt;-SHELL apt-get update apt-get install -y apache2 SHELL '>
 <title>vagrant 筆記</title>
 
 <link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/vagrant-intro/'>
@@ -13,7 +13,7 @@
 <meta property='og:description' content='一個command line tool方便自動化啟動VM。vagrant本身不是hypervisor，而是基於hypervisor上的一層應用，令使用者可以利用他快速架設VM於hypervisor上。本身也不需要OS image，設定檔Vagrantfile中指定的image(box)會從vagrant cloud取用。在Vagrantfile中定義所需要的參數，即可使用vagrant up啟動
 常用指令 vagrant init {box name} vagrant up vagrant ssh vagrant halt vagrant destroy 流程 create folder create Vagrantfile vagrant up vagrant ssh vagrant halt/destroy 啟動範例 請在這邊找尋自己想要啟動的 box https://app.vagrantup.com/boxes/search
 1 2 3 vagrant init {box name} vagrant up vagrant global-status Vagrantfile 的 provision Vagrantfile 中有一段 provision，可以用於設定vm第一次啟動前要執行的指令，好比安裝指定的軟體。可以參考官方對Vagrantfile的說明
-1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &amp;#34;shell&amp;#34;, inline: &amp;lt;&amp;lt;-SHELL apt-get update apt-get install -y apache2 SHELL '>
+1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &#34;shell&#34;, inline: &lt;&lt;-SHELL apt-get update apt-get install -y apache2 SHELL '>
 <meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/vagrant-intro/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vm' /><meta property='article:tag' content='vagrant' /><meta property='article:tag' content='devops' /><meta property='article:published_time' content='2023-10-28T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2023-10-28T00:00:00&#43;08:00'/>
@@ -21,7 +21,7 @@
 <meta name="twitter:description" content="一個command line tool方便自動化啟動VM。vagrant本身不是hypervisor，而是基於hypervisor上的一層應用，令使用者可以利用他快速架設VM於hypervisor上。本身也不需要OS image，設定檔Vagrantfile中指定的image(box)會從vagrant cloud取用。在Vagrantfile中定義所需要的參數，即可使用vagrant up啟動
 常用指令 vagrant init {box name} vagrant up vagrant ssh vagrant halt vagrant destroy 流程 create folder create Vagrantfile vagrant up vagrant ssh vagrant halt/destroy 啟動範例 請在這邊找尋自己想要啟動的 box https://app.vagrantup.com/boxes/search
 1 2 3 vagrant init {box name} vagrant up vagrant global-status Vagrantfile 的 provision Vagrantfile 中有一段 provision，可以用於設定vm第一次啟動前要執行的指令，好比安裝指定的軟體。可以參考官方對Vagrantfile的說明
-1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &amp;#34;shell&amp;#34;, inline: &amp;lt;&amp;lt;-SHELL apt-get update apt-get install -y apache2 SHELL ">
+1 2 3 4 5 6 # 這邊以在provision階段安裝apache2 server為例 config.vm.provision &#34;shell&#34;, inline: &lt;&lt;-SHELL apt-get update apt-get install -y apache2 SHELL ">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -61,13 +61,13 @@
         
             
             <figure class="site-avatar">
-                <a href="/zh-tw">
+                <a href="/zh-tw/">
                 
                     
                     
                     
                         
-                        <img src="/avatar_hudf307f7ba2d9addd8a436e1972aff141_453473_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
                             height="306" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -101,7 +101,7 @@
             
                 <li>
                     <a 
-                        href='https://www.linkedin.com/in/shawn-hong-24ba3a264'
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
                         target="_blank"
                         title="Linkedin"
                         rel="me"
@@ -210,9 +210,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="http://shawn1251.github.io/" >English</option>
-                        
                             <option value="http://shawn1251.github.io/zh-tw/" selected>繁體中文</option>
+                        
+                            <option value="http://shawn1251.github.io/" >English</option>
                         
                     </select>
                 </li>
@@ -427,11 +427,11 @@
     
     <section class="article-tags">
         
-            <a href="/zh-tw/tags/vm/">vm</a>
+            <a href="/zh-tw/tags/vm/">Vm</a>
         
-            <a href="/zh-tw/tags/vagrant/">vagrant</a>
+            <a href="/zh-tw/tags/vagrant/">Vagrant</a>
         
-            <a href="/zh-tw/tags/devops/">devops</a>
+            <a href="/zh-tw/tags/devops/">Devops</a>
         
     </section>
 
@@ -527,7 +527,9 @@
     <section class="copyright">
         &copy; 
         
-        2023 Shawn&#39;s Note
+            2023 - 
+        
+        2024 Shawn&#39;s Note
     </section>
     
     <section class="powerby">
