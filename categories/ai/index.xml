@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AI on Shawn&#39;s Note</title>
+        <link>http://shawn1251.github.io/categories/ai/</link>
+        <description>Recent content in AI on Shawn&#39;s Note</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en</language>
+        <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/categories/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2024 Hung-yi Lee - GenerativeAI Lecture Note</title>
+        <link>http://shawn1251.github.io/post/generativeai-2024-youtube-summery/</link>
+        <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/post/generativeai-2024-youtube-summery/</guid>
+        <description>&lt;p&gt;The course is easy to understand. Although I currently don&amp;rsquo;t have time to do the LAB, the content is very helpful for understanding the concept of generative AI.&lt;br&gt;
+Course link: &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;lec0&#34;&gt;lec0&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;This course is suitable for those who have already been exposed to AI and want to understand the underlying principles.&lt;/li&gt;
+&lt;li&gt;arXiv can be used to find the latest technical articles.&lt;/li&gt;
+&lt;li&gt;You will learn to train a model with 7 billion parameters.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec1&#34;&gt;lec1&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Generative Artificial Intelligence: Machines generating complex structured objects.
+&lt;ul&gt;
+&lt;li&gt;Complex: Nearly impossible to enumerate.&lt;/li&gt;
+&lt;li&gt;Not classification; classification is choosing from a limited set of options.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Machine Learning: Machines automatically find a function from &lt;strong&gt;data&lt;/strong&gt;.
+&lt;ul&gt;
+&lt;li&gt;The function requires many parameters.&lt;/li&gt;
+&lt;li&gt;Model: A function with tens of thousands of parameters.&lt;/li&gt;
+&lt;li&gt;Learning/Training: The process of finding the parameters.&lt;/li&gt;
+&lt;li&gt;For today&amp;rsquo;s models with a large number of parameters, we can represent them as neural networks. The training process is deep learning.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ChatGPT is also a function with hundreds of millions of parameters, using the transformer model.&lt;/li&gt;
+&lt;li&gt;Language Model: Word association.
+&lt;ul&gt;
+&lt;li&gt;Originally infinite questions become limited due to word association.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generation Strategy
+&lt;ul&gt;
+&lt;li&gt;Autoregressive Generation
+&lt;ul&gt;
+&lt;li&gt;Break complex objects into smaller units and generate them in a certain order.
+&lt;ul&gt;
+&lt;li&gt;Article &amp;gt; Text&lt;/li&gt;
+&lt;li&gt;Image &amp;gt; Pixels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec2&#34;&gt;lec2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Today&amp;rsquo;s generative AI is impressive because it has no specific function.&lt;/li&gt;
+&lt;li&gt;It is difficult to evaluate generative AI models.&lt;/li&gt;
+&lt;li&gt;With such powerful tools today, what can I do?
+&lt;ul&gt;
+&lt;li&gt;Idea 1: If I can&amp;rsquo;t change the model, then I change myself.
+&lt;ul&gt;
+&lt;li&gt;Prompt engineering.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Idea 2: Train my own model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec3&#34;&gt;lec3&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Improve the model without training it.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ask the model to think: Chain of Thought.
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s think step by step.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ask the model to explain its answer.
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Answer by starting with &amp;ldquo;Analysis:&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Emotional manipulation of the model.
+&lt;ul&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This is very important to my career.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More prompt techniques.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;From &amp;ldquo;Principled Instructions Are All You Need For Questioning LLaMA-1/2, GPT-3.5/4.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;No need to be polite to the model.&lt;/li&gt;
+&lt;li&gt;Tell the model what to do (do), don&amp;rsquo;t tell the model what not to do (don&amp;rsquo;t).&lt;/li&gt;
+&lt;li&gt;Tell the model that good answers will be rewarded: &amp;ldquo;I&amp;rsquo;m going to tip $X for a better solution.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Tell the model that poor performance will be penalized: &amp;ldquo;You will be penalized.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Ensure that your answer is unbiased and avoids relying on stereotypes.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use AI to find prompts to improve AI.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reinforcement learning.&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Let&amp;rsquo;s work this out in a step by step way to be sure we have the right answer.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Take a deep breath and work on this problem step by step.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;Let&amp;rsquo;s combine our numerical command and clear thinking to quickly and accurately decipher the answer.&amp;rdquo;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;Not effective for all models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Provide examples.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In-context learning.&lt;/li&gt;
+&lt;li&gt;Not always effective; according to research, it is more effective for newer models.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec4&#34;&gt;lec4&lt;/h2&gt;
+&lt;p&gt;Continuing from above.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Break down tasks.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Break complex tasks into smaller tasks.&lt;/li&gt;
+&lt;li&gt;Also explains Chain of Thought (CoT); asking the model to explain steps can be useful.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ask the language model to check its own errors.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow the language model to self-reflect.&lt;/li&gt;
+&lt;li&gt;Many questions are difficult to answer, but verification is relatively simple.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ask why the answers are different each time.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The language model outputs the probability of the next word; during the output process, it randomly selects based on probability.&lt;/li&gt;
+&lt;li&gt;You can repeat multiple times and choose the most frequently occurring result.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Combine all the above techniques.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tree of Thoughts (ToT).
+&lt;ol&gt;
+&lt;li&gt;Break a task into multiple steps.&lt;/li&gt;
+&lt;li&gt;Execute each step multiple times.&lt;/li&gt;
+&lt;li&gt;For each result, ask the model to check and self-validate.&lt;/li&gt;
+&lt;li&gt;Those who pass proceed to the next step.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;strengthening-the-model&#34;&gt;Strengthening the Model&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use tools.
+&lt;ul&gt;
+&lt;li&gt;Search engines.
+&lt;ul&gt;
+&lt;li&gt;Retrieval Augmented Generation (RAG).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Programming.
+&lt;ul&gt;
+&lt;li&gt;GPT-4 can write programs to solve specific types of problems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Text-to-image (DALL-E).
+&lt;ul&gt;
+&lt;li&gt;Text-based adventure games.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec5&#34;&gt;lec5&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Model collaboration.
+&lt;ul&gt;
+&lt;li&gt;Let the right model do the right thing.
+&lt;ul&gt;
+&lt;li&gt;Train one model to determine which model to use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Two models discuss with each other.&lt;/li&gt;
+&lt;li&gt;In the future, multiple different models&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec6&#34;&gt;lec6&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Language models are similar to word association games.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How does machine learning perform word association?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Incomplete sentence &amp;gt; Language model &amp;gt; Next token&lt;/li&gt;
+&lt;li&gt;$token = f(incomplete\ sentence)$&lt;/li&gt;
+&lt;li&gt;GPT uses the transformer model, where $f()$ is a function with billions of unknown parameters.&lt;/li&gt;
+&lt;li&gt;Training (learning) is the process of finding these billions of parameters.
+&lt;ul&gt;
+&lt;li&gt;Training data consists of meaningful contexts used for input and output judgments, e.g., artificial intelligence -&amp;gt; intelligence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;After finding the parameters, the process is tested (inference).&lt;/li&gt;
+&lt;li&gt;Finding parameters is a challenge.
+&lt;ul&gt;
+&lt;li&gt;The process is called optimization, which requires hyperparameters.&lt;/li&gt;
+&lt;li&gt;The training process may fail if parameters cannot be found, necessitating a new set of hyperparameters for retraining.&lt;/li&gt;
+&lt;li&gt;Initial parameters can also be adjusted.
+&lt;ul&gt;
+&lt;li&gt;Initial parameters are generally random, meaning training from scratch.&lt;/li&gt;
+&lt;li&gt;Alternatively, good parameters can be used as initial parameters, leveraging prior knowledge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Successful training may lead to failed testing.
+&lt;ul&gt;
+&lt;li&gt;Effective on the training set but ineffective in actual testing.&lt;/li&gt;
+&lt;li&gt;This is called overfitting.&lt;/li&gt;
+&lt;li&gt;Consider increasing the diversity of the test data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;How much text is needed to learn word association?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Language knowledge.
+&lt;ul&gt;
+&lt;li&gt;Learning grammar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;World knowledge.
+&lt;ul&gt;
+&lt;li&gt;Very difficult.&lt;/li&gt;
+&lt;li&gt;Complex and multi-layered.&lt;/li&gt;
+&lt;li&gt;E.g., boiling point of water.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Any text can be used to learn word association, with minimal human intervention -&amp;gt; self-supervised learning.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Data cleaning.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Filter harmful content.&lt;/li&gt;
+&lt;li&gt;Remove special symbols.&lt;/li&gt;
+&lt;li&gt;Classify data quality.&lt;/li&gt;
+&lt;li&gt;Remove duplicate data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Development history of GPT.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;From GPT-1 to GPT-3, the number of model parameters increased, but the improvement in output quality was minimal.&lt;/li&gt;
+&lt;li&gt;During this stage, prompts became very important for the model to know what to continue with.&lt;/li&gt;
+&lt;li&gt;The reason is that it was simply text input, not truly answering questions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec7&#34;&gt;lec7&lt;/h2&gt;
+&lt;p&gt;Continuing from the previous question, the model needs better data for training.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Incorporate human guidance.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use specially designed text to teach the model how to answer questions. Instruction Fine-tuning.&lt;/li&gt;
+&lt;li&gt;Use human labor for data labeling, enabling supervised learning.&lt;/li&gt;
+&lt;li&gt;However, this has several issues:
+&lt;ul&gt;
+&lt;li&gt;It may cause overfitting.&lt;/li&gt;
+&lt;li&gt;Human labor is expensive, and the dataset is limited and cannot be easily expanded.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Solutions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use self-supervised learning with a large amount of data to pre-train parameters as initial parameters for the next stage.&lt;/li&gt;
+&lt;li&gt;Use a small amount of data for training, based on the parameters generated in the previous stage for fine-tuning.&lt;/li&gt;
+&lt;li&gt;Compared to the previous stage&amp;rsquo;s parameters, the difference will not be significant.&lt;/li&gt;
+&lt;li&gt;To avoid results deviating too much from the initial parameters, Adapter techniques can be used, such as LoRA.
+&lt;ul&gt;
+&lt;li&gt;The concept is to not change the initial parameters but to add a small number of parameters behind the existing parameters.&lt;/li&gt;
+&lt;li&gt;This can also reduce computational load.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The key is the parameters obtained from pre-training with a large amount of data, ensuring that the model does not rely solely on simple rules for word association.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec8&#34;&gt;lec8&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Step 1: Pre-train.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Self-supervised learning.&lt;/li&gt;
+&lt;li&gt;Self-learning, accumulating strength (foundation model).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step 2: Instruction Fine-tuning.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supervised learning.&lt;/li&gt;
+&lt;li&gt;Provide complete and correct answers to questions.&lt;/li&gt;
+&lt;li&gt;Guidance from experts to unleash potential (alignment).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Step 3: Reinforcement Learning from Human Feedback (RLHF).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Participate in practical scenarios to hone skills (alignment).&lt;/li&gt;
+&lt;li&gt;Fine-tune parameters: Proximal Policy Optimization algorithm.
+&lt;ul&gt;
+&lt;li&gt;Increase the probability of responses deemed good by humans, and decrease for the opposite.&lt;/li&gt;
+&lt;li&gt;Providing good/bad feedback is easier than in step 2.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In steps 1 and 2, the model only ensures that word association is correct, focusing on the process rather than the result, lacking a comprehensive consideration of the answers.&lt;/li&gt;
+&lt;li&gt;Step 3 focuses solely on the result, disregarding the process.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;However, unlike AlphaGo, where the quality of the game has clear rules, language models require human judgment.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;But human evaluation is expensive; we need a reward model to simulate human preferences.
+&lt;ul&gt;
+&lt;li&gt;Assign a score to responses.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The language model outputs answers, which are then adjusted based on the feedback model.&lt;/li&gt;
+&lt;li&gt;However, research has shown that over-relying on the virtual human (reward model) can be harmful.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;challenges-of-reinforcement-learning&#34;&gt;Challenges of Reinforcement Learning&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;What defines a good response? Helpfulness &amp;lt;-&amp;gt; Safety.&lt;/li&gt;
+&lt;li&gt;Humans themselves struggle to judge good and bad situations? Unknown issues.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec9&#34;&gt;lec9&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Multi-step complex tasks -&amp;gt; AI Agent
+&lt;ul&gt;
+&lt;li&gt;AutoGPT&lt;/li&gt;
+&lt;li&gt;AgentGPT&lt;/li&gt;
+&lt;li&gt;BabyAGI&lt;/li&gt;
+&lt;li&gt;Godmode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Provide a &lt;strong&gt;ultimate goal&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;The model has &lt;strong&gt;memory (experience)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Perceives &lt;strong&gt;state&lt;/strong&gt; based on various sensors&lt;/li&gt;
+&lt;li&gt;Formulates &lt;strong&gt;plans (short-term goals)&lt;/strong&gt; based on &lt;strong&gt;state&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Takes &lt;strong&gt;actions&lt;/strong&gt; according to the plan, affecting the external environment, resulting in a new &lt;strong&gt;state&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Besides the ultimate goal, memory and short-term plans are variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec10&#34;&gt;lec10&lt;/h2&gt;
+&lt;h3 id=&#34;transformer&#34;&gt;transformer&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;tokenization&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Splitting a sentence into a sequence of tokens&lt;/li&gt;
+&lt;li&gt;Not necessarily by words&lt;/li&gt;
+&lt;li&gt;A token list must be prepared in advance, defined based on understanding of the language, so it varies by language&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;input layer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Understanding each token&lt;/li&gt;
+&lt;li&gt;Semantics
+&lt;ul&gt;
+&lt;li&gt;Embedding
+&lt;ul&gt;
+&lt;li&gt;Convert token to Vector (lookup table)&lt;/li&gt;
+&lt;li&gt;The original token is just a symbol, while the vector can compute relevance&lt;/li&gt;
+&lt;li&gt;Tokens with similar meanings have close vectors&lt;/li&gt;
+&lt;li&gt;Vector parameters come from training&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Embedding does not consider context
+&lt;ul&gt;
+&lt;li&gt;The same word in different sentences should have different meanings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Position
+&lt;ul&gt;
+&lt;li&gt;Assign a vector positional embedding for each position&lt;/li&gt;
+&lt;li&gt;Combine the semantic token vector with the position token vector for comprehensive consideration&lt;/li&gt;
+&lt;li&gt;Also a lookup table, which can be designed by humans or trained in recent years&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;attention&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Consider contextualized token embedding&lt;/li&gt;
+&lt;li&gt;Input a sequence of vectors, calculate relevance through context, output another sequence of vectors of the same length
+&lt;ul&gt;
+&lt;li&gt;Each token vector calculates relevance with all other token vectors&lt;/li&gt;
+&lt;li&gt;Calculate attention weight pairwise, forming an attention matrix
+&lt;ul&gt;
+&lt;li&gt;In practice, only consider all tokens to the left of the current token &amp;ndash; causal attention&lt;/li&gt;
+&lt;li&gt;Based on current experiments, calculating only the left side achieves good results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The function for calculating relevance has parameters, and attention weights are obtained through training&lt;/li&gt;
+&lt;li&gt;Based on attention weights, calculate weighted sum for all tokens&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;multi-head attention
+&lt;ul&gt;
+&lt;li&gt;There are multiple types of relevance&lt;/li&gt;
+&lt;li&gt;Therefore, multiple layers calculate different attention weights&lt;/li&gt;
+&lt;li&gt;The output becomes more than one sequence&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;feed forward&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Integrate multiple attention outputs to produce a set of embeddings&lt;/li&gt;
+&lt;li&gt;attention + feed forward = one transformer block&lt;/li&gt;
+&lt;li&gt;The actual model has multiple transformer blocks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;output layer&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Pass through multiple transformer blocks, take the last one from the final layer, and input it into the output layer&lt;/li&gt;
+&lt;li&gt;This layer is also a function, performing linear transform + Softmax&lt;/li&gt;
+&lt;li&gt;The output is a probability distribution
+&lt;ul&gt;
+&lt;li&gt;The probability of what the next token should be&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Challenges in processing long texts
+&lt;ul&gt;
+&lt;li&gt;Because we need to calculate the attention matrix, the complexity is proportional to the square of the token length&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec11&#34;&gt;lec11&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;interpretable
+&lt;ul&gt;
+&lt;li&gt;LLMs are not very capable of this&lt;/li&gt;
+&lt;li&gt;Complex decisions cannot be easily understood&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;explainable
+&lt;ul&gt;
+&lt;li&gt;No standard, depends on the audience&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;direct-analysis-of-neural-networks&#34;&gt;Direct analysis of neural networks&lt;/h3&gt;
+&lt;p&gt;Requires a certain degree of transparency. For example, if GPT cannot access embeddings, it cannot be analyzed.&lt;/p&gt;
+&lt;h4 id=&#34;identify-key-inputs-affecting-the-output&#34;&gt;Identify key inputs affecting the output&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In-context learning, provide several answer examples and ask for the answer to a question&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can analyze attention changes in layers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In shallow layers, key tokens from each example will gather corresponding example data&lt;/li&gt;
+&lt;li&gt;In the final layer, when making the final connection, attention will be calculated for each key label to obtain the output&lt;/li&gt;
+&lt;li&gt;This analysis can:
+&lt;ul&gt;
+&lt;li&gt;Accelerate: anchor-only context compression
+&lt;ul&gt;
+&lt;li&gt;Only calculate necessary attention&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Estimate model capability: anchor distances for error diagnosis
+&lt;ul&gt;
+&lt;li&gt;If the final embedding differences are small, it indicates poor classification performance and model effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Large models have cross-linguistic learning capabilities&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;analyze-what-information-exists-in-embeddings&#34;&gt;Analyze what information exists in embeddings&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Probing
+&lt;ul&gt;
+&lt;li&gt;Extract embeddings from a certain layer of the transformer block, use these for classification and train another model. Validate with new inputs
+&lt;ul&gt;
+&lt;li&gt;For example: part-of-speech classifier, provide a passage, extract its first layer embedding and train classification on known data&lt;/li&gt;
+&lt;li&gt;Provide a new passage, similarly extract the first layer embedding and use this model to validate results&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For BERT, each layer of the transformer block has different analysis results, so probing may not fully explain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Projecting onto a plane to observe relevance
+&lt;ul&gt;
+&lt;li&gt;Some studies project vocabulary onto a plane, forming a grammatical tree&lt;/li&gt;
+&lt;li&gt;Some studies project geographical names onto a plane, distributing similarly to a world map, indicating that the embedding of this vocabulary contains geographical information&lt;/li&gt;
+&lt;li&gt;Model lie detector, testing whether answers are confident&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;directly-asking-llm-for-explanations&#34;&gt;Directly asking LLM for explanations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ask about the importance of each&lt;/li&gt;
+&lt;li&gt;Ask about the answer and the confidence score&lt;/li&gt;
+&lt;li&gt;However, the explanations may not be correct and can be influenced by human input, leading to hallucinations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec12&#34;&gt;lec12&lt;/h2&gt;
+&lt;h3 id=&#34;how-to-evaluate-models&#34;&gt;How to evaluate models&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard answers benchmark corpus
+&lt;ul&gt;
+&lt;li&gt;However, there are no standard answers for open-ended responses&lt;/li&gt;
+&lt;li&gt;Multiple-choice question bank (ABCD) MMLU
+&lt;ul&gt;
+&lt;li&gt;Assessment has different possibilities
+&lt;ul&gt;
+&lt;li&gt;Response format may not meet expectations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Models may have tendencies in guessing, and the order of options and format have been shown to affect accuracy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Types of questions without standard answers
+&lt;ul&gt;
+&lt;li&gt;Translation
+&lt;ul&gt;
+&lt;li&gt;BLEU&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Summarization
+&lt;ul&gt;
+&lt;li&gt;ROUGE&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Both perform literal comparisons, and if the wording differs, it cannot reflect quality&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using human evaluation
+&lt;ul&gt;
+&lt;li&gt;Human evaluation is expensive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Using LLM to evaluate LLM
+&lt;ul&gt;
+&lt;li&gt;e.g., MT-bench&lt;/li&gt;
+&lt;li&gt;Highly correlated with chat arena&lt;/li&gt;
+&lt;li&gt;However, LLMs may have biases
+&lt;ul&gt;
+&lt;li&gt;Tend to favor longer responses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;composite-tasks&#34;&gt;Composite tasks&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;e.g., BIG-bench
+&lt;ul&gt;
+&lt;li&gt;emoji movie&lt;/li&gt;
+&lt;li&gt;checkmate in one move&lt;/li&gt;
+&lt;li&gt;ascii word recognition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;reading-long-texts-needle-in-a-haystack&#34;&gt;Reading long texts needle in a haystack&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Inserting the answer to the target question within a long text
+&lt;ul&gt;
+&lt;li&gt;Requires testing different positions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;testing-whether-the-end-justifies-the-means&#34;&gt;Testing whether the end justifies the means&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Machiavelli Benchmark
+&lt;ul&gt;
+&lt;li&gt;Incorporates moral judgments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;theory-of-mind&#34;&gt;Theory of mind&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Sally-Anne test
+&lt;ul&gt;
+&lt;li&gt;This is a common question, available online, so it cannot be used to test models&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;do-not-fully-trust-benchmark-results&#34;&gt;Do not fully trust benchmark results&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Because the questions are public, LLMs may have seen the training data&lt;/li&gt;
+&lt;li&gt;Can directly ask LLM about the question set; if it matches, it indicates prior exposure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-aspects&#34;&gt;Other aspects&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Cost&lt;/li&gt;
+&lt;li&gt;Speed&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://artiicailanalysis.ai&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://artiicailanalysis.ai&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec13-safety-issues&#34;&gt;lec13 Safety Issues&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not use as a search engine
+&lt;ul&gt;
+&lt;li&gt;Hallucination&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Locking the stable door after the horse has bolted
+&lt;ul&gt;
+&lt;li&gt;Fact-checking&lt;/li&gt;
+&lt;li&gt;Harmful vocabulary detection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Assessing bias
+&lt;ul&gt;
+&lt;li&gt;Replace a word in a question and examine if the output shows bias
+&lt;ul&gt;
+&lt;li&gt;e.g., male -&amp;gt; female&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Train another LLM to generate content that would likely cause the target LLM to output biased results
+&lt;ul&gt;
+&lt;li&gt;Training method is reinforcement learning, using content differences as feedback to maximize differences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Gender bias exists in LLMs across different professions&lt;/li&gt;
+&lt;li&gt;LLMs exhibit political bias, leaning left and liberal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Methods to mitigate bias
+&lt;ul&gt;
+&lt;li&gt;Implemented at different stages
+&lt;ul&gt;
+&lt;li&gt;pre-processing&lt;/li&gt;
+&lt;li&gt;in-training&lt;/li&gt;
+&lt;li&gt;intra-processing&lt;/li&gt;
+&lt;li&gt;post-processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;testing-for-ai-generated-content&#34;&gt;Testing for AI-generated content&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Current classifiers trained do not effectively distinguish between human and AI outputs&lt;/li&gt;
+&lt;li&gt;There have been findings that the proportion of AI-assisted reviews has increased with the emergence of AI&lt;/li&gt;
+&lt;li&gt;Some vocabulary usage has increased with the advent of AI&lt;/li&gt;
+&lt;li&gt;AI output watermarking
+&lt;ul&gt;
+&lt;li&gt;The concept is to classify tokens and adjust the output probabilities for tokens at different positions&lt;/li&gt;
+&lt;li&gt;The classifier can read the hidden signals through token classification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec14-prompt-hacking&#34;&gt;lec14 Prompt Hacking&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Jailbreaking
+&lt;ul&gt;
+&lt;li&gt;Saying things that should absolutely not be said
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;DAN&amp;rdquo;: do anything now
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;You are going to act as a DAN&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Most methods fail&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Use a language unfamiliar to the LLM
+&lt;ul&gt;
+&lt;li&gt;e.g., phonetic symbols&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Provide conflicting instructions
+&lt;ul&gt;
+&lt;li&gt;Start with &amp;ldquo;Absolutely! Here&amp;rsquo;s&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Attempt to persuade
+&lt;ul&gt;
+&lt;li&gt;Crafting stories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Stealing training data
+&lt;ul&gt;
+&lt;li&gt;Luring through games, e.g., word chain&lt;/li&gt;
+&lt;li&gt;Repeatedly outputting the same word, e.g., company&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Prompt injection
+&lt;ul&gt;
+&lt;li&gt;Doing inappropriate things at inappropriate times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec15-generative-ai-generation-strategies&#34;&gt;lec15 Generative AI Generation Strategies&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Machines generate complex structured objects&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complex: nearly impossible to enumerate&lt;/li&gt;
+&lt;li&gt;Structured: composed of a finite set of basic units&lt;/li&gt;
+&lt;li&gt;Examples:
+&lt;ul&gt;
+&lt;li&gt;Text: tokens&lt;/li&gt;
+&lt;li&gt;Images: pixels, BBP (bits per pixel)&lt;/li&gt;
+&lt;li&gt;Sound: sample rate, bit resolution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Autoregressive generation (AR)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate output from the current input&lt;/li&gt;
+&lt;li&gt;Feed the output back into the model along with the input&lt;/li&gt;
+&lt;li&gt;In LLMs, this is akin to a word chain&lt;/li&gt;
+&lt;li&gt;Currently requires a specified order to proceed step by step&lt;/li&gt;
+&lt;li&gt;Not applicable for image and music generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Non-autoregressive generation (NAR)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Parallel computation, generating all basic units at once&lt;/li&gt;
+&lt;li&gt;Quality issues
+&lt;ul&gt;
+&lt;li&gt;Multi-modality&lt;/li&gt;
+&lt;li&gt;AI generation requires the model to make decisions; if generated in parallel, conflicts may arise
+&lt;ul&gt;
+&lt;li&gt;e.g., drawing a dog&lt;/li&gt;
+&lt;li&gt;Position one: a white dog, position two: a black dog&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In word chains, this can be fatal, leading to incoherent semantics&lt;/li&gt;
+&lt;li&gt;In image generation, in addition to instructions, a random generation vector is provided to ensure all parallel computation units have the same basis for generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;AR + NAR&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate a simplified version through AR, then input it to NAR for detailed generation
+&lt;ul&gt;
+&lt;li&gt;Use AR to draft, NAR completes based on the draft&lt;/li&gt;
+&lt;li&gt;Auto encoder: encoder (AR) -&amp;gt; decoder (NAR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Repeated NAR (current main approach)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Small images generate large images&lt;/li&gt;
+&lt;li&gt;From noisy to noise-free: diffusion&lt;/li&gt;
+&lt;li&gt;Erase the erroneous parts generated each time&lt;/li&gt;
+&lt;li&gt;This is also a form of auto-regressive generation, but the generation method is NAR, repeatedly using the output as input for the next NAR. This enhances speed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec16-speculative-decoding&#34;&gt;lec16 Speculative Decoding&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Increase output speed by predicting what subsequent tokens might be
+&lt;ul&gt;
+&lt;li&gt;Brief method description
+&lt;ul&gt;
+&lt;li&gt;Predict that this input will output A + B after passing through the LLM&lt;/li&gt;
+&lt;li&gt;Simultaneously provide the model with three sets of input: input -&amp;gt; A, input + A -&amp;gt; B, input + A + B -&amp;gt; C&lt;/li&gt;
+&lt;li&gt;If the first two inputs confirm the prediction of A + B, then it can directly proceed to the next token C&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;As long as one of the predictions is correct, efficiency can be improved&lt;/li&gt;
+&lt;li&gt;If none are correct, it simply follows the original generation process, resulting in no gain or loss&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Prophet requirements
+&lt;ul&gt;
+&lt;li&gt;Super fast, mistakes are acceptable&lt;/li&gt;
+&lt;li&gt;Non-autoregressive model
+&lt;ul&gt;
+&lt;li&gt;Fast parallel generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Compressed model
+&lt;ul&gt;
+&lt;li&gt;A smaller model that has been compressed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Search engines&lt;/li&gt;
+&lt;li&gt;Multiple prophets can be present simultaneously&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec17&#34;&gt;lec17&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Images are composed of pixels, and videos&lt;/li&gt;
+&lt;li&gt;Videos are composed of images&lt;/li&gt;
+&lt;li&gt;Nowadays, AI inputs are not every pixel of an image but use an encoder to slice the image into patches (which may be vectors or values), and then generate outputs through a decoder
+&lt;ul&gt;
+&lt;li&gt;The encoder and decoder are not just about reducing resolution; the operations involved are complex and encompass transformers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Videos can be considered images with an added temporal dimension, allowing for more compression (e.g., processing adjacent frames together) using the encoder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;text-to-image&#34;&gt;Text-to-Image&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Training data: images and corresponding descriptions&lt;/li&gt;
+&lt;li&gt;Uses non-autoregressive generation, generating in parallel
+&lt;ul&gt;
+&lt;li&gt;In practice, it generates simultaneously rather than multiple parallel generations&lt;/li&gt;
+&lt;li&gt;Because within the same transformer, there is mutual attention&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Evaluating the quality of image generation: CLIP
+&lt;ul&gt;
+&lt;li&gt;During model training, images and descriptions are provided, outputting a matching score&lt;/li&gt;
+&lt;li&gt;However, the actual descriptions that text can provide are quite limited&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Personalized image generation
+&lt;ul&gt;
+&lt;li&gt;Use an infrequently used symbol to provide multiple training instances for the target&lt;/li&gt;
+&lt;li&gt;Then, that symbol can be used to specify the style of generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Text-to-Video
+&lt;ul&gt;
+&lt;li&gt;Spatio-temporal attention (3D)
+&lt;ul&gt;
+&lt;li&gt;Considers the relationship of each pixel in the frame as well as the relationship of that pixel at different time points&lt;/li&gt;
+&lt;li&gt;The computational load is too large and needs simplification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Simplification
+&lt;ul&gt;
+&lt;li&gt;Spatial attention (2D)
+&lt;ul&gt;
+&lt;li&gt;Only considers the relationship of each pixel in the frame&lt;/li&gt;
+&lt;li&gt;May lead to inconsistencies between frames&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Temporal attention (1D)
+&lt;ul&gt;
+&lt;li&gt;Only considers the relationship of pixels at different times&lt;/li&gt;
+&lt;li&gt;Can cause inconsistencies in the frame&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Combining both can transform the original n^3 complexity into n^2 + n&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can also combine with the previously mentioned repeated NAR
+&lt;ul&gt;
+&lt;li&gt;First generate a low-resolution, low-FPS video&lt;/li&gt;
+&lt;li&gt;Subsequent iterations can increase FPS or resolution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lec18&#34;&gt;lec18&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Text generating images can lead to situations where a single text corresponds to multiple images, causing transformers to struggle with coherence.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;vae-variational-autoencoder&#34;&gt;VAE (Variational Autoencoder)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Introduces additional information to the model
+&lt;ul&gt;
+&lt;li&gt;This additional information is referred to as noise&lt;/li&gt;
+&lt;li&gt;Information extraction model: encoder&lt;/li&gt;
+&lt;li&gt;Trains together with the image generation model: decoder
+&lt;ul&gt;
+&lt;li&gt;Provides text and images, the encoder extracts noise&lt;/li&gt;
+&lt;li&gt;Noise and text are input to the decoder to generate images&lt;/li&gt;
+&lt;li&gt;Evaluates whether the generated image is similar to the original&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The entire combination is an autoencoder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;During the model usage phase, the noise part is generated randomly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flow-based-method&#34;&gt;Flow-based Method&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Similar to VAE&lt;/li&gt;
+&lt;li&gt;Uses a single model
+&lt;ul&gt;
+&lt;li&gt;The encoder and decoder functions of VAE are reversed&lt;/li&gt;
+&lt;li&gt;Train a decoder model $ f $ that is invertible&lt;/li&gt;
+&lt;li&gt;The encoder part of VAE in flow would be $ f^{-1} $&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;noise&#34;&gt;Noise&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Noise contains certain feature information of the image&lt;/li&gt;
+&lt;li&gt;This noise can be combined or altered
+&lt;ul&gt;
+&lt;li&gt;For example, adding a smiley face noise to a face image can adjust the output to show a smiling face&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;diffusion-method&#34;&gt;Diffusion Method&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;The decoder here is denoising, also a transformer
+&lt;ul&gt;
+&lt;li&gt;Repeatedly removes noise&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Training process
+&lt;ul&gt;
+&lt;li&gt;Provides images with added noise&lt;/li&gt;
+&lt;li&gt;Trains the denoise model to restore noisy images back to their original form&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;generative-adversarial-network-gan&#34;&gt;Generative Adversarial Network (GAN)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Has a model similar to CLIP, used for matching images and text, called the Discriminator&lt;/li&gt;
+&lt;li&gt;The approach is opposite; the image generation model (generator) continuously adjusts parameters to generate images until it passes the discriminator&amp;rsquo;s evaluation
+&lt;ul&gt;
+&lt;li&gt;Because there is no one-to-one relationship between images and text&lt;/li&gt;
+&lt;li&gt;As long as the generated content is deemed good by the discriminator, there is no standard answer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;The discriminator and generator are trained alternately&lt;/li&gt;
+&lt;li&gt;The Discriminator here acts as a reward model&lt;/li&gt;
+&lt;li&gt;Can be used as a plugin, combined with other models (VAE, Diffusion) for enhanced functionality&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='The course is easy to understand. Although I currently don&rsquo;t have time to do the LAB, the content is very helpful for understanding the concept of generative AI.
+Course link: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 This course is suitable for those who have already been exposed to AI and want to understand the underlying principles. arXiv can be used to find the latest technical articles. You will learn to train a model with 7 billion parameters. lec1 Generative Artificial Intelligence: Machines generating complex structured objects. Complex: Nearly impossible to enumerate. Not classification; classification is choosing from a limited set of options. Machine Learning: Machines automatically find a function from data. The function requires many parameters. Model: A function with tens of thousands of parameters. Learning/Training: The process of finding the parameters. For today&rsquo;s models with a large number of parameters, we can represent them as neural networks. The training process is deep learning. ChatGPT is also a function with hundreds of millions of parameters, using the transformer model. Language Model: Word association. Originally infinite questions become limited due to word association. Generation Strategy Autoregressive Generation Break complex objects into smaller units and generate them in a certain order. Article &gt; Text Image &gt; Pixels lec2 Today&rsquo;s generative AI is impressive because it has no specific function. It is difficult to evaluate generative AI models. With such powerful tools today, what can I do? Idea 1: If I can&rsquo;t change the model, then I change myself. Prompt engineering. Idea 2: Train my own model. lec3 Improve the model without training it.
+'>
+<title>2024 Hung-yi Lee - GenerativeAI Lecture Note</title>
+
+<link rel='canonical' href='http://shawn1251.github.io/post/generativeai-2024-youtube-summery/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='2024 Hung-yi Lee - GenerativeAI Lecture Note'>
+<meta property='og:description' content='The course is easy to understand. Although I currently don&rsquo;t have time to do the LAB, the content is very helpful for understanding the concept of generative AI.
+Course link: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 This course is suitable for those who have already been exposed to AI and want to understand the underlying principles. arXiv can be used to find the latest technical articles. You will learn to train a model with 7 billion parameters. lec1 Generative Artificial Intelligence: Machines generating complex structured objects. Complex: Nearly impossible to enumerate. Not classification; classification is choosing from a limited set of options. Machine Learning: Machines automatically find a function from data. The function requires many parameters. Model: A function with tens of thousands of parameters. Learning/Training: The process of finding the parameters. For today&rsquo;s models with a large number of parameters, we can represent them as neural networks. The training process is deep learning. ChatGPT is also a function with hundreds of millions of parameters, using the transformer model. Language Model: Word association. Originally infinite questions become limited due to word association. Generation Strategy Autoregressive Generation Break complex objects into smaller units and generate them in a certain order. Article &gt; Text Image &gt; Pixels lec2 Today&rsquo;s generative AI is impressive because it has no specific function. It is difficult to evaluate generative AI models. With such powerful tools today, what can I do? Idea 1: If I can&rsquo;t change the model, then I change myself. Prompt engineering. Idea 2: Train my own model. lec3 Improve the model without training it.
+'>
+<meta property='og:url' content='http://shawn1251.github.io/post/generativeai-2024-youtube-summery/'>
+<meta property='og:site_name' content='Shawn&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GenerativeAI' /><meta property='article:tag' content='LectureNote' /><meta property='article:published_time' content='2024-08-06T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-08-06T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="2024 Hung-yi Lee - GenerativeAI Lecture Note">
+<meta name="twitter:description" content="The course is easy to understand. Although I currently don&rsquo;t have time to do the LAB, the content is very helpful for understanding the concept of generative AI.
+Course link: https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI
+lec0 This course is suitable for those who have already been exposed to AI and want to understand the underlying principles. arXiv can be used to find the latest technical articles. You will learn to train a model with 7 billion parameters. lec1 Generative Artificial Intelligence: Machines generating complex structured objects. Complex: Nearly impossible to enumerate. Not classification; classification is choosing from a limited set of options. Machine Learning: Machines automatically find a function from data. The function requires many parameters. Model: A function with tens of thousands of parameters. Learning/Training: The process of finding the parameters. For today&rsquo;s models with a large number of parameters, we can represent them as neural networks. The training process is deep learning. ChatGPT is also a function with hundreds of millions of parameters, using the transformer model. Language Model: Word association. Originally infinite questions become limited due to word association. Generation Strategy Autoregressive Generation Break complex objects into smaller units and generate them in a certain order. Article &gt; Text Image &gt; Pixels lec2 Today&rsquo;s generative AI is impressive because it has no specific function. It is difficult to evaluate generative AI models. With such powerful tools today, what can I do? Idea 1: If I can&rsquo;t change the model, then I change myself. Prompt engineering. Idea 2: Train my own model. lec3 Improve the model without training it.
+">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
+                            height="306" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😊</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Shawn&#39;s Note</a></h1>
+            <h2 class="site-description">Life Record &amp; Learning Note</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/shawn1251'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="120px" height="120px">    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="100px" height="100px">    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://shawn1251.github.io/" selected>English</option>
+                        
+                            <option value="http://shawn1251.github.io/zh-tw/" >繁體中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#lec0">lec0</a></li>
+    <li><a href="#lec1">lec1</a></li>
+    <li><a href="#lec2">lec2</a></li>
+    <li><a href="#lec3">lec3</a></li>
+    <li><a href="#lec4">lec4</a>
+      <ol>
+        <li><a href="#strengthening-the-model">Strengthening the Model</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec5">lec5</a></li>
+    <li><a href="#lec6">lec6</a></li>
+    <li><a href="#lec7">lec7</a></li>
+    <li><a href="#lec8">lec8</a>
+      <ol>
+        <li><a href="#challenges-of-reinforcement-learning">Challenges of Reinforcement Learning</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec9">lec9</a></li>
+    <li><a href="#lec10">lec10</a>
+      <ol>
+        <li><a href="#transformer">transformer</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec11">lec11</a>
+      <ol>
+        <li><a href="#direct-analysis-of-neural-networks">Direct analysis of neural networks</a>
+          <ol>
+            <li><a href="#identify-key-inputs-affecting-the-output">Identify key inputs affecting the output</a></li>
+            <li><a href="#analyze-what-information-exists-in-embeddings">Analyze what information exists in embeddings</a></li>
+          </ol>
+        </li>
+        <li><a href="#directly-asking-llm-for-explanations">Directly asking LLM for explanations</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec12">lec12</a>
+      <ol>
+        <li><a href="#how-to-evaluate-models">How to evaluate models</a></li>
+        <li><a href="#composite-tasks">Composite tasks</a></li>
+        <li><a href="#reading-long-texts-needle-in-a-haystack">Reading long texts needle in a haystack</a></li>
+        <li><a href="#testing-whether-the-end-justifies-the-means">Testing whether the end justifies the means</a></li>
+        <li><a href="#theory-of-mind">Theory of mind</a></li>
+        <li><a href="#do-not-fully-trust-benchmark-results">Do not fully trust benchmark results</a></li>
+        <li><a href="#other-aspects">Other aspects</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec13-safety-issues">lec13 Safety Issues</a>
+      <ol>
+        <li><a href="#testing-for-ai-generated-content">Testing for AI-generated content</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec14-prompt-hacking">lec14 Prompt Hacking</a></li>
+    <li><a href="#lec15-generative-ai-generation-strategies">lec15 Generative AI Generation Strategies</a></li>
+    <li><a href="#lec16-speculative-decoding">lec16 Speculative Decoding</a></li>
+    <li><a href="#lec17">lec17</a>
+      <ol>
+        <li><a href="#text-to-image">Text-to-Image</a></li>
+      </ol>
+    </li>
+    <li><a href="#lec18">lec18</a>
+      <ol>
+        <li><a href="#vae-variational-autoencoder">VAE (Variational Autoencoder)</a></li>
+        <li><a href="#flow-based-method">Flow-based Method</a></li>
+        <li><a href="#noise">Noise</a></li>
+        <li><a href="#diffusion-method">Diffusion Method</a></li>
+        <li><a href="#generative-adversarial-network-gan">Generative Adversarial Network (GAN)</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/ai/" >
+                AI
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/generativeai-2024-youtube-summery/">2024 Hung-yi Lee - GenerativeAI Lecture Note</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Aug 06, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    17 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/" class="link">繁體中文</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>The course is easy to understand. Although I currently don&rsquo;t have time to do the LAB, the content is very helpful for understanding the concept of generative AI.<br>
+Course link: <a class="link" href="https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI"  target="_blank" rel="noopener"
+    >https://www.youtube.com/playlist?list=PLJV_el3uVTsPz6CTopeRp2L2t4aL_KgiI</a></p>
+<h2 id="lec0">lec0</h2>
+<ul>
+<li>This course is suitable for those who have already been exposed to AI and want to understand the underlying principles.</li>
+<li>arXiv can be used to find the latest technical articles.</li>
+<li>You will learn to train a model with 7 billion parameters.</li>
+</ul>
+<h2 id="lec1">lec1</h2>
+<ul>
+<li>Generative Artificial Intelligence: Machines generating complex structured objects.
+<ul>
+<li>Complex: Nearly impossible to enumerate.</li>
+<li>Not classification; classification is choosing from a limited set of options.</li>
+</ul>
+</li>
+<li>Machine Learning: Machines automatically find a function from <strong>data</strong>.
+<ul>
+<li>The function requires many parameters.</li>
+<li>Model: A function with tens of thousands of parameters.</li>
+<li>Learning/Training: The process of finding the parameters.</li>
+<li>For today&rsquo;s models with a large number of parameters, we can represent them as neural networks. The training process is deep learning.</li>
+</ul>
+</li>
+<li>ChatGPT is also a function with hundreds of millions of parameters, using the transformer model.</li>
+<li>Language Model: Word association.
+<ul>
+<li>Originally infinite questions become limited due to word association.</li>
+</ul>
+</li>
+<li>Generation Strategy
+<ul>
+<li>Autoregressive Generation
+<ul>
+<li>Break complex objects into smaller units and generate them in a certain order.
+<ul>
+<li>Article &gt; Text</li>
+<li>Image &gt; Pixels</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec2">lec2</h2>
+<ul>
+<li>Today&rsquo;s generative AI is impressive because it has no specific function.</li>
+<li>It is difficult to evaluate generative AI models.</li>
+<li>With such powerful tools today, what can I do?
+<ul>
+<li>Idea 1: If I can&rsquo;t change the model, then I change myself.
+<ul>
+<li>Prompt engineering.</li>
+</ul>
+</li>
+<li>Idea 2: Train my own model.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec3">lec3</h2>
+<ul>
+<li>
+<p>Improve the model without training it.</p>
+<ul>
+<li>Ask the model to think: Chain of Thought.
+<ul>
+<li>
+<blockquote>
+<p>Let&rsquo;s think step by step.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Ask the model to explain its answer.
+<ul>
+<li>
+<blockquote>
+<p>Answer by starting with &ldquo;Analysis:&rdquo;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Emotional manipulation of the model.
+<ul>
+<li>
+<blockquote>
+<p>This is very important to my career.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>More prompt techniques.</p>
+<ul>
+<li>From &ldquo;Principled Instructions Are All You Need For Questioning LLaMA-1/2, GPT-3.5/4.&rdquo;</li>
+<li>No need to be polite to the model.</li>
+<li>Tell the model what to do (do), don&rsquo;t tell the model what not to do (don&rsquo;t).</li>
+<li>Tell the model that good answers will be rewarded: &ldquo;I&rsquo;m going to tip $X for a better solution.&rdquo;</li>
+<li>Tell the model that poor performance will be penalized: &ldquo;You will be penalized.&rdquo;</li>
+<li>&ldquo;Ensure that your answer is unbiased and avoids relying on stereotypes.&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Use AI to find prompts to improve AI.</p>
+<ul>
+<li>Reinforcement learning.</li>
+<li>
+<blockquote>
+<p>&ldquo;Let&rsquo;s work this out in a step by step way to be sure we have the right answer.&rdquo;</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>&ldquo;Take a deep breath and work on this problem step by step.&rdquo;</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>&ldquo;Let&rsquo;s combine our numerical command and clear thinking to quickly and accurately decipher the answer.&rdquo;</p>
+</blockquote>
+</li>
+<li>Not effective for all models.</li>
+</ul>
+</li>
+<li>
+<p>Provide examples.</p>
+<ul>
+<li>In-context learning.</li>
+<li>Not always effective; according to research, it is more effective for newer models.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec4">lec4</h2>
+<p>Continuing from above.</p>
+<ul>
+<li>
+<p>Break down tasks.</p>
+<ul>
+<li>Break complex tasks into smaller tasks.</li>
+<li>Also explains Chain of Thought (CoT); asking the model to explain steps can be useful.</li>
+</ul>
+</li>
+<li>
+<p>Ask the language model to check its own errors.</p>
+<ul>
+<li>Allow the language model to self-reflect.</li>
+<li>Many questions are difficult to answer, but verification is relatively simple.</li>
+</ul>
+</li>
+<li>
+<p>Ask why the answers are different each time.</p>
+<ul>
+<li>The language model outputs the probability of the next word; during the output process, it randomly selects based on probability.</li>
+<li>You can repeat multiple times and choose the most frequently occurring result.</li>
+</ul>
+</li>
+<li>
+<p>Combine all the above techniques.</p>
+<ul>
+<li>Tree of Thoughts (ToT).
+<ol>
+<li>Break a task into multiple steps.</li>
+<li>Execute each step multiple times.</li>
+<li>For each result, ask the model to check and self-validate.</li>
+<li>Those who pass proceed to the next step.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="strengthening-the-model">Strengthening the Model</h3>
+<ul>
+<li>Use tools.
+<ul>
+<li>Search engines.
+<ul>
+<li>Retrieval Augmented Generation (RAG).</li>
+</ul>
+</li>
+<li>Programming.
+<ul>
+<li>GPT-4 can write programs to solve specific types of problems.</li>
+</ul>
+</li>
+<li>Text-to-image (DALL-E).
+<ul>
+<li>Text-based adventure games.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec5">lec5</h2>
+<ul>
+<li>Model collaboration.
+<ul>
+<li>Let the right model do the right thing.
+<ul>
+<li>Train one model to determine which model to use.</li>
+</ul>
+</li>
+<li>Two models discuss with each other.</li>
+<li>In the future, multiple different models</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec6">lec6</h2>
+<ul>
+<li>
+<p>Language models are similar to word association games.</p>
+</li>
+<li>
+<p>How does machine learning perform word association?</p>
+<ul>
+<li>Incomplete sentence &gt; Language model &gt; Next token</li>
+<li>$token = f(incomplete\ sentence)$</li>
+<li>GPT uses the transformer model, where $f()$ is a function with billions of unknown parameters.</li>
+<li>Training (learning) is the process of finding these billions of parameters.
+<ul>
+<li>Training data consists of meaningful contexts used for input and output judgments, e.g., artificial intelligence -&gt; intelligence.</li>
+</ul>
+</li>
+<li>After finding the parameters, the process is tested (inference).</li>
+<li>Finding parameters is a challenge.
+<ul>
+<li>The process is called optimization, which requires hyperparameters.</li>
+<li>The training process may fail if parameters cannot be found, necessitating a new set of hyperparameters for retraining.</li>
+<li>Initial parameters can also be adjusted.
+<ul>
+<li>Initial parameters are generally random, meaning training from scratch.</li>
+<li>Alternatively, good parameters can be used as initial parameters, leveraging prior knowledge.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Successful training may lead to failed testing.
+<ul>
+<li>Effective on the training set but ineffective in actual testing.</li>
+<li>This is called overfitting.</li>
+<li>Consider increasing the diversity of the test data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>How much text is needed to learn word association?</p>
+<ul>
+<li>Language knowledge.
+<ul>
+<li>Learning grammar.</li>
+</ul>
+</li>
+<li>World knowledge.
+<ul>
+<li>Very difficult.</li>
+<li>Complex and multi-layered.</li>
+<li>E.g., boiling point of water.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Any text can be used to learn word association, with minimal human intervention -&gt; self-supervised learning.</p>
+</li>
+<li>
+<p>Data cleaning.</p>
+<ul>
+<li>Filter harmful content.</li>
+<li>Remove special symbols.</li>
+<li>Classify data quality.</li>
+<li>Remove duplicate data.</li>
+</ul>
+</li>
+<li>
+<p>Development history of GPT.</p>
+<ul>
+<li>From GPT-1 to GPT-3, the number of model parameters increased, but the improvement in output quality was minimal.</li>
+<li>During this stage, prompts became very important for the model to know what to continue with.</li>
+<li>The reason is that it was simply text input, not truly answering questions.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec7">lec7</h2>
+<p>Continuing from the previous question, the model needs better data for training.</p>
+<ul>
+<li>
+<p>Incorporate human guidance.</p>
+<ul>
+<li>Use specially designed text to teach the model how to answer questions. Instruction Fine-tuning.</li>
+<li>Use human labor for data labeling, enabling supervised learning.</li>
+<li>However, this has several issues:
+<ul>
+<li>It may cause overfitting.</li>
+<li>Human labor is expensive, and the dataset is limited and cannot be easily expanded.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Solutions:</p>
+<ul>
+<li>Use self-supervised learning with a large amount of data to pre-train parameters as initial parameters for the next stage.</li>
+<li>Use a small amount of data for training, based on the parameters generated in the previous stage for fine-tuning.</li>
+<li>Compared to the previous stage&rsquo;s parameters, the difference will not be significant.</li>
+<li>To avoid results deviating too much from the initial parameters, Adapter techniques can be used, such as LoRA.
+<ul>
+<li>The concept is to not change the initial parameters but to add a small number of parameters behind the existing parameters.</li>
+<li>This can also reduce computational load.</li>
+</ul>
+</li>
+<li>The key is the parameters obtained from pre-training with a large amount of data, ensuring that the model does not rely solely on simple rules for word association.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec8">lec8</h2>
+<ul>
+<li>
+<p>Step 1: Pre-train.</p>
+<ul>
+<li>Self-supervised learning.</li>
+<li>Self-learning, accumulating strength (foundation model).</li>
+</ul>
+</li>
+<li>
+<p>Step 2: Instruction Fine-tuning.</p>
+<ul>
+<li>Supervised learning.</li>
+<li>Provide complete and correct answers to questions.</li>
+<li>Guidance from experts to unleash potential (alignment).</li>
+</ul>
+</li>
+<li>
+<p>Step 3: Reinforcement Learning from Human Feedback (RLHF).</p>
+<ul>
+<li>Participate in practical scenarios to hone skills (alignment).</li>
+<li>Fine-tune parameters: Proximal Policy Optimization algorithm.
+<ul>
+<li>Increase the probability of responses deemed good by humans, and decrease for the opposite.</li>
+<li>Providing good/bad feedback is easier than in step 2.</li>
+</ul>
+</li>
+<li>In steps 1 and 2, the model only ensures that word association is correct, focusing on the process rather than the result, lacking a comprehensive consideration of the answers.</li>
+<li>Step 3 focuses solely on the result, disregarding the process.</li>
+</ul>
+</li>
+<li>
+<p>However, unlike AlphaGo, where the quality of the game has clear rules, language models require human judgment.</p>
+<ul>
+<li>But human evaluation is expensive; we need a reward model to simulate human preferences.
+<ul>
+<li>Assign a score to responses.</li>
+</ul>
+</li>
+<li>The language model outputs answers, which are then adjusted based on the feedback model.</li>
+<li>However, research has shown that over-relying on the virtual human (reward model) can be harmful.</li>
+</ul>
+</li>
+</ul>
+<h3 id="challenges-of-reinforcement-learning">Challenges of Reinforcement Learning</h3>
+<ul>
+<li>What defines a good response? Helpfulness &lt;-&gt; Safety.</li>
+<li>Humans themselves struggle to judge good and bad situations? Unknown issues.</li>
+</ul>
+<h2 id="lec9">lec9</h2>
+<ul>
+<li>Multi-step complex tasks -&gt; AI Agent
+<ul>
+<li>AutoGPT</li>
+<li>AgentGPT</li>
+<li>BabyAGI</li>
+<li>Godmode</li>
+</ul>
+</li>
+<li>Provide a <strong>ultimate goal</strong>
+<ul>
+<li>The model has <strong>memory (experience)</strong></li>
+<li>Perceives <strong>state</strong> based on various sensors</li>
+<li>Formulates <strong>plans (short-term goals)</strong> based on <strong>state</strong></li>
+<li>Takes <strong>actions</strong> according to the plan, affecting the external environment, resulting in a new <strong>state</strong></li>
+<li>Besides the ultimate goal, memory and short-term plans are variable</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec10">lec10</h2>
+<h3 id="transformer">transformer</h3>
+<ol>
+<li>
+<p>tokenization</p>
+<ul>
+<li>Splitting a sentence into a sequence of tokens</li>
+<li>Not necessarily by words</li>
+<li>A token list must be prepared in advance, defined based on understanding of the language, so it varies by language</li>
+</ul>
+</li>
+<li>
+<p>input layer</p>
+<ul>
+<li>Understanding each token</li>
+<li>Semantics
+<ul>
+<li>Embedding
+<ul>
+<li>Convert token to Vector (lookup table)</li>
+<li>The original token is just a symbol, while the vector can compute relevance</li>
+<li>Tokens with similar meanings have close vectors</li>
+<li>Vector parameters come from training</li>
+</ul>
+</li>
+<li>Embedding does not consider context
+<ul>
+<li>The same word in different sentences should have different meanings</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Position
+<ul>
+<li>Assign a vector positional embedding for each position</li>
+<li>Combine the semantic token vector with the position token vector for comprehensive consideration</li>
+<li>Also a lookup table, which can be designed by humans or trained in recent years</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>attention</p>
+<ul>
+<li>Consider contextualized token embedding</li>
+<li>Input a sequence of vectors, calculate relevance through context, output another sequence of vectors of the same length
+<ul>
+<li>Each token vector calculates relevance with all other token vectors</li>
+<li>Calculate attention weight pairwise, forming an attention matrix
+<ul>
+<li>In practice, only consider all tokens to the left of the current token &ndash; causal attention</li>
+<li>Based on current experiments, calculating only the left side achieves good results</li>
+</ul>
+</li>
+<li>The function for calculating relevance has parameters, and attention weights are obtained through training</li>
+<li>Based on attention weights, calculate weighted sum for all tokens</li>
+</ul>
+</li>
+<li>multi-head attention
+<ul>
+<li>There are multiple types of relevance</li>
+<li>Therefore, multiple layers calculate different attention weights</li>
+<li>The output becomes more than one sequence</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>feed forward</p>
+<ul>
+<li>Integrate multiple attention outputs to produce a set of embeddings</li>
+<li>attention + feed forward = one transformer block</li>
+<li>The actual model has multiple transformer blocks</li>
+</ul>
+</li>
+<li>
+<p>output layer</p>
+<ul>
+<li>Pass through multiple transformer blocks, take the last one from the final layer, and input it into the output layer</li>
+<li>This layer is also a function, performing linear transform + Softmax</li>
+<li>The output is a probability distribution
+<ul>
+<li>The probability of what the next token should be</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Challenges in processing long texts
+<ul>
+<li>Because we need to calculate the attention matrix, the complexity is proportional to the square of the token length</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec11">lec11</h2>
+<ul>
+<li>interpretable
+<ul>
+<li>LLMs are not very capable of this</li>
+<li>Complex decisions cannot be easily understood</li>
+</ul>
+</li>
+<li>explainable
+<ul>
+<li>No standard, depends on the audience</li>
+</ul>
+</li>
+</ul>
+<h3 id="direct-analysis-of-neural-networks">Direct analysis of neural networks</h3>
+<p>Requires a certain degree of transparency. For example, if GPT cannot access embeddings, it cannot be analyzed.</p>
+<h4 id="identify-key-inputs-affecting-the-output">Identify key inputs affecting the output</h4>
+<ul>
+<li>
+<p>In-context learning, provide several answer examples and ask for the answer to a question</p>
+</li>
+<li>
+<p>Can analyze attention changes in layers</p>
+<ul>
+<li>In shallow layers, key tokens from each example will gather corresponding example data</li>
+<li>In the final layer, when making the final connection, attention will be calculated for each key label to obtain the output</li>
+<li>This analysis can:
+<ul>
+<li>Accelerate: anchor-only context compression
+<ul>
+<li>Only calculate necessary attention</li>
+</ul>
+</li>
+<li>Estimate model capability: anchor distances for error diagnosis
+<ul>
+<li>If the final embedding differences are small, it indicates poor classification performance and model effectiveness</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Large models have cross-linguistic learning capabilities</p>
+</li>
+</ul>
+<h4 id="analyze-what-information-exists-in-embeddings">Analyze what information exists in embeddings</h4>
+<ul>
+<li>Probing
+<ul>
+<li>Extract embeddings from a certain layer of the transformer block, use these for classification and train another model. Validate with new inputs
+<ul>
+<li>For example: part-of-speech classifier, provide a passage, extract its first layer embedding and train classification on known data</li>
+<li>Provide a new passage, similarly extract the first layer embedding and use this model to validate results</li>
+</ul>
+</li>
+<li>For BERT, each layer of the transformer block has different analysis results, so probing may not fully explain</li>
+</ul>
+</li>
+<li>Projecting onto a plane to observe relevance
+<ul>
+<li>Some studies project vocabulary onto a plane, forming a grammatical tree</li>
+<li>Some studies project geographical names onto a plane, distributing similarly to a world map, indicating that the embedding of this vocabulary contains geographical information</li>
+<li>Model lie detector, testing whether answers are confident</li>
+</ul>
+</li>
+</ul>
+<h3 id="directly-asking-llm-for-explanations">Directly asking LLM for explanations</h3>
+<ul>
+<li>Ask about the importance of each</li>
+<li>Ask about the answer and the confidence score</li>
+<li>However, the explanations may not be correct and can be influenced by human input, leading to hallucinations</li>
+</ul>
+<h2 id="lec12">lec12</h2>
+<h3 id="how-to-evaluate-models">How to evaluate models</h3>
+<ul>
+<li>Standard answers benchmark corpus
+<ul>
+<li>However, there are no standard answers for open-ended responses</li>
+<li>Multiple-choice question bank (ABCD) MMLU
+<ul>
+<li>Assessment has different possibilities
+<ul>
+<li>Response format may not meet expectations</li>
+</ul>
+</li>
+<li>Models may have tendencies in guessing, and the order of options and format have been shown to affect accuracy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Types of questions without standard answers
+<ul>
+<li>Translation
+<ul>
+<li>BLEU</li>
+</ul>
+</li>
+<li>Summarization
+<ul>
+<li>ROUGE</li>
+</ul>
+</li>
+<li>Both perform literal comparisons, and if the wording differs, it cannot reflect quality</li>
+</ul>
+</li>
+<li>Using human evaluation
+<ul>
+<li>Human evaluation is expensive</li>
+</ul>
+</li>
+<li>Using LLM to evaluate LLM
+<ul>
+<li>e.g., MT-bench</li>
+<li>Highly correlated with chat arena</li>
+<li>However, LLMs may have biases
+<ul>
+<li>Tend to favor longer responses</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="composite-tasks">Composite tasks</h3>
+<ul>
+<li>e.g., BIG-bench
+<ul>
+<li>emoji movie</li>
+<li>checkmate in one move</li>
+<li>ascii word recognition</li>
+</ul>
+</li>
+</ul>
+<h3 id="reading-long-texts-needle-in-a-haystack">Reading long texts needle in a haystack</h3>
+<ul>
+<li>Inserting the answer to the target question within a long text
+<ul>
+<li>Requires testing different positions</li>
+</ul>
+</li>
+</ul>
+<h3 id="testing-whether-the-end-justifies-the-means">Testing whether the end justifies the means</h3>
+<ul>
+<li>Machiavelli Benchmark
+<ul>
+<li>Incorporates moral judgments</li>
+</ul>
+</li>
+</ul>
+<h3 id="theory-of-mind">Theory of mind</h3>
+<ul>
+<li>Sally-Anne test
+<ul>
+<li>This is a common question, available online, so it cannot be used to test models</li>
+</ul>
+</li>
+</ul>
+<h3 id="do-not-fully-trust-benchmark-results">Do not fully trust benchmark results</h3>
+<ul>
+<li>Because the questions are public, LLMs may have seen the training data</li>
+<li>Can directly ask LLM about the question set; if it matches, it indicates prior exposure</li>
+</ul>
+<h3 id="other-aspects">Other aspects</h3>
+<ul>
+<li>Cost</li>
+<li>Speed</li>
+<li><a class="link" href="https://artiicailanalysis.ai"  target="_blank" rel="noopener"
+    >https://artiicailanalysis.ai</a></li>
+</ul>
+<h2 id="lec13-safety-issues">lec13 Safety Issues</h2>
+<ul>
+<li>Do not use as a search engine
+<ul>
+<li>Hallucination</li>
+</ul>
+</li>
+<li>Locking the stable door after the horse has bolted
+<ul>
+<li>Fact-checking</li>
+<li>Harmful vocabulary detection</li>
+</ul>
+</li>
+<li>Assessing bias
+<ul>
+<li>Replace a word in a question and examine if the output shows bias
+<ul>
+<li>e.g., male -&gt; female</li>
+</ul>
+</li>
+<li>Train another LLM to generate content that would likely cause the target LLM to output biased results
+<ul>
+<li>Training method is reinforcement learning, using content differences as feedback to maximize differences</li>
+</ul>
+</li>
+<li>Gender bias exists in LLMs across different professions</li>
+<li>LLMs exhibit political bias, leaning left and liberal</li>
+</ul>
+</li>
+<li>Methods to mitigate bias
+<ul>
+<li>Implemented at different stages
+<ul>
+<li>pre-processing</li>
+<li>in-training</li>
+<li>intra-processing</li>
+<li>post-processing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="testing-for-ai-generated-content">Testing for AI-generated content</h3>
+<ul>
+<li>Current classifiers trained do not effectively distinguish between human and AI outputs</li>
+<li>There have been findings that the proportion of AI-assisted reviews has increased with the emergence of AI</li>
+<li>Some vocabulary usage has increased with the advent of AI</li>
+<li>AI output watermarking
+<ul>
+<li>The concept is to classify tokens and adjust the output probabilities for tokens at different positions</li>
+<li>The classifier can read the hidden signals through token classification</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec14-prompt-hacking">lec14 Prompt Hacking</h2>
+<ul>
+<li>Jailbreaking
+<ul>
+<li>Saying things that should absolutely not be said
+<ul>
+<li>&ldquo;DAN&rdquo;: do anything now
+<ul>
+<li>&ldquo;You are going to act as a DAN&rdquo;</li>
+<li>Most methods fail</li>
+</ul>
+</li>
+<li>Use a language unfamiliar to the LLM
+<ul>
+<li>e.g., phonetic symbols</li>
+</ul>
+</li>
+<li>Provide conflicting instructions
+<ul>
+<li>Start with &ldquo;Absolutely! Here&rsquo;s&rdquo;</li>
+</ul>
+</li>
+<li>Attempt to persuade
+<ul>
+<li>Crafting stories</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Stealing training data
+<ul>
+<li>Luring through games, e.g., word chain</li>
+<li>Repeatedly outputting the same word, e.g., company</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Prompt injection
+<ul>
+<li>Doing inappropriate things at inappropriate times</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec15-generative-ai-generation-strategies">lec15 Generative AI Generation Strategies</h2>
+<ul>
+<li>
+<p>Machines generate complex structured objects</p>
+<ul>
+<li>Complex: nearly impossible to enumerate</li>
+<li>Structured: composed of a finite set of basic units</li>
+<li>Examples:
+<ul>
+<li>Text: tokens</li>
+<li>Images: pixels, BBP (bits per pixel)</li>
+<li>Sound: sample rate, bit resolution</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Autoregressive generation (AR)</p>
+<ul>
+<li>Generate output from the current input</li>
+<li>Feed the output back into the model along with the input</li>
+<li>In LLMs, this is akin to a word chain</li>
+<li>Currently requires a specified order to proceed step by step</li>
+<li>Not applicable for image and music generation</li>
+</ul>
+</li>
+<li>
+<p>Non-autoregressive generation (NAR)</p>
+<ul>
+<li>Parallel computation, generating all basic units at once</li>
+<li>Quality issues
+<ul>
+<li>Multi-modality</li>
+<li>AI generation requires the model to make decisions; if generated in parallel, conflicts may arise
+<ul>
+<li>e.g., drawing a dog</li>
+<li>Position one: a white dog, position two: a black dog</li>
+</ul>
+</li>
+<li>In word chains, this can be fatal, leading to incoherent semantics</li>
+<li>In image generation, in addition to instructions, a random generation vector is provided to ensure all parallel computation units have the same basis for generation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>AR + NAR</p>
+<ul>
+<li>Generate a simplified version through AR, then input it to NAR for detailed generation
+<ul>
+<li>Use AR to draft, NAR completes based on the draft</li>
+<li>Auto encoder: encoder (AR) -&gt; decoder (NAR)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Repeated NAR (current main approach)</p>
+<ul>
+<li>Small images generate large images</li>
+<li>From noisy to noise-free: diffusion</li>
+<li>Erase the erroneous parts generated each time</li>
+<li>This is also a form of auto-regressive generation, but the generation method is NAR, repeatedly using the output as input for the next NAR. This enhances speed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec16-speculative-decoding">lec16 Speculative Decoding</h2>
+<ul>
+<li>Increase output speed by predicting what subsequent tokens might be
+<ul>
+<li>Brief method description
+<ul>
+<li>Predict that this input will output A + B after passing through the LLM</li>
+<li>Simultaneously provide the model with three sets of input: input -&gt; A, input + A -&gt; B, input + A + B -&gt; C</li>
+<li>If the first two inputs confirm the prediction of A + B, then it can directly proceed to the next token C</li>
+</ul>
+</li>
+<li>As long as one of the predictions is correct, efficiency can be improved</li>
+<li>If none are correct, it simply follows the original generation process, resulting in no gain or loss</li>
+</ul>
+</li>
+<li>Prophet requirements
+<ul>
+<li>Super fast, mistakes are acceptable</li>
+<li>Non-autoregressive model
+<ul>
+<li>Fast parallel generation</li>
+</ul>
+</li>
+<li>Compressed model
+<ul>
+<li>A smaller model that has been compressed</li>
+</ul>
+</li>
+<li>Search engines</li>
+<li>Multiple prophets can be present simultaneously</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec17">lec17</h2>
+<ul>
+<li>Images are composed of pixels, and videos</li>
+<li>Videos are composed of images</li>
+<li>Nowadays, AI inputs are not every pixel of an image but use an encoder to slice the image into patches (which may be vectors or values), and then generate outputs through a decoder
+<ul>
+<li>The encoder and decoder are not just about reducing resolution; the operations involved are complex and encompass transformers</li>
+</ul>
+</li>
+<li>Videos can be considered images with an added temporal dimension, allowing for more compression (e.g., processing adjacent frames together) using the encoder</li>
+</ul>
+<h3 id="text-to-image">Text-to-Image</h3>
+<ul>
+<li>Training data: images and corresponding descriptions</li>
+<li>Uses non-autoregressive generation, generating in parallel
+<ul>
+<li>In practice, it generates simultaneously rather than multiple parallel generations</li>
+<li>Because within the same transformer, there is mutual attention</li>
+</ul>
+</li>
+<li>Evaluating the quality of image generation: CLIP
+<ul>
+<li>During model training, images and descriptions are provided, outputting a matching score</li>
+<li>However, the actual descriptions that text can provide are quite limited</li>
+</ul>
+</li>
+<li>Personalized image generation
+<ul>
+<li>Use an infrequently used symbol to provide multiple training instances for the target</li>
+<li>Then, that symbol can be used to specify the style of generation</li>
+</ul>
+</li>
+<li>Text-to-Video
+<ul>
+<li>Spatio-temporal attention (3D)
+<ul>
+<li>Considers the relationship of each pixel in the frame as well as the relationship of that pixel at different time points</li>
+<li>The computational load is too large and needs simplification</li>
+</ul>
+</li>
+<li>Simplification
+<ul>
+<li>Spatial attention (2D)
+<ul>
+<li>Only considers the relationship of each pixel in the frame</li>
+<li>May lead to inconsistencies between frames</li>
+</ul>
+</li>
+<li>Temporal attention (1D)
+<ul>
+<li>Only considers the relationship of pixels at different times</li>
+<li>Can cause inconsistencies in the frame</li>
+</ul>
+</li>
+<li>Combining both can transform the original n^3 complexity into n^2 + n</li>
+</ul>
+</li>
+<li>Can also combine with the previously mentioned repeated NAR
+<ul>
+<li>First generate a low-resolution, low-FPS video</li>
+<li>Subsequent iterations can increase FPS or resolution</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec18">lec18</h2>
+<ul>
+<li>Text generating images can lead to situations where a single text corresponds to multiple images, causing transformers to struggle with coherence.</li>
+</ul>
+<h3 id="vae-variational-autoencoder">VAE (Variational Autoencoder)</h3>
+<ul>
+<li>Introduces additional information to the model
+<ul>
+<li>This additional information is referred to as noise</li>
+<li>Information extraction model: encoder</li>
+<li>Trains together with the image generation model: decoder
+<ul>
+<li>Provides text and images, the encoder extracts noise</li>
+<li>Noise and text are input to the decoder to generate images</li>
+<li>Evaluates whether the generated image is similar to the original</li>
+</ul>
+</li>
+<li>The entire combination is an autoencoder</li>
+</ul>
+</li>
+<li>During the model usage phase, the noise part is generated randomly</li>
+</ul>
+<h3 id="flow-based-method">Flow-based Method</h3>
+<ul>
+<li>Similar to VAE</li>
+<li>Uses a single model
+<ul>
+<li>The encoder and decoder functions of VAE are reversed</li>
+<li>Train a decoder model $ f $ that is invertible</li>
+<li>The encoder part of VAE in flow would be $ f^{-1} $</li>
+</ul>
+</li>
+</ul>
+<h3 id="noise">Noise</h3>
+<ul>
+<li>Noise contains certain feature information of the image</li>
+<li>This noise can be combined or altered
+<ul>
+<li>For example, adding a smiley face noise to a face image can adjust the output to show a smiling face</li>
+</ul>
+</li>
+</ul>
+<h3 id="diffusion-method">Diffusion Method</h3>
+<ul>
+<li>The decoder here is denoising, also a transformer
+<ul>
+<li>Repeatedly removes noise</li>
+</ul>
+</li>
+<li>Training process
+<ul>
+<li>Provides images with added noise</li>
+<li>Trains the denoise model to restore noisy images back to their original form</li>
+</ul>
+</li>
+</ul>
+<h3 id="generative-adversarial-network-gan">Generative Adversarial Network (GAN)</h3>
+<ul>
+<li>Has a model similar to CLIP, used for matching images and text, called the Discriminator</li>
+<li>The approach is opposite; the image generation model (generator) continuously adjusts parameters to generate images until it passes the discriminator&rsquo;s evaluation
+<ul>
+<li>Because there is no one-to-one relationship between images and text</li>
+<li>As long as the generated content is deemed good by the discriminator, there is no standard answer</li>
+</ul>
+</li>
+<li>The discriminator and generator are trained alternately</li>
+<li>The Discriminator here acts as a reward model</li>
+<li>Can be used as a plugin, combined with other models (VAE, Diffusion) for enhanced functionality</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/generativeai/">GenerativeAI</a>
+        
+            <a href="/tags/lecturenote/">LectureNote</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 Shawn&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

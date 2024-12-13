@@ -6,7 +6,23 @@
         <description>Recent content in Tags on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Thu, 23 Nov 2023 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GenerativeAI</title>
+        <link>http://shawn1251.github.io/tags/generativeai/</link>
+        <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/tags/generativeai/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>LectureNote</title>
+        <link>http://shawn1251.github.io/tags/lecturenote/</link>
+        <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/tags/lecturenote/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Embedded</title>
         <link>http://shawn1251.github.io/tags/embedded/</link>
         <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
