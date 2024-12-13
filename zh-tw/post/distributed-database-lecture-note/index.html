@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Mind Map
+Instructor’s name: Ali Safari Textbook: Principles of Distributed Database Systems, 4th edition, M. Tamer Özsu and Patrick Valduriez, Springer, 2020, ISBN 978-3-030-26252-5
+Distributed and Parallel Database Design fragmentation correctness
+completness
+each data in relation can also be found after fragmentation reconstruction
+by JOIN, the fragment can recovery to the original relation disjointness
+data in one fragment should not also be in other fragment type
+horizontal fragmentation (HF
+'>
+<title>Distributed Database System Lecture Note</title>
+
+<link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/distributed-database-lecture-note/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Distributed Database System Lecture Note'>
+<meta property='og:description' content='Mind Map
+Instructor’s name: Ali Safari Textbook: Principles of Distributed Database Systems, 4th edition, M. Tamer Özsu and Patrick Valduriez, Springer, 2020, ISBN 978-3-030-26252-5
+Distributed and Parallel Database Design fragmentation correctness
+completness
+each data in relation can also be found after fragmentation reconstruction
+by JOIN, the fragment can recovery to the original relation disjointness
+data in one fragment should not also be in other fragment type
+horizontal fragmentation (HF
+'>
+<meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/distributed-database-lecture-note/'>
+<meta property='og:site_name' content='Shawn&#39;s Note'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='LectureNote' /><meta property='article:published_time' content='2024-07-31T00:00:00&#43;08:00'/><meta property='article:modified_time' content='2024-07-31T00:00:00&#43;08:00'/>
+<meta name="twitter:title" content="Distributed Database System Lecture Note">
+<meta name="twitter:description" content="Mind Map
+Instructor’s name: Ali Safari Textbook: Principles of Distributed Database Systems, 4th edition, M. Tamer Özsu and Patrick Valduriez, Springer, 2020, ISBN 978-3-030-26252-5
+Distributed and Parallel Database Design fragmentation correctness
+completness
+each data in relation can also be found after fragmentation reconstruction
+by JOIN, the fragment can recovery to the original relation disjointness
+data in one fragment should not also be in other fragment type
+horizontal fragmentation (HF
+">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/zh-tw/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/avatar_hu8414701604875676688.jpg" width="300"
+                            height="306" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">😊</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/zh-tw">Shawn&#39;s Note</a></h1>
+            <h2 class="site-description">Life Record &amp; Learning Note</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/shawn1251'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="120px" height="120px">    <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"/></svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.linkedin.com/in/wei-siang-shawn-hong-24ba3a264/'
+                        target="_blank"
+                        title="Linkedin"
+                        rel="me"
+                    >
+                        
+                        
+                            <?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="100px" height="100px">    <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"/></svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/zh-tw/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/zh-tw/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="http://shawn1251.github.io/" >English</option>
+                        
+                            <option value="http://shawn1251.github.io/zh-tw/" selected>繁體中文</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>夜晚模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#distributed-and-parallel-database-design">Distributed and Parallel Database Design</a>
+      <ol>
+        <li><a href="#fragmentation">fragmentation</a></li>
+        <li><a href="#data-distribution">data distribution</a></li>
+        <li><a href="#combined-approach">combined approach</a></li>
+      </ol>
+    </li>
+    <li><a href="#transaction">transaction</a>
+      <ol>
+        <li><a href="#all-operations-as-one-unit-whole-or-nothing">all operations as one unit. whole or nothing</a></li>
+        <li><a href="#acid">ACID</a></li>
+        <li><a href="#concurrent-execution">concurrent execution</a></li>
+        <li><a href="#serializability">serializability</a></li>
+        <li><a href="#failure">failure</a></li>
+      </ol>
+    </li>
+    <li><a href="#concurrency-control">concurrency control</a>
+      <ol>
+        <li><a href="#concept">concept</a></li>
+        <li><a href="#protocols">protocols</a></li>
+        <li><a href="#deadlock-prevention-strategies">deadlock prevention strategies</a></li>
+        <li><a href="#deadlock-detection">deadlock detection</a></li>
+        <li><a href="#deadlock-recovery">deadlock recovery</a></li>
+        <li><a href="#multiple-granularity">multiple granularity</a></li>
+        <li><a href="#timestamp-based-protocols">Timestamp-based protocols</a></li>
+      </ol>
+    </li>
+    <li><a href="#transaction-processing-2">transaction processing-2</a>
+      <ol>
+        <li><a href="#distributed-tm-architecture">Distributed TM Architecture</a></li>
+        <li><a href="#serializability-1">serializability</a></li>
+        <li><a href="#concurrency-control-algorithms">concurrency control algorithms</a></li>
+        <li><a href="#deadlock">Deadlock</a></li>
+      </ol>
+    </li>
+    <li><a href="#query-processing">Query Processing</a>
+      <ol>
+        <li><a href="#for-one-query-there-may-be-several-strategies">for one query, there may be several strategies</a></li>
+        <li><a href="#complexity-of-relational-operations">Complexity of relational operations</a></li>
+        <li><a href="#query-processing-methodology">Query Processing Methodology</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/zh-tw/categories/database/" >
+                Database
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/zh-tw/post/distributed-database-lecture-note/">Distributed Database System Lecture Note</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 31, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 7 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="http://shawn1251.github.io/post/distributed-database-lecture-note/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><a class="link" href="./file/Distributed%20Database%20System.pdf" >Mind Map</a></p>
+<p>Instructor’s name: Ali Safari <br>
+Textbook: Principles of Distributed Database Systems, 4th edition, M. Tamer Özsu and Patrick Valduriez,
+Springer, 2020, ISBN 978-3-030-26252-5</p>
+<h2 id="distributed-and-parallel-database-design">Distributed and Parallel Database Design</h2>
+<h3 id="fragmentation">fragmentation</h3>
+<ul>
+<li>
+<p>correctness</p>
+<ul>
+<li>
+<p>completness</p>
+<ul>
+<li>each data in relation can also be found after fragmentation</li>
+</ul>
+</li>
+<li>
+<p>reconstruction</p>
+<ul>
+<li>by JOIN, the fragment can recovery to the original relation</li>
+</ul>
+</li>
+<li>
+<p>disjointness</p>
+<ul>
+<li>data in one fragment should not also be in other fragment</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>type</p>
+<ul>
+<li>
+<p>horizontal fragmentation (HF</p>
+<ul>
+<li>
+<p>primary horizontal (PHF</p>
+<ul>
+<li>
+<p>key points</p>
+<ul>
+<li>
+<p>simple prdicate</p>
+<ul>
+<li>
+<p>predicate: key + operator + value</p>
+<ul>
+<li>eg. salary &gt; 1000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>minterm predicate</p>
+<ul>
+<li>
+<p>all possible combination of predicate</p>
+<ul>
+<li>eg. loc = &ldquo;France&rdquo; ^ salary &gt; 1000</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>minterm selectivities, sel(mi)</p>
+<ul>
+<li>the percentage of records that minterm selected</li>
+</ul>
+</li>
+<li>
+<p>access frequency, acc(qi)</p>
+<ul>
+<li>how many times the same query asked by different user</li>
+</ul>
+</li>
+<li>
+<p>cardinality, card(R)</p>
+<ul>
+<li>number of rows</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>COM_MIN algorithm</p>
+<ul>
+<li>
+<p>input: a relation R, a set of simple predicates Pr</p>
+</li>
+<li>
+<p>output: a &ldquo;complete&rdquo;, &ldquo;minimal&rdquo; set of simple predicates Pr'</p>
+</li>
+</ul>
+</li>
+<li>
+<p>PHORIZONTAL Algorithm</p>
+<ul>
+<li>
+<p>input: a relation R, a set of predicates Pr</p>
+</li>
+<li>
+<p>output: a set of minterm predicates M according to which relation R is to be fragmented</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>derived horizontal (DHF</p>
+<ul>
+<li>
+<p>Based on the fragments created by PHF, apply similar fragmentation to other related relations.</p>
+</li>
+<li>
+<p>eg. after PHF, we divide &ldquo;PAY&rdquo; to 2 fragments. There is also a relation &ldquo;EMP&rdquo; related with &ldquo;PAY&rdquo;. We can also divide &ldquo;EMP&rdquo; by the same rule</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>vertical fragmentation (VF</p>
+<ul>
+<li>
+<p>affinity matrix</p>
+<ul>
+<li>calculate by access frequency matrix and usage matrix</li>
+</ul>
+</li>
+<li>
+<p>bond energy algorithm (BEA</p>
+<ul>
+<li>
+<p>input: the AA matrix (attribute affinity)</p>
+</li>
+<li>
+<p>output: the CA matrix(clustered affinity matrix)</p>
+</li>
+<li>
+<p>by changing the order what&rsquo;s the most contribution I can get?</p>
+</li>
+<li>
+<p>find the best order for columns</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>hybrid fragmentation</p>
+<ul>
+<li>
+<p>apply both horizontal and vertical</p>
+</li>
+<li>
+<p>reconstruction</p>
+<ul>
+<li>
+<p>vertical: join</p>
+</li>
+<li>
+<p>horizontal: union</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-distribution">data distribution</h3>
+<ul>
+<li>
+<p>allocation alternatives</p>
+<ul>
+<li>
+<p>non-replicated</p>
+<ul>
+<li>each fragment resides at only one site</li>
+</ul>
+</li>
+<li>
+<p>replicated</p>
+<ul>
+<li>
+<p>fully replicated</p>
+<ul>
+<li>each fragment at each site</li>
+</ul>
+</li>
+<li>
+<p>partially replicated</p>
+<ul>
+<li>each fragment at some of the sites</li>
+</ul>
+</li>
+<li>
+<p>if read-only queries &raquo; update queries, replication is good</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>fragment allocation</p>
+<ul>
+<li>
+<p>problem: fragments, network, application</p>
+</li>
+<li>
+<p>find the optimal distribution</p>
+<ul>
+<li>
+<p>minimal cost</p>
+</li>
+<li>
+<p>performance</p>
+</li>
+<li>
+<p>constraint</p>
+<ul>
+<li>
+<p>response time</p>
+</li>
+<li>
+<p>storage</p>
+</li>
+<li>
+<p>processing</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>decision variable</p>
+<ul>
+<li>Xij. 1 if fragment i store in at Site j. 0 otherwise</li>
+</ul>
+</li>
+<li>
+<p>both FAP and DAP are NP-complete</p>
+<ul>
+<li>heuristic based on. about finding the best combination</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="combined-approach">combined approach</h3>
+<h2 id="transaction">transaction</h2>
+<h3 id="all-operations-as-one-unit-whole-or-nothing">all operations as one unit. whole or nothing</h3>
+<h3 id="acid">ACID</h3>
+<ul>
+<li>
+<p>Atomicity</p>
+<ul>
+<li>one unit</li>
+</ul>
+</li>
+<li>
+<p>Consistency</p>
+</li>
+<li>
+<p>Isolation</p>
+</li>
+<li>
+<p>Durability</p>
+</li>
+</ul>
+<h3 id="concurrent-execution">concurrent execution</h3>
+<ul>
+<li>
+<p>increase processor and disk utilization (I/O no need CPU)</p>
+</li>
+<li>
+<p>reduced average response time</p>
+</li>
+<li>
+<p>important: multi tasks run in the but the result should be the same as serial running</p>
+</li>
+<li>
+<p>validation</p>
+<ul>
+<li>
+<p>except read - read, all the others are conflict</p>
+</li>
+<li>
+<p>try to move commands to see if they can be restored to the serial running format</p>
+</li>
+<li>
+<p>if the commands are conflict, it should not be moved</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="serializability">serializability</h3>
+<ul>
+<li>
+<p>view serializability</p>
+<ul>
+<li>
+<p>not strict</p>
+</li>
+<li>
+<p>the initial, update, final result should be the same as serial schedule</p>
+</li>
+<li>
+<p>check a schedule is serializable is NP-Complete problem</p>
+</li>
+</ul>
+</li>
+<li>
+<p>conflict serializability</p>
+<ul>
+<li>
+<p>more strict</p>
+<ul>
+<li>conflict serializable is the sub set of serializable</li>
+</ul>
+</li>
+<li>
+<p>there is no any conflict between transactions(R/W, W/W)</p>
+</li>
+<li>
+<p>test method</p>
+<ul>
+<li>
+<p>swap non-conflicting instruction</p>
+<ul>
+<li>
+<p>If a schedule S can be transformed into a schedule S’ by a series of swaps of non-conflicting instructions, we say that S and S’ are conflict equivalent</p>
+</li>
+<li>
+<p>a schedule S is conflict serializable if it is conflict equivalent to a serial schedule</p>
+</li>
+</ul>
+</li>
+<li>
+<p>precedence graph</p>
+<ul>
+<li>
+<p>transaction =&gt; node</p>
+</li>
+<li>
+<p>conficts =&gt; edge</p>
+</li>
+<li>
+<p>if graph has cycle, means not serializable</p>
+<ul>
+<li>can do topological sorting</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="failure">failure</h3>
+<ul>
+<li>
+<p>rollbacks</p>
+<ul>
+<li>
+<p>cascading rollback</p>
+<ul>
+<li>1 transaction failure, all the other transactions rollback</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>recoverable schedule</p>
+<ul>
+<li>
+<p>ensure data consistency</p>
+</li>
+<li>
+<p>reading transaction can read data which not commit yet, but cannot commit before the writing transaction</p>
+</li>
+</ul>
+</li>
+<li>
+<p>cascadeless schedules</p>
+<ul>
+<li>
+<p>enhace recoverable schedule</p>
+<ul>
+<li>is the subset of recoverable</li>
+</ul>
+</li>
+<li>
+<p>transaction can only read data which is commited</p>
+</li>
+<li>
+<p>the schedule which try to avoid cascading rollbacks</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="concurrency-control">concurrency control</h2>
+<h3 id="concept">concept</h3>
+<ul>
+<li>
+<p>the mechanism provided by the db system</p>
+</li>
+<li>
+<p>serial schedule is recoverable and cascadeless</p>
+</li>
+<li>
+<p>have to trade off between serial schedule and concurrent schedule</p>
+</li>
+<li>
+<p>ensure schedule is conflict or view serializable</p>
+</li>
+<li>
+<p>ensure the schedule is  rcoverable and preferably cascadeless</p>
+</li>
+<li>
+<p>to achieve these purpose, it needs a &ldquo;protocol&rdquo; to assure serializability</p>
+</li>
+</ul>
+<h3 id="protocols">protocols</h3>
+<ul>
+<li>
+<p>lock-based protocols</p>
+<ul>
+<li>
+<p>exclusive (X) mode</p>
+<ul>
+<li>
+<p>cannot add any other lock</p>
+</li>
+<li>
+<p>only one transaction can R/W data</p>
+</li>
+</ul>
+</li>
+<li>
+<p>shared (S) mode</p>
+<ul>
+<li>
+<p>can add more shared lock</p>
+</li>
+<li>
+<p>multiple read transaction can read the data at the same time</p>
+</li>
+</ul>
+</li>
+<li>
+<p>two-phase locking protocol</p>
+<ul>
+<li>
+<p>grow-lockpoint-shrink</p>
+<ul>
+<li>
+<p>grow</p>
+<ul>
+<li>
+<p>the transaction acquire all the lock before access without release</p>
+</li>
+<li>
+<p>can convert lock-S to lock-X (upgrade)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>shrink</p>
+<ul>
+<li>
+<p>start to releasing locks, cannot acquire any new lock</p>
+</li>
+<li>
+<p>can convert lock-X to lock-S (downgrade)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>type</p>
+<ul>
+<li>
+<p>strict two-phase locking</p>
+<ul>
+<li>keep all the X-lock till commit/abort</li>
+</ul>
+</li>
+<li>
+<p>rigorous two-phase locking</p>
+<ul>
+<li>keep all the locks till commit/abort</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>ensure conflict-serializable</p>
+</li>
+<li>
+<p>cannot avoid deadlock</p>
+</li>
+<li>
+<p>startegy</p>
+<ul>
+<li>
+<p>read:
+if lock:
+read()
+else:
+if lock-X:
+wait()
+grant lock-S
+read()</p>
+</li>
+<li>
+<p>write:
+if lock-X:
+write()
+else:
+if other locks:
+wait()
+if lock-S:
+upgrade to lock-X
+else:
+grant lock-X
+write()</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>lock table</p>
+<ul>
+<li>
+<p>maintain by lock manager</p>
+</li>
+<li>
+<p>lock table, record the type of lock granted or requested</p>
+</li>
+<li>
+<p>like hash table</p>
+</li>
+<li>
+<p>validate before grant new lock</p>
+<ul>
+<li>if there are multiple locks, the last one can only be lock-X</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Graph based protocol</p>
+<ul>
+<li>
+<p>alternative to two phase locking</p>
+</li>
+<li>
+<p>Tree protocol</p>
+<ul>
+<li>
+<p>Only exclusive locks are allowed</p>
+</li>
+<li>
+<p>once unlock, cannot relock</p>
+</li>
+<li>
+<p>conflict serializable</p>
+</li>
+<li>
+<p>not gurantee recoverability</p>
+</li>
+<li>
+<p>no deadlock</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="deadlock-prevention-strategies">deadlock prevention strategies</h3>
+<ul>
+<li>
+<p>wait-die</p>
+<ul>
+<li>
+<p>older may wait for younger release</p>
+</li>
+<li>
+<p>younger never wait, rolled back instead</p>
+</li>
+</ul>
+</li>
+<li>
+<p>wound-wait</p>
+<ul>
+<li>
+<p>older can force rollback younger</p>
+</li>
+<li>
+<p>younger may wait for older</p>
+</li>
+<li>
+<p>fewer rollback than wait-die</p>
+</li>
+</ul>
+</li>
+<li>
+<p>timeout-based schemes</p>
+</li>
+</ul>
+<h3 id="deadlock-detection">deadlock detection</h3>
+<ul>
+<li>
+<p>wait-for graph</p>
+<ul>
+<li>
+<p>Ti -&gt; Tj: Ti is waiting for a lock held by Tj</p>
+</li>
+<li>
+<p>deadlock if there is a cycle</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="deadlock-recovery">deadlock recovery</h3>
+<ul>
+<li>
+<p>total rollback</p>
+</li>
+<li>
+<p>partial rollback</p>
+<ul>
+<li>difficult</li>
+</ul>
+</li>
+</ul>
+<h3 id="multiple-granularity">multiple granularity</h3>
+<ul>
+<li>
+<p>can be represented as a tree</p>
+</li>
+<li>
+<p>locks a node, also locks all the children node</p>
+</li>
+<li>
+<p>Fine granularity: high concurrency, lower in tree</p>
+</li>
+<li>
+<p>Coarse granularity: low concurrency, higher in tree</p>
+</li>
+<li>
+<p>intention lock modes</p>
+<ul>
+<li>
+<p>3 more lock mode than S, X</p>
+</li>
+<li>
+<p>intention-shared (IS)</p>
+<ul>
+<li>same as S, but locking at a lower level</li>
+</ul>
+</li>
+<li>
+<p>intention-exclusive (IX)</p>
+</li>
+<li>
+<p>shared and intention-exclusive (SIX)</p>
+</li>
+<li>
+<p>allow a higher level node to be locked without having to check all descendent nodes</p>
+</li>
+<li>
+<p>the compatibility matrix for all lock modes</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="timestamp-based-protocols">Timestamp-based protocols</h3>
+<ul>
+<li>
+<p>timestamp order = serializability order</p>
+</li>
+<li>
+<p>Timestamp-ordering protocol</p>
+<ul>
+<li>
+<p>WTS(Q) (W-timestamp): the largest timestamp of any transaction that executed &ldquo;write(Q)&rdquo;</p>
+</li>
+<li>
+<p>RTS(Q) (R-timestamp): the largest timestamp of any transaction that executed &ldquo;read(Q)&rdquo;</p>
+</li>
+<li>
+<p>algorithm</p>
+<ul>
+<li>
+<p>Ti = Read(Q)</p>
+<ul>
+<li>
+<p>if TS(Ti) &lt; WTS(Q), Reject
+(Ti needs the value that was already overwritten)</p>
+</li>
+<li>
+<p>if TS(Ti) &gt;= WTS(Q), execute, RTS(Q) update to max(RTS(Q), TS(Ti))
+(Read after latest update is accepted)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Ti = Write(Q)</p>
+<ul>
+<li>
+<p>if TS(Ti) &lt; RTS(Q), Reject
+(Ti produce a value that was  needed previously)</p>
+</li>
+<li>
+<p>if TS(Ti) &lt; WTS(Q), Reject
+(Ti try to write an obsolete value)</p>
+</li>
+<li>
+<p>else, WTS(Q) update to TS(Ti)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="transaction-processing-2">transaction processing-2</h2>
+<h3 id="distributed-tm-architecture">Distributed TM Architecture</h3>
+<h3 id="serializability-1">serializability</h3>
+<ul>
+<li>
+<p>the condition that global transaction is serializable</p>
+<ul>
+<li>
+<p>each local history should be serializable</p>
+</li>
+<li>
+<p>two conflicting operations should be in the same relative order in all of the local histories where they appear together</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="concurrency-control-algorithms">concurrency control algorithms</h3>
+<ul>
+<li>
+<p>Pessimistic</p>
+<ul>
+<li>
+<p>Two-Phase Locking-based (2PL)</p>
+<ul>
+<li>
+<p>centralized 2PL</p>
+<ul>
+<li>
+<p>only one 2PL scheduler in the distributed system</p>
+</li>
+<li>
+<p>lock requests are issued to the central scheduler</p>
+</li>
+<li>
+<p>pros: Simple</p>
+</li>
+<li>
+<p>cons: reliability, bottle neck</p>
+</li>
+</ul>
+</li>
+<li>
+<p>distributed 2PL</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="deadlock">Deadlock</h3>
+<ul>
+<li>
+<p>locking-based algorithm may cause deadlocks</p>
+</li>
+<li>
+<p>TO based algorithm that involve waiting may cause deadlocks</p>
+</li>
+<li>
+<p>wait-for graph</p>
+<ul>
+<li>
+<p>Ti waits for Tj</p>
+</li>
+<li>
+<p>Ti &ndash;&gt; Tj</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="query-processing">Query Processing</h2>
+<h3 id="for-one-query-there-may-be-several-strategies">for one query, there may be several strategies</h3>
+<ul>
+<li>
+<p>optimization: calculate the cost, then choose the lowest one</p>
+<ul>
+<li>
+<p>access cost</p>
+</li>
+<li>
+<p>transfer cost</p>
+</li>
+</ul>
+</li>
+<li>
+<p>example</p>
+</li>
+<li>
+<p>problem</p>
+</li>
+<li>
+<p>Cost of Alternatives</p>
+</li>
+</ul>
+<h3 id="complexity-of-relational-operations">Complexity of relational operations</h3>
+<ul>
+<li>
+<p>Select
+Project</p>
+<ul>
+<li>O(n)</li>
+</ul>
+</li>
+<li>
+<p>Project (eliminate duplicate)
+Group</p>
+<ul>
+<li>
+<p>O(n * log n)</p>
+</li>
+<li>
+<p>sorting + check the array sequentially</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Join
+Semi-Join
+Division
+Set</p>
+<ul>
+<li>O(n * log n)</li>
+</ul>
+</li>
+<li>
+<p>Cartesian Product</p>
+<ul>
+<li>O(n^2)</li>
+</ul>
+</li>
+</ul>
+<h3 id="query-processing-methodology">Query Processing Methodology</h3>
+<ul>
+<li>
+<ol>
+<li>Query Decomposition</li>
+</ol>
+<ul>
+<li>
+<p>input: Calculus query on global relations</p>
+</li>
+<li>
+<p>Normalization</p>
+</li>
+<li>
+<p>Analysis</p>
+</li>
+<li>
+<p>Simplification</p>
+</li>
+<li>
+<p>Restructing</p>
+</li>
+<li>
+<p>output: Algebraic query</p>
+</li>
+</ul>
+</li>
+<li>
+<ol start="2">
+<li>Data Localization</li>
+</ol>
+<ul>
+<li>
+<p>input: Algebraic query on distributed relations</p>
+</li>
+<li>
+<p>Localization program</p>
+</li>
+<li>
+<p>Reduction based on the fragmentation strategy</p>
+<ul>
+<li>
+<p>PHF</p>
+<ul>
+<li>
+<p>Select</p>
+<ul>
+<li>Because we have already divided the relations base on some rule. Only have to access the relations that have intersection with the query</li>
+</ul>
+</li>
+<li>
+<p>Join</p>
+<ul>
+<li>
+<p>Distribute join over union</p>
+</li>
+<li>
+<p>(R1 U R2)⋈S  =&gt; (R1⋈S) U (R2⋈S)</p>
+</li>
+<li>
+<p>by distribute 1 join to multiple join, we can eliminate some of them that have no intersection with the query</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>VF</p>
+<ul>
+<li>find useless intermiediate relations</li>
+</ul>
+</li>
+<li>
+<p>DHF</p>
+<ul>
+<li>
+<p>mix the PHF-Select and PHF-Join</p>
+</li>
+<li>
+<p>example</p>
+</li>
+<li>
+<p>query</p>
+</li>
+<li>
+<ol>
+<li>eliminate by Selection</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>join over union</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>eliminate the empty intermediate relations</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Hybrid Fragmentation</p>
+<ul>
+<li>
+<p>remove empty relations by selection on HF</p>
+</li>
+<li>
+<p>remove useless relations by projection on VF</p>
+</li>
+<li>
+<p>distribute joins over unions to isolate and remove useless joins</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>output: Fragment query</p>
+</li>
+</ul>
+</li>
+<li>
+<ol start="3">
+<li>Distributed Query Optimization</li>
+</ol>
+<ul>
+<li>
+<p>input: Fragment query</p>
+</li>
+<li>
+<p>Find the best global schedule</p>
+</li>
+<li>
+<p>query optimization process</p>
+<ul>
+<li>
+<p>Search Space</p>
+<ul>
+<li>
+<p>The set of equivalent alebra expressions</p>
+</li>
+<li>
+<p>Join Trees</p>
+<ul>
+<li>
+<p>Linear join tree</p>
+</li>
+<li>
+<p>Bushy join tree</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Cost Model</p>
+<ul>
+<li>I/O cost + CPU cost + communication cost</li>
+</ul>
+</li>
+<li>
+<p>Search Algorithm</p>
+<ul>
+<li>
+<p>exhaustive search / heuristic algorithm</p>
+</li>
+<li>
+<p>how to &ldquo;move&rdquo; in the search space</p>
+</li>
+<li>
+<p>Deterministic</p>
+<ul>
+<li>
+<p>start from base relations and build  plans by adding one relation at each step</p>
+</li>
+<li>
+<p>DP: BFS</p>
+</li>
+<li>
+<p>Greedy: DFS</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Randomized</p>
+<ul>
+<li>
+<p>trade optimization time for execution time</p>
+</li>
+<li>
+<p>iterative improvement</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/zh-tw/tags/lecturenote/">LectureNote</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 Shawn&#39;s Note
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 建立 <br />
+        主題 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 設計
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -106,6 +106,32 @@
                 href="http://shawn1251.github.io/tags/"
                 />
   </url><url>
+    <loc>http://shawn1251.github.io/categories/database/</loc>
+    <lastmod>2024-07-31T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/database/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/distributed-database-lecture-note/</loc>
+    <lastmod>2024-07-31T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/distributed-database-lecture-note/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/distributed-database-lecture-note/"
+                />
+  </url><url>
     <loc>http://shawn1251.github.io/tags/embedded/</loc>
     <lastmod>2023-11-23T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -559,18 +585,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/page/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/categories/database/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/database/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/database/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/categories/essay/</loc>
