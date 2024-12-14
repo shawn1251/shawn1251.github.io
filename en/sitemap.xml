@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/</loc>
-    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+    <lastmod>2024-12-13T23:36:18-08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -13,6 +13,32 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/head-first-design-pattern-note/</loc>
+    <lastmod>2024-12-13T23:36:18-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/head-first-design-pattern-note/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/head-first-design-pattern-note/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/post/</loc>
+    <lastmod>2024-12-13T23:36:18-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/post/generativeai-2024-youtube-summery/</loc>
@@ -78,19 +104,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://shawn1251.github.io/tags/lecturenote/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/post/</loc>
-    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/tags/</loc>
