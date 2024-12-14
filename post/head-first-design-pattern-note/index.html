@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
-The introduction uses the scenario of designing a duck. Since Joe wanted to add the ability to &ldquo;fly&rdquo; to the duck, he added this to the superclass, which also caused non-flying ducks, like rubber ducks, to have the ability to fly. Even with inheritance, overriding in subclasses can be insufficient due to the numerous types of subclasses. The book gives an example where among ducks that cannot fly, the rubber duck quacks, while the decoy duck does not quack. If an interface is used, it can lead to code that cannot be reused. A constant truth in software development is &ldquo;change.&rdquo; No matter how perfect the initial design is, it will need to change after some time. Design Principle: Identify parts of the application that may need to change and encapsulate them independently, avoiding mixing them with code that does not need to change. Design Principle: Design for interfaces, not for implementations. This means we should design around abstract classes or interfaces. For example, if we have an abstract class called Animal, with Dog inheriting from it, we can create a method bark() directly in Dog to make it sound. However, if we design for an interface, we would add makeSound to Animal, and then in Dog, we would implement makeSound to produce a bark. By designing Duck, we can create an interface called FlyBehavior, which can be implemented by two classes: FlyWithWings and FlyNoWay. Our abstract class Duck can then have a variable of type FlyBehavior, and we can create a method performFly that delegates the flying behavior to this class. When we need to create different types of ducks, we can provide the corresponding FlyBehavior when inheriting Duck. We can even add a setter to change the FlyBehavior mid-way, increasing flexibility.
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Reading Note: Head First Design Patterns: A Brain-Friendly Guide
+This book is very easy to understand, explaining the logic behind choosing strategies using relatable scenarios. I recommend it to anyone who wants to get a basic understanding of Design Patterns. Below are brief notes for each chapter.
+Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
 '>
 <title>Head First Design Pattern Note</title>
 
 <link rel='canonical' href='http://shawn1251.github.io/post/head-first-design-pattern-note/'>
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Head First Design Pattern Note'>
-<meta property='og:description' content='Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
-The introduction uses the scenario of designing a duck. Since Joe wanted to add the ability to &ldquo;fly&rdquo; to the duck, he added this to the superclass, which also caused non-flying ducks, like rubber ducks, to have the ability to fly. Even with inheritance, overriding in subclasses can be insufficient due to the numerous types of subclasses. The book gives an example where among ducks that cannot fly, the rubber duck quacks, while the decoy duck does not quack. If an interface is used, it can lead to code that cannot be reused. A constant truth in software development is &ldquo;change.&rdquo; No matter how perfect the initial design is, it will need to change after some time. Design Principle: Identify parts of the application that may need to change and encapsulate them independently, avoiding mixing them with code that does not need to change. Design Principle: Design for interfaces, not for implementations. This means we should design around abstract classes or interfaces. For example, if we have an abstract class called Animal, with Dog inheriting from it, we can create a method bark() directly in Dog to make it sound. However, if we design for an interface, we would add makeSound to Animal, and then in Dog, we would implement makeSound to produce a bark. By designing Duck, we can create an interface called FlyBehavior, which can be implemented by two classes: FlyWithWings and FlyNoWay. Our abstract class Duck can then have a variable of type FlyBehavior, and we can create a method performFly that delegates the flying behavior to this class. When we need to create different types of ducks, we can provide the corresponding FlyBehavior when inheriting Duck. We can even add a setter to change the FlyBehavior mid-way, increasing flexibility.
+<meta property='og:description' content='Reading Note: Head First Design Patterns: A Brain-Friendly Guide
+This book is very easy to understand, explaining the logic behind choosing strategies using relatable scenarios. I recommend it to anyone who wants to get a basic understanding of Design Patterns. Below are brief notes for each chapter.
+Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
 '>
 <meta property='og:url' content='http://shawn1251.github.io/post/head-first-design-pattern-note/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-13T23:36:18-08:00'/><meta property='article:modified_time' content='2024-12-13T23:36:18-08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-13T23:36:18-08:00'/><meta property='article:modified_time' content='2023-12-13T23:36:18-08:00'/>
 <meta name="twitter:title" content="Head First Design Pattern Note">
-<meta name="twitter:description" content="Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
-The introduction uses the scenario of designing a duck. Since Joe wanted to add the ability to &ldquo;fly&rdquo; to the duck, he added this to the superclass, which also caused non-flying ducks, like rubber ducks, to have the ability to fly. Even with inheritance, overriding in subclasses can be insufficient due to the numerous types of subclasses. The book gives an example where among ducks that cannot fly, the rubber duck quacks, while the decoy duck does not quack. If an interface is used, it can lead to code that cannot be reused. A constant truth in software development is &ldquo;change.&rdquo; No matter how perfect the initial design is, it will need to change after some time. Design Principle: Identify parts of the application that may need to change and encapsulate them independently, avoiding mixing them with code that does not need to change. Design Principle: Design for interfaces, not for implementations. This means we should design around abstract classes or interfaces. For example, if we have an abstract class called Animal, with Dog inheriting from it, we can create a method bark() directly in Dog to make it sound. However, if we design for an interface, we would add makeSound to Animal, and then in Dog, we would implement makeSound to produce a bark. By designing Duck, we can create an interface called FlyBehavior, which can be implemented by two classes: FlyWithWings and FlyNoWay. Our abstract class Duck can then have a variable of type FlyBehavior, and we can create a method performFly that delegates the flying behavior to this class. When we need to create different types of ducks, we can provide the corresponding FlyBehavior when inheriting Duck. We can even add a setter to change the FlyBehavior mid-way, increasing flexibility.
+<meta name="twitter:description" content="Reading Note: Head First Design Patterns: A Brain-Friendly Guide
+This book is very easy to understand, explaining the logic behind choosing strategies using relatable scenarios. I recommend it to anyone who wants to get a basic understanding of Design Patterns. Below are brief notes for each chapter.
+Chapter 1: Strategy Pattern The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.
 ">
     <link rel="shortcut icon" href="/favicon.png" />
 
@@ -282,6 +285,14 @@ The introduction uses the scenario of designing a duck. Since Joe wanted to add 
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/readingnote/" >
+                ReadingNote
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
@@ -307,7 +318,7 @@ The introduction uses the scenario of designing a duck. Since Joe wanted to add 
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 13, 2024</time>
+                <time class="article-time--published">Dec 13, 2023</time>
             </div>
         
 
@@ -356,7 +367,10 @@ The introduction uses the scenario of designing a duck. Since Joe wanted to add 
     <section class="article-content">
     
     
-    <h2 id="chapter-1-strategy-pattern">Chapter 1: Strategy Pattern</h2>
+    <p>Reading Note: <a class="link" href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124"  target="_blank" rel="noopener"
+    >Head First Design Patterns: A Brain-Friendly Guide</a><br>
+This book is very easy to understand, explaining the logic behind choosing strategies using relatable scenarios. I recommend it to anyone who wants to get a basic understanding of Design Patterns. Below are brief notes for each chapter.</p>
+<h2 id="chapter-1-strategy-pattern">Chapter 1: Strategy Pattern</h2>
 <p>The Strategy Pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. This pattern allows the variation of algorithms to be independent of the clients that use them.</p>
 <ul>
 <li>The introduction uses the scenario of designing a duck. Since Joe wanted to add the ability to &ldquo;fly&rdquo; to the duck, he added this to the superclass, which also caused non-flying ducks, like rubber ducks, to have the ability to fly.</li>

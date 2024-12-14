@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-tw" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Head First Design Patterns: A Brain-Friendly Guide
+閱讀筆記。這本書很淺顯易懂，把背後選擇策略的邏輯用容易理解的情境解釋。推薦給想初步了解Design Pattern的人。以下是每個章節的簡單筆記
+chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
 開頭先用了設計鴨子做情境。由於想讓鴨子加入&quot;飛&quot;的功能，Joe將這個加在了super class中，卻也造成了不該會飛的鴨子如橡皮鴨也產生了飛的功能。 即使用了繼承，在子類覆蓋掉，也會因為子類型眾多不全面。書中舉例了在都不會飛的鴨子中，橡皮鴨會叫，而誘餌鴨不會叫 若採用interface，會造成code無法重複使用 軟體開發不變的真理就是&quot;變&quot;。不管當初設計多完美，一段時間後都會需要改變。 設計原則: 找出應用中可能需要變化的部分並獨立，不要與不需要變化的代碼混在一起。 設計原則: 針對interface設計，而不是針對實現設計 這部分的意思是說，我們要針對abstract class or interface進行設計。例如: abstract class 有Animal，繼承他的有Dog。則如果我們要讓他發出聲音，可以直接在Dog寫一個method bark()。但如果針對interface設計，則我們會在Animal加入makeSound，於Dog繼承後在makeSound中發出bark。 承設計Duck，我們可以設計出FlyBehavior這個interface，對此就可以分別implement出FlyWithWings, FlyNoWay兩個類。而我們的abstract class Duck就可以用has-a的概念加入一個FlyBehavior的變量，而我們針對行為建立一個method preformanceFly，call這個FlyBehaivor的變量委託這個class進行fly。往後需要建立不同的duck的時候，就可以在繼承Duck時，給予相對應的FlyBehavior。甚至可以加入setter，中途變換FlyBehavior，增加彈性。
 class之間的關係可以有三種: is-a, has-a, implements 上述的例子中，每個鴨子都&quot;有&quot;一個FlyBehavior，也就是將飛行行為委託給這個class處理 將兩個類結合一起使用就是&quot;composition&quot;，相較於&quot;inherit&quot;更具彈性 設計原則:多用組合，少用繼承 使用設計模式的共通詞彙可以提升討論效率、維持在高層次而不瑣碎。如&quot;我們使用策略模式實現Duck的各種行為&quot;，也就表示Duck的各種行為被封裝進一組class中，可以輕易被擴充改變 知道抽象、封裝、繼承、多態並不會讓人馬上變成好的OOP設計者，設計者更關心是建立彈性的設計，高維護性，可以應變 Chapter2: 觀察者模式 Observer pattern 定義了object之間的一對多依賴關係，當一個object改變狀態，他的所有依賴者都會收到通知並自動更新
 設計原則: 為了交互物件之間的鬆耦合設計而努力 有彈性能應變的OO系統是因為物件之前的低互相依賴關係 書中首先提出的情境是一個氣象觀測站，在收到資料更新後推送給相關的顯示器。直覺的作法是在觀測站資料更新的時侯call顯示器的update。但這麼做在幽需要更多顯示器時就要更改觀測站本身程式。 觀察者模式的概念就是將上述需求切分為subject與oberser。可以想像成報社與訂閱者，需要報紙的訂閱者先向報社訂閱，報社在每次有新報紙時會送給訂閱者。 1 2 3 4 5 6 7 8 9 public interface Subject { public void registerObserver(Observer o); public void removeObserver(Observer o); public void notifyObservers(); } public interface Observer { public void update(...); } 這兩個物件會是鬆耦合，可以互動，但毋須知道對方細節。 java 存在內建的觀察者模式，差別在於Observable不是interface而是class來繼承使用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import java.util.Observable; import java.util.Observer; public class MySubject extends Observable { //Obserable提供之方法 addObserver() deleteObserver() notifyObserver() setChanged() } public class MyObserver implements Observer { // Observer需要實做的方法 update() } observer pattern被廣泛應用在GUI框架當中，如按鈕行為 chapter3: decorator pattern 裝飾者模式 動態將責任附加到物件上。若要擴展功能，decorator提供了比繼承更有彈性的替代方案。
@@ -11,16 +13,20 @@ class之間的關係可以有三種: is-a, has-a, implements 上述的例子中�
 <link rel='canonical' href='http://shawn1251.github.io/zh-tw/post/head-first-design-pattern-note/'>
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Head First Design Pattern Note'>
-<meta property='og:description' content='chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
+<meta property='og:description' content='Head First Design Patterns: A Brain-Friendly Guide
+閱讀筆記。這本書很淺顯易懂，把背後選擇策略的邏輯用容易理解的情境解釋。推薦給想初步了解Design Pattern的人。以下是每個章節的簡單筆記
+chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
 開頭先用了設計鴨子做情境。由於想讓鴨子加入&quot;飛&quot;的功能，Joe將這個加在了super class中，卻也造成了不該會飛的鴨子如橡皮鴨也產生了飛的功能。 即使用了繼承，在子類覆蓋掉，也會因為子類型眾多不全面。書中舉例了在都不會飛的鴨子中，橡皮鴨會叫，而誘餌鴨不會叫 若採用interface，會造成code無法重複使用 軟體開發不變的真理就是&quot;變&quot;。不管當初設計多完美，一段時間後都會需要改變。 設計原則: 找出應用中可能需要變化的部分並獨立，不要與不需要變化的代碼混在一起。 設計原則: 針對interface設計，而不是針對實現設計 這部分的意思是說，我們要針對abstract class or interface進行設計。例如: abstract class 有Animal，繼承他的有Dog。則如果我們要讓他發出聲音，可以直接在Dog寫一個method bark()。但如果針對interface設計，則我們會在Animal加入makeSound，於Dog繼承後在makeSound中發出bark。 承設計Duck，我們可以設計出FlyBehavior這個interface，對此就可以分別implement出FlyWithWings, FlyNoWay兩個類。而我們的abstract class Duck就可以用has-a的概念加入一個FlyBehavior的變量，而我們針對行為建立一個method preformanceFly，call這個FlyBehaivor的變量委託這個class進行fly。往後需要建立不同的duck的時候，就可以在繼承Duck時，給予相對應的FlyBehavior。甚至可以加入setter，中途變換FlyBehavior，增加彈性。
 class之間的關係可以有三種: is-a, has-a, implements 上述的例子中，每個鴨子都&quot;有&quot;一個FlyBehavior，也就是將飛行行為委託給這個class處理 將兩個類結合一起使用就是&quot;composition&quot;，相較於&quot;inherit&quot;更具彈性 設計原則:多用組合，少用繼承 使用設計模式的共通詞彙可以提升討論效率、維持在高層次而不瑣碎。如&quot;我們使用策略模式實現Duck的各種行為&quot;，也就表示Duck的各種行為被封裝進一組class中，可以輕易被擴充改變 知道抽象、封裝、繼承、多態並不會讓人馬上變成好的OOP設計者，設計者更關心是建立彈性的設計，高維護性，可以應變 Chapter2: 觀察者模式 Observer pattern 定義了object之間的一對多依賴關係，當一個object改變狀態，他的所有依賴者都會收到通知並自動更新
 設計原則: 為了交互物件之間的鬆耦合設計而努力 有彈性能應變的OO系統是因為物件之前的低互相依賴關係 書中首先提出的情境是一個氣象觀測站，在收到資料更新後推送給相關的顯示器。直覺的作法是在觀測站資料更新的時侯call顯示器的update。但這麼做在幽需要更多顯示器時就要更改觀測站本身程式。 觀察者模式的概念就是將上述需求切分為subject與oberser。可以想像成報社與訂閱者，需要報紙的訂閱者先向報社訂閱，報社在每次有新報紙時會送給訂閱者。 1 2 3 4 5 6 7 8 9 public interface Subject { public void registerObserver(Observer o); public void removeObserver(Observer o); public void notifyObservers(); } public interface Observer { public void update(...); } 這兩個物件會是鬆耦合，可以互動，但毋須知道對方細節。 java 存在內建的觀察者模式，差別在於Observable不是interface而是class來繼承使用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import java.util.Observable; import java.util.Observer; public class MySubject extends Observable { //Obserable提供之方法 addObserver() deleteObserver() notifyObserver() setChanged() } public class MyObserver implements Observer { // Observer需要實做的方法 update() } observer pattern被廣泛應用在GUI框架當中，如按鈕行為 chapter3: decorator pattern 裝飾者模式 動態將責任附加到物件上。若要擴展功能，decorator提供了比繼承更有彈性的替代方案。
 '>
 <meta property='og:url' content='http://shawn1251.github.io/zh-tw/post/head-first-design-pattern-note/'>
 <meta property='og:site_name' content='Shawn&#39;s Note'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-13T23:36:18-08:00'/><meta property='article:modified_time' content='2024-12-13T23:36:18-08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-13T23:36:18-08:00'/><meta property='article:modified_time' content='2023-12-13T23:36:18-08:00'/>
 <meta name="twitter:title" content="Head First Design Pattern Note">
-<meta name="twitter:description" content="chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
+<meta name="twitter:description" content="Head First Design Patterns: A Brain-Friendly Guide
+閱讀筆記。這本書很淺顯易懂，把背後選擇策略的邏輯用容易理解的情境解釋。推薦給想初步了解Design Pattern的人。以下是每個章節的簡單筆記
+chapter 1: 策略模式 Strategy Pattern 策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶
 開頭先用了設計鴨子做情境。由於想讓鴨子加入&quot;飛&quot;的功能，Joe將這個加在了super class中，卻也造成了不該會飛的鴨子如橡皮鴨也產生了飛的功能。 即使用了繼承，在子類覆蓋掉，也會因為子類型眾多不全面。書中舉例了在都不會飛的鴨子中，橡皮鴨會叫，而誘餌鴨不會叫 若採用interface，會造成code無法重複使用 軟體開發不變的真理就是&quot;變&quot;。不管當初設計多完美，一段時間後都會需要改變。 設計原則: 找出應用中可能需要變化的部分並獨立，不要與不需要變化的代碼混在一起。 設計原則: 針對interface設計，而不是針對實現設計 這部分的意思是說，我們要針對abstract class or interface進行設計。例如: abstract class 有Animal，繼承他的有Dog。則如果我們要讓他發出聲音，可以直接在Dog寫一個method bark()。但如果針對interface設計，則我們會在Animal加入makeSound，於Dog繼承後在makeSound中發出bark。 承設計Duck，我們可以設計出FlyBehavior這個interface，對此就可以分別implement出FlyWithWings, FlyNoWay兩個類。而我們的abstract class Duck就可以用has-a的概念加入一個FlyBehavior的變量，而我們針對行為建立一個method preformanceFly，call這個FlyBehaivor的變量委託這個class進行fly。往後需要建立不同的duck的時候，就可以在繼承Duck時，給予相對應的FlyBehavior。甚至可以加入setter，中途變換FlyBehavior，增加彈性。
 class之間的關係可以有三種: is-a, has-a, implements 上述的例子中，每個鴨子都&quot;有&quot;一個FlyBehavior，也就是將飛行行為委託給這個class處理 將兩個類結合一起使用就是&quot;composition&quot;，相較於&quot;inherit&quot;更具彈性 設計原則:多用組合，少用繼承 使用設計模式的共通詞彙可以提升討論效率、維持在高層次而不瑣碎。如&quot;我們使用策略模式實現Duck的各種行為&quot;，也就表示Duck的各種行為被封裝進一組class中，可以輕易被擴充改變 知道抽象、封裝、繼承、多態並不會讓人馬上變成好的OOP設計者，設計者更關心是建立彈性的設計，高維護性，可以應變 Chapter2: 觀察者模式 Observer pattern 定義了object之間的一對多依賴關係，當一個object改變狀態，他的所有依賴者都會收到通知並自動更新
 設計原則: 為了交互物件之間的鬆耦合設計而努力 有彈性能應變的OO系統是因為物件之前的低互相依賴關係 書中首先提出的情境是一個氣象觀測站，在收到資料更新後推送給相關的顯示器。直覺的作法是在觀測站資料更新的時侯call顯示器的update。但這麼做在幽需要更多顯示器時就要更改觀測站本身程式。 觀察者模式的概念就是將上述需求切分為subject與oberser。可以想像成報社與訂閱者，需要報紙的訂閱者先向報社訂閱，報社在每次有新報紙時會送給訂閱者。 1 2 3 4 5 6 7 8 9 public interface Subject { public void registerObserver(Observer o); public void removeObserver(Observer o); public void notifyObservers(); } public interface Observer { public void update(...); } 這兩個物件會是鬆耦合，可以互動，但毋須知道對方細節。 java 存在內建的觀察者模式，差別在於Observable不是interface而是class來繼承使用 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 import java.util.Observable; import java.util.Observer; public class MySubject extends Observable { //Obserable提供之方法 addObserver() deleteObserver() notifyObserver() setChanged() } public class MyObserver implements Observer { // Observer需要實做的方法 update() } observer pattern被廣泛應用在GUI框架當中，如按鈕行為 chapter3: decorator pattern 裝飾者模式 動態將責任附加到物件上。若要擴展功能，decorator提供了比繼承更有彈性的替代方案。
@@ -288,6 +294,14 @@ class之間的關係可以有三種: is-a, has-a, implements 上述的例子中�
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/zh-tw/categories/readingnote/" >
+                ReadingNote
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
@@ -313,7 +327,7 @@ class之間的關係可以有三種: is-a, has-a, implements 上述的例子中�
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 13, 2024</time>
+                <time class="article-time--published">Dec 13, 2023</time>
             </div>
         
 
@@ -362,7 +376,10 @@ class之間的關係可以有三種: is-a, has-a, implements 上述的例子中�
     <section class="article-content">
     
     
-    <h2 id="chapter-1-策略模式-strategy-pattern">chapter 1: 策略模式 Strategy Pattern</h2>
+    <p><a class="link" href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124"  target="_blank" rel="noopener"
+    >Head First Design Patterns: A Brain-Friendly Guide</a><br>
+閱讀筆記。這本書很淺顯易懂，把背後選擇策略的邏輯用容易理解的情境解釋。推薦給想初步了解Design Pattern的人。以下是每個章節的簡單筆記</p>
+<h2 id="chapter-1-策略模式-strategy-pattern">chapter 1: 策略模式 Strategy Pattern</h2>
 <p>策略模式定義了算法族，分別封裝起來，讓他們之間可以互相替換，此模式讓算法的變化獨立於使用算法的客戶</p>
 <ul>
 <li>開頭先用了設計鴨子做情境。由於想讓鴨子加入&quot;飛&quot;的功能，Joe將這個加在了super class中，卻也造成了不該會飛的鴨子如橡皮鴨也產生了飛的功能。</li>
