@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://shawn1251.github.io/zh-tw/</loc>
-    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
+    <lastmod>2025-01-21T11:24:10-08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,6 +13,58 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/categories/</loc>
+    <lastmod>2025-01-21T11:24:10-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/categories/other/</loc>
+    <lastmod>2025-01-21T11:24:10-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/categories/other/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/categories/other/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
+    <lastmod>2025-01-21T11:24:10-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/"
+                />
+  </url><url>
+    <loc>http://shawn1251.github.io/zh-tw/post/wsl-migration/</loc>
+    <lastmod>2025-01-21T11:24:10-08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://shawn1251.github.io/post/wsl-migration/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://shawn1251.github.io/zh-tw/post/wsl-migration/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/</loc>
@@ -41,19 +93,6 @@
                 href="http://shawn1251.github.io/zh-tw/categories/ai/"
                 />
   </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/categories/</loc>
-    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/"
-                />
-  </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/generativeai/</loc>
     <lastmod>2024-08-06T00:00:00+08:00</lastmod>
     <xhtml:link
@@ -78,19 +117,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/tags/lecturenote/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/post/</loc>
-    <lastmod>2024-08-06T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/post/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/</loc>
@@ -286,19 +312,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://shawn1251.github.io/zh-tw/tags/etl/"
-                />
-  </url><url>
-    <loc>http://shawn1251.github.io/zh-tw/categories/other/</loc>
-    <lastmod>2023-11-14T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://shawn1251.github.io/categories/other/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://shawn1251.github.io/zh-tw/categories/other/"
                 />
   </url><url>
     <loc>http://shawn1251.github.io/zh-tw/tags/addiction/</loc>

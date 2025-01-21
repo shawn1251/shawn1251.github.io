@@ -6,7 +6,68 @@
         <description>Recent content on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 21 Jan 2025 11:24:10 -0800</lastBuildDate><atom:link href="http://shawn1251.github.io/zh-tw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>wsl-migration</title>
+        <link>http://shawn1251.github.io/zh-tw/post/wsl-migration/</link>
+        <pubDate>Tue, 21 Jan 2025 11:24:10 -0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/zh-tw/post/wsl-migration/</guid>
+        <description>&lt;h1 id=&#34;wsl-搬家&#34;&gt;WSL 搬家&lt;/h1&gt;
+&lt;p&gt;WSL在一段使用過後，因為套件越裝越多，會變得肥大。目前使用的電腦C槽較小，所以有了要從預設位置搬家的需求&lt;/p&gt;
+&lt;h2 id=&#34;wsl-所在位置&#34;&gt;WSL 所在位置&lt;/h2&gt;
+&lt;p&gt;在powershell中執行此指令找到WSL本身虛擬機檔案。&lt;code&gt;&amp;lt;name&amp;gt;&lt;/code&gt; 為WSL的名稱，我本身是&lt;code&gt;Ubuntu&lt;/code&gt;
+&lt;code&gt;(Get-ChildItem -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss | Where-Object { $_.GetValue(&amp;quot;DistributionName&amp;quot;) -eq &#39;&amp;lt;name&amp;gt;&#39; }).GetValue(&amp;quot;BasePath&amp;quot;) + &amp;quot;\ext4.vhdx&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;搬遷&#34;&gt;搬遷&lt;/h2&gt;
+&lt;p&gt;根據&lt;a class=&#34;link&#34; href=&#34;https://superuser.com/questions/1550622/move-wsl2-file-system-to-another-drive/1804204#1804204&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;這篇&lt;/a&gt;的&lt;a class=&#34;link&#34; href=&#34;https://superuser.com/users/1263491/jayesh-vachhani&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;jayesh-vachhani&lt;/a&gt;回覆，操作後確認此作法有效。&lt;/p&gt;
+&lt;h3 id=&#34;匯出-ubuntu&#34;&gt;匯出 Ubuntu&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-gdscript3&#34; data-lang=&#34;gdscript3&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;wsl&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Ubuntu&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;backup&lt;/span&gt;\&lt;span class=&#34;n&#34;&gt;ubuntu&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;tar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;unregister-既有-wsl&#34;&gt;unregister 既有 WSL&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --unregister Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;匯入&#34;&gt;匯入&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mkdir D:\wsl
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;wsl --import Ubuntu D:\wsl\ D:\backup\ubuntu.tar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;完成WSL搬家，可以啟動了!&lt;/p&gt;
+&lt;h2 id=&#34;修改預設使用者&#34;&gt;修改預設使用者&lt;/h2&gt;
+&lt;p&gt;目前WSL已經能夠使用，但會發現預設登入的使用者是root，需要進行修改&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;cd C:\Users\&amp;lt;your user&amp;gt;\AppData\Local\Microsoft\WindowsApps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ubuntu config --default-user &amp;lt;ubuntu-username&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>2024 李弘毅 生成式AI導論筆記</title>
         <link>http://shawn1251.github.io/zh-tw/post/generativeai-2024-youtube-summery/</link>
         <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>

@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Shawn&#39;s Note</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0800</lastBuildDate><atom:link href="http://shawn1251.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 21 Jan 2025 11:24:10 -0800</lastBuildDate><atom:link href="http://shawn1251.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Other</title>
+        <link>http://shawn1251.github.io/categories/other/</link>
+        <pubDate>Tue, 21 Jan 2025 11:24:10 -0800</pubDate>
+        
+        <guid>http://shawn1251.github.io/categories/other/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>AI</title>
         <link>http://shawn1251.github.io/categories/ai/</link>
         <pubDate>Tue, 06 Aug 2024 00:00:00 +0800</pubDate>
@@ -36,14 +44,6 @@
         <pubDate>Thu, 23 Nov 2023 00:00:00 +0800</pubDate>
         
         <guid>http://shawn1251.github.io/categories/embedded/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Other</title>
-        <link>http://shawn1251.github.io/categories/other/</link>
-        <pubDate>Tue, 14 Nov 2023 00:00:00 +0800</pubDate>
-        
-        <guid>http://shawn1251.github.io/categories/other/</guid>
         <description></description>
         </item>
         <item>
